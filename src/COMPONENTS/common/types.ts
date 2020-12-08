@@ -1,3 +1,3 @@
-export interface IIconProps {
-    icon: string;
+export interface ITest {
+    ke: string;
 }

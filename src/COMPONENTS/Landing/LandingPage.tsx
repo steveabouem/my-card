@@ -1,116 +1,17 @@
 import React, { useState } from 'react';
-import { Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
 import Welcome from './Welcome';
-import { icons } from '../common';
-import { NavLink } from 'react-router-dom';
-import AppRoutes from '../../App';
+import { icons, StyledIconLinkName } from '../common';
+import { IIconStates } from '../types';
+import { StyledIconLinkOverlay, StyledIconLink, StyledLandingMenuWrap, StyledLandingIconsRow } from '../styles';
 import { AppRoutesEnum } from '../../ROUTES';
 
-const StyledIconLink = styled(NavLink)`
-  border-radius: 15px;
-  height: 60px;
-  width: 75px;
-  border: 1.5px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  position: relative;
-  transition: .3s;
-
-  svg {
-    font-size: 45px;
-    transition: .4s;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-    &&& {
-      svg {
-        color: black;
-      }
-    }
-  }
-  &.red {
-    background: #ff5c5c;
-    svg {
-      color: #ffb6b6;
-    }
-  }
-  &.blue {
-    background: #33a1ff;
-    svg {
-      color: #fffdedbf;
-    }
-  }
-  &.yellow {
-    background: #f3f024;
-    svg {
-      color: #fdfcb9;
-    }
-  }
-  &.purple {
-    background: #8c1bce;
-    svg {
-      color: #fb1dff;
-    }
-  }
-  &.green {
-    svg {
-      background: linear-gradient(180deg,#ffe0009e,#9fffd3a6);
-    }
-  }
-`;
-
-const StyledIconLinkOverlay = styled.span`
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    border-radius: 15px;
-    &.red {
-        background: linear-gradient(180deg, #ff5c5c6b, #ccff0042);
-    }
-    &.purple, &.bue {
-        background: linear-gradient(180deg,#8c1bce45,#e07f07a6);
-    }
-    &.yellow {
-        background: linear-gradient(180deg,#fafe000a,#ff010da3);;
-    }
-    &.green {
-        background: #40caff;
-    }
-    &.blue {
-      background: linear-gradient(180deg,#0095ff52,#f1ff156e);
-    }
-`;
-
-const StyledLandingIconsRow = styled(Row)`
-  max-height: 80px;
-  height: 80px;
-`;
-
-const StyledLandingMenuWrap = styled.div`
-  width: 500px;
-  max-width: 500px;
-  margin: auto;
-`;
-
-// TODO: this might be a good idea to display on hover, the underline and text color might be nice in specific colors
-const StyledLinkInitial = styled.div`
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  font-size: 52px;
-  line-height: 1;
-  text-decoration: underline;
-  font-weight: 900;
-  color: black;
-  text-decoration-color: black;
-`;
-
+interface IIconLinkWrapProps {
+  color: string;
+  url: string;
+  iconStates: IIconStates;
+  name: string;
+}
 
 const LandingPage = (): JSX.Element => {
   const [menuVisible, setMenuVisible] = useState<boolean>(true);
@@ -118,55 +19,62 @@ const LandingPage = (): JSX.Element => {
   const onSetVisible = (e: React.MouseEvent<HTMLButtonElement>) => {
     setMenuVisible(!menuVisible)
   };
+  // 8668208911
+
   return menuVisible ? (
     <StyledLandingMenuWrap>
       <StyledLandingIconsRow className="d-flex justify-content-between">
-        <StyledIconLink to={AppRoutesEnum.BIO} className="red">
-          <StyledIconLinkOverlay className="red" />
-          <FontAwesomeIcon icon={icons.profile} />
-        </StyledIconLink>
-        <StyledIconLink to={AppRoutesEnum.CONTACT} className="purple">
-          <StyledIconLinkOverlay className="purple" />
-          <FontAwesomeIcon icon={icons.mail} />
-        </StyledIconLink>
-        <StyledIconLink to={AppRoutesEnum.WORK} className="yellow">
-          <StyledIconLinkOverlay className="yellow" />
-          <FontAwesomeIcon icon={icons.gallery} />
-        </StyledIconLink>
+        <IconLinkWrap 
+          iconStates={icons.profile}
+          url={AppRoutesEnum.BIO}
+          name="BIO" color="red"
+        />
+        <IconLinkWrap 
+          iconStates={icons.mail}
+          url={AppRoutesEnum.CONTACT}
+          name="CONTACT" color="purple"
+        />
+        <IconLinkWrap 
+          iconStates={icons.work}
+          url={AppRoutesEnum.WORK}
+          name="WORK" color="yellow"
+        />
       </StyledLandingIconsRow>
       <StyledLandingIconsRow className="d-flex justify-content-between">
-        <StyledIconLink to={AppRoutesEnum.BIO} className="blue">
-          <StyledIconLinkOverlay className="blue" />
-          <FontAwesomeIcon icon={icons.testimonials} />
-        </StyledIconLink>
-        <StyledIconLink to={AppRoutesEnum.CONTACT} className="purple">
-          <StyledIconLinkOverlay className="purple" />
-          <FontAwesomeIcon icon={icons.mail} />
-        </StyledIconLink>
-        <StyledIconLink to={AppRoutesEnum.WORK} className="yellow">
-          <StyledIconLinkOverlay className="yellow" />
-          <FontAwesomeIcon icon={icons.gallery} />
-        </StyledIconLink>
-      </StyledLandingIconsRow>
-      <StyledLandingIconsRow className="d-flex justify-content-between">
-        <StyledIconLink to={AppRoutesEnum.BIO} className="red">
-          <StyledIconLinkOverlay className="red" />
-          <FontAwesomeIcon icon={icons.profile} />
-        </StyledIconLink>
-        <StyledIconLink to={AppRoutesEnum.CONTACT} className="purple">
-          <StyledIconLinkOverlay className="purple" />
-          <FontAwesomeIcon icon={icons.mail} />
-        </StyledIconLink>
-        <StyledIconLink to={AppRoutesEnum.WORK} className="yellow">
-          <StyledIconLinkOverlay className="yellow" />
-          <FontAwesomeIcon icon={icons.gallery} />
-        </StyledIconLink>
+        <IconLinkWrap 
+          iconStates={icons.testimonials}
+          url={AppRoutesEnum.DEV}
+          name="DEV" color="blue"
+        />
+        <IconLinkWrap 
+          iconStates={icons.budget}
+          url={AppRoutesEnum.DEV}
+          name="DEV" color="green"
+        />
       </StyledLandingIconsRow>
     </StyledLandingMenuWrap>
   ) : (
       // TODO: this should be a different page/link
       <Welcome handleClick={onSetVisible} />
     )
+};
+
+const IconLinkWrap = ({iconStates, color, url, name}: IIconLinkWrapProps): JSX.Element => {
+  const [hovered, setHovered] = useState<boolean>(false);
+
+  return (
+    <StyledIconLink 
+      to={url} 
+      className={color} 
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <StyledIconLinkOverlay className={color}>
+        {hovered && <StyledIconLinkName>{name}</StyledIconLinkName>}
+      </StyledIconLinkOverlay>
+      <FontAwesomeIcon icon={hovered ? iconStates?.hover : iconStates?.static} />
+    </StyledIconLink>
+  );
 };
 
 export default LandingPage;

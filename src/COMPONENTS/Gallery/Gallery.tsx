@@ -9,7 +9,6 @@ const Gallery = (): JSX.Element => {
     return (
         <Container>
             <div>
-                <FontAwesomeIcon icon={icons.profile} />
             </div>
         </Container>
     );

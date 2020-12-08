@@ -3,6 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import { AppRoutesEnum } from './ROUTES';
 // TODO: Fix import to point to components index
 import LandingPage from './COMPONENTS/Landing/LandingPage';
+import Work from './COMPONENTS/Work/Work';
 
 const AppRoutes = (): JSX.Element => {
   return (
@@ -12,6 +13,9 @@ const AppRoutes = (): JSX.Element => {
       />
       <Route 
         path={AppRoutesEnum.LANDING} component={LandingPage} 
+      />
+      <Route 
+        path={AppRoutesEnum.WORK} component={Work} 
       />
     </Switch>
   );
