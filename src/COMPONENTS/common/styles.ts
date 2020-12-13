@@ -7,10 +7,9 @@ export const StyledBaseBG = styled.div`
     overflow: hidden;
 `;
 
-export const StyledIconLinkName = styled.span`
-  color: white;
-  font-weight: bolder;
-  text-align: center;
-  display: flex;
-  align-items: flex-end;
+export const StyledPageContent = styled.div`
+  min-width: calc(100vw - 80px);
+  width: calc(100vw - 80px);
+  margin-left: 80px;
+  background: red;
 `;

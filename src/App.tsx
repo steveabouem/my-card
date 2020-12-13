@@ -4,10 +4,11 @@ import { AppRoutesEnum } from './ROUTES';
 // TODO: Fix import to point to components index
 import LandingPage from './COMPONENTS/Landing/LandingPage';
 import Work from './COMPONENTS/Work/Work';
+import { StyledPageContent } from './COMPONENTS/common';
 
 const AppRoutes = (): JSX.Element => {
   return (
-    <>
+    <StyledPageContent>
       <Route 
         exact path="/" render={() => <Redirect to={AppRoutesEnum.LANDING} />} 
       />
@@ -17,7 +18,7 @@ const AppRoutes = (): JSX.Element => {
       <Route 
         path={AppRoutesEnum.WORK} component={Work} 
       />
-    </>
+    </StyledPageContent>
   );
 };
 

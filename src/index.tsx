@@ -9,6 +9,7 @@ import {StyledBaseBG} from './COMPONENTS/common';
 import Navigation from './COMPONENTS/common/Navigation';
 import PageContainer from './COMPONENTS/common/PageContainer';
 import Lang from 'lang.js';
+import Sidebar from './COMPONENTS/common/Sidebar';
 
 declare global {
   interface Window { lang: any; }
@@ -34,6 +35,7 @@ ReactDOM.render(
   <Router>
     <Switch>
       <StyledBaseBG>
+        <Sidebar />
         <PageContainer>
           <Navigation />
           <AppRoutes />

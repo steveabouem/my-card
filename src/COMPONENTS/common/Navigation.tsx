@@ -1,35 +1,42 @@
 import React from 'react';
-import {Navbar} from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 // import { icons } from '../common';
 
 interface IStyledTopNavbarProps {
-    hidden?: boolean;
+  hidden?: boolean;
 }
 
 interface INavigationProps {
-    children?: React.ReactChild; 
+  children?: React.ReactChild;
 }
 
 const StyledTopNavbar = styled(Navbar)`
-    background: transparent;
+  background: transparent;
+  display: flex;
+  justify-content: flex-end;
+  &&& {
+    color: white;
+  }
+  height: 70px;
+  &.fixed-top {
     &&& {
-        color: white;
+      z-index: 10;
     }
-    height: 70px;
-    // ${(hidden) => hidden && 'display: none;'}
+  }
+  // ${(hidden) => hidden && 'display: none;'}
 `;
 
-const Navigation = ({children}: INavigationProps): JSX.Element => {
-    const params = useParams();
-    
-    return (
-        <StyledTopNavbar fixed="top">  
-            Welcome
-        </StyledTopNavbar>
-    );
+const Navigation = ({ children }: INavigationProps): JSX.Element => {
+  const params = useParams();
+
+  return (
+    <StyledTopNavbar fixed="top">
+      Welcome
+    </StyledTopNavbar>
+  );
 };
 
 export default Navigation;

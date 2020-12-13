@@ -4,4 +4,6 @@ export enum AppRoutesEnum {
     WORK = '/work',
     BIO = '/bio',
     DEV = '/dev',
+    TESTIMONIALS = '/testimonials',
+    BUDGET = '/budget'
 }

@@ -1,10 +1,15 @@
 import styled from 'styled-components';
-import { NavLink, Row } from 'react-bootstrap';
+import { Col, NavLink } from 'react-bootstrap';
 
-export const StyledIconLink = styled(NavLink)`
+interface IStyledIconLinkProps {
+  active: boolean;
+}
+
+export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
   border-radius: 15px;
-  height: 75px;
-  width: 95px;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
   border: 1.5px solid white;
   display: flex;
   justify-content: center;
@@ -13,13 +18,7 @@ export const StyledIconLink = styled(NavLink)`
   position: relative;
   transition: .3s;
 
-  svg {
-    font-size: 45px;
-    transition: .4s;
-  }
-
   &:hover {
-    transform: translateY(-3px);
     &&& {
       svg {
         color: black;
@@ -56,6 +55,14 @@ export const StyledIconLink = styled(NavLink)`
       color: #1ae46be0;
     }
   }
+
+  &&& {
+    svg {
+      font-size: 45px;
+      transition: .4s;
+      ${(props) => props.active ? 'color: black' : null};
+    }
+  }
 `;
 
 export const StyledIconLinkOverlay = styled.div`
@@ -80,9 +87,14 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledLandingIconsRow = styled(Row)`
-  max-height: 80px;
-  height: 80px;
+export const StyledLandingIconsColumn = styled(Col)`
+  min-height: calc(100% - 20px);
+  height: calc(100% - 20px);
+  width: 80px;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  z-index: 11;
 `;
 
 export const StyledLandingMenuWrap = styled.div`
@@ -91,21 +103,9 @@ export const StyledLandingMenuWrap = styled.div`
   margin: auto;
 `;
 
-// TODO: this might be a good idea to display on hover, the underline and text color might be nice in specific colors
-export const StyledLinkInitial = styled.div`
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  font-size: 52px;
-  line-height: 1;
-  text-decoration: underline;
-  font-weight: 900;
-  color: black;
-  text-decoration-color: black;
-`;
-
 export const StyledIconLinkName = styled.span`
+  vertical-align: ;
+  align-items: center;
   color: white;
   font-weight: bolder;
   text-align: center;
@@ -113,8 +113,16 @@ export const StyledIconLinkName = styled.span`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100%;
-  width: 100%;
+  justify-content: flex-start;
+  width: 90px;
+`;
+
+export const StyledLinkInitial = styled.div`
+  color: #ffffff94;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  min-width: 60px;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
 `;

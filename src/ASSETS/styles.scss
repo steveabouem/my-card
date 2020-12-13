@@ -1,7 +1,25 @@
 html {
-    font-family: 'Poppins', sans-serif;
-    body {
-        margin: 0;
-        color: white;
+  font-family: "Poppins", sans-serif;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #b4b8a1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffbc00;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #dba307;
+  }
+  body {
+    margin: 0;
+    color: white;
+    #root {
+      overflow: hidden;
     }
+  }
 }
