@@ -4,7 +4,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 const Footer = (): JSX.Element => (
     <Container fluid>
         <Row>
-            <Col>whot</Col>
+            <Col></Col>
         </Row>
     </Container>
 );

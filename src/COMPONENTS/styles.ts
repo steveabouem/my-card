@@ -3,8 +3,8 @@ import { NavLink, Row } from 'react-bootstrap';
 
 export const StyledIconLink = styled(NavLink)`
   border-radius: 15px;
-  height: 60px;
-  width: 75px;
+  height: 75px;
+  width: 95px;
   border: 1.5px solid white;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@ export const StyledIconLink = styled(NavLink)`
   }
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     &&& {
       svg {
         color: black;
@@ -108,7 +108,13 @@ export const StyledLinkInitial = styled.div`
 export const StyledIconLinkName = styled.span`
   color: white;
   font-weight: bolder;
-  text-align: center;Þ
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  justify-content: center;
   align-items: flex-end;
+  height: 100%;
+  width: 100%;
 `;
