@@ -11,7 +11,7 @@ interface IIconLinkWrapProps {
   url: string;
   iconStates: IIconStates;
   name: string;
-  active: boolean;
+  active?: boolean;
 }
 
 const Sidebar = ():JSX.Element => {
@@ -21,35 +21,42 @@ const Sidebar = ():JSX.Element => {
   
   return (
     <StyledLandingIconsColumn className="d-flex flex-column">
+      {!isActive('/home') && (
+        <IconLinkWrap
+          iconStates={icons.home}
+          url={AppRoutesEnum.LANDING}
+          name="HOME" color="dark"
+        />
+      )}
       <IconLinkWrap
         active={isActive('/bio')}
         iconStates={icons.profile}
         url={AppRoutesEnum.BIO}
-        name="BIO" color="red"
+        name="BIO" color="dark"
       />
       <IconLinkWrap
         active={isActive('/contact')}
         iconStates={icons.mail}
         url={AppRoutesEnum.CONTACT}
-        name="CONTACT" color="purple"
+        name="CONTACT" color="dark"
       />
       <IconLinkWrap
         active={isActive('/work')}
         iconStates={icons.work}
         url={AppRoutesEnum.WORK}
-        name="WORK" color="yellow"
+        name="WORK" color="dark"
       />
       <IconLinkWrap
         active={isActive('/testimonials')}
         iconStates={icons.testimonials}
         url={AppRoutesEnum.TESTIMONIALS}
-        name="TESTIMONIALS" color="blue"
+        name="TESTIMONIALS" color="dark"
       />
       <IconLinkWrap
         active={isActive('/budget')}
         iconStates={icons.budget}
         url={AppRoutesEnum.BUDGET}
-        name="BUDGET" color="green"
+        name="BUDGET" color="dark"
       />
     </StyledLandingIconsColumn>
   );
@@ -70,9 +77,9 @@ const IconLinkWrap = ({ iconStates, color, url, name, active }: IIconLinkWrapPro
     >
       <StyledIconLinkOverlay className={color}>
         {hovered && (
-          <div className="w-100 d-flex">
-            <StyledLinkInitial>{initial}</StyledLinkInitial>
-            <StyledIconLinkName>{nameRoot}</StyledIconLinkName>
+          <div className="d-flex">
+            {/* <StyledLinkInitial>{initial}</StyledLinkInitial> */}
+            <StyledIconLinkName>{name}</StyledIconLinkName>
           </div>
         )}
       </StyledIconLinkOverlay>

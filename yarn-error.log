@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @fullpage/react-fullpage-umd
+  C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/formik
 
 PATH: 
-  C:\Users\Admin\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Admin\bin;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\HashiCorp\Vagrant\bin;C:\xampp\php;C:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Windows\System32;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\HashiCorp\Vagrant\bin;C:\xampp\php;C:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Windows\System32;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
 
 Yarn version: 
   1.6.0
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@fullpage%2freact-fullpage-umd: Not found
+  Error: https://registry.yarnpkg.com/@types%2fformik: Not found
       at Request.params.callback [as _callback] (C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:65327:18)
       at Request.self.callback (C:\Users\Admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:133155:22)
       at Request.emit (events.js:210:5)
@@ -35,7 +35,6 @@ npm manifest:
       "@fortawesome/fontawesome-svg-core": "^1.2.32",
       "@fortawesome/free-solid-svg-icons": "^5.15.1",
       "@fortawesome/react-fontawesome": "^0.1.13",
-      "@fullpage/react-fullpage": "^0.1.18",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
@@ -43,6 +42,7 @@ npm manifest:
       "@types/react-bootstrap": "^0.32.24",
       "@types/react-dom": "^17.0.0",
       "@types/react-router-dom": "^5.1.6",
+      "@types/scrollmagic": "^2.0.1",
       "@types/styled-components": "^5.1.4",
       "bootstrap": "^4.5.3",
       "formik": "^2.2.5",
@@ -55,6 +55,7 @@ npm manifest:
       "react-scripts": "4.0.1",
       "react-spinners": "^0.9.0",
       "sass": "^1.29.0",
+      "scrollmagic": "^2.0.8",
       "styled-components": "^5.2.1",
       "typescript": "^4.1.2",
       "web-vitals": "^0.2.4"
@@ -863,13 +864,6 @@ Lockfile:
       "@babel/helper-create-regexp-features-plugin" "^7.12.1"
       "@babel/helper-plugin-utils" "^7.10.4"
   
-  "@babel/polyfill@^7.2.5":
-    version "7.12.1"
-    resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.12.1.tgz#1f2d6371d1261bbd961f3c5d5909150e12d0bd96"
-    dependencies:
-      core-js "^2.6.5"
-      regenerator-runtime "^0.13.4"
-  
   "@babel/preset-env@7.12.1":
     version "7.12.1"
     resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.12.1.tgz#9c7e5ca82a19efc865384bb4989148d2ee5d7ac2"
@@ -1243,13 +1237,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.13.tgz#ce9654bf4e537108014ec022f2423dbe8114fd62"
     dependencies:
       prop-types "^15.7.2"
-  
-  "@fullpage/react-fullpage@^0.1.18":
-    version "0.1.18"
-    resolved "https://registry.yarnpkg.com/@fullpage/react-fullpage/-/react-fullpage-0.1.18.tgz#cdc26ba731d38824e0d234cd2e1153b68bba7786"
-    dependencies:
-      "@babel/polyfill" "^7.2.5"
-      fullpage.js "^3.0.9"
   
   "@hapi/address@2.x.x":
     version "2.1.4"
@@ -1879,6 +1866,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-0.0.8.tgz#f26074d238e02659e323ce1a13d041eee280e194"
     dependencies:
       "@types/node" "*"
+  
+  "@types/scrollmagic@^2.0.1":
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/@types/scrollmagic/-/scrollmagic-2.0.1.tgz#b04c5c59b3071c42bedadf3375f9dcb36990b0d6"
   
   "@types/source-list-map@*":
     version "0.1.2"
@@ -3389,10 +3380,6 @@ Lockfile:
     version "2.6.11"
     resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   
-  core-js@^2.6.5:
-    version "2.6.12"
-    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
-  
   core-js@^3.6.5:
     version "3.7.0"
     resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.7.0.tgz#b0a761a02488577afbf97179e4681bf49568520f"
@@ -4894,10 +4881,6 @@ Lockfile:
   fsevents@~2.1.2:
     version "2.1.3"
     resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.3.tgz#fb738703ae8d2f9fe900c33836ddebee8b97f23e"
-  
-  fullpage.js@^3.0.9:
-    version "3.0.9"
-    resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-3.0.9.tgz#fc7dba41d521f020a51e9c00fb0fee0d2e11d552"
   
   function-bind@^1.1.1:
     version "1.1.1"
@@ -8905,6 +8888,10 @@ Lockfile:
       "@types/json-schema" "^7.0.6"
       ajv "^6.12.5"
       ajv-keywords "^3.5.2"
+  
+  scrollmagic@^2.0.8:
+    version "2.0.8"
+    resolved "https://registry.yarnpkg.com/scrollmagic/-/scrollmagic-2.0.8.tgz#e0d7aff804c393c022fdc0c566f1edce3b4e9ed7"
   
   select-hose@^2.0.0:
     version "2.0.0"

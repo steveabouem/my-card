@@ -1,3 +1,4 @@
-export interface ITest {
-    ke: string;
+export interface IBgCoordinates {
+    x: string;
+    y: string;
 }

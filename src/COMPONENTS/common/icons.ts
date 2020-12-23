@@ -12,7 +12,9 @@ import {
   faLaughBeam,
   faUserTie,
   faCommentDollar,
-  faCommentsDollar
+  faCommentsDollar,
+  faHome,
+  faStepBackward
 } from '@fortawesome/free-solid-svg-icons';
 import { IIcons } from '../types';
 
@@ -25,7 +27,9 @@ library.add(faPaperPlane,
   faFolderOpen,
   faLaughBeam,
   faCommentsDollar,
-  faCommentDollar
+  faCommentDollar,
+  faHome,
+  faStepBackward
 );
 
 export const icons: IIcons = {
@@ -34,5 +38,7 @@ export const icons: IIcons = {
   testimonials: { static: faLaughBeam, hover: faGrinHearts },
   gallery: {static: faImage, hover: faImages},
   work: {static: faFolder, hover: faFolderOpen},
-  budget: {static: faCommentDollar, hover: faCommentsDollar}
+  budget: { static: faCommentDollar, hover: faCommentsDollar },
+  home: {static: faHome, hover: faStepBackward},
+  
 };
