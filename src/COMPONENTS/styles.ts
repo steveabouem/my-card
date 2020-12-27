@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { Col, NavLink } from 'react-bootstrap';
 import { Field } from 'formik';
+import { Button } from 'react-bootstrap';
 
 interface IStyledIconLinkProps {
   active: boolean;
@@ -41,11 +42,11 @@ const slideOut = keyframes`
 `;
 
 export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
-  border-radius: 8px;
+  border-radius: 5px;
   height: 30px;
   width: 40px;
   margin-bottom: 10px;
-  border: 1.5px solid white;
+  border: .5px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +137,7 @@ export const StyledLandingIconsColumn = styled(Col)`
   position: absolute;
   background: #00000005;
   left: 0;
-  border-right: 1px solid #8080801c;
+  border-right: .5px solid #8080801c;
   top: 0;
   z-index: 11;
 `;
@@ -180,7 +181,7 @@ export const StyledSlidingText = styled.div<ISyledSlidingTextProps>`
 `;
 
 export const StyledFormWrapper = styled.div`
-  border: 1px solid grey;
+  border: .5px solid grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -189,16 +190,21 @@ export const StyledFormWrapper = styled.div`
 export const StyledField = styled(Field)`
   width: 50%;
   height: 60px;
-  border: 1.5px solid #4f505d;
+  border: .5px solid #4f505d;
   border-radius: 5px;
   padding: 5px;
   margin: 15px auto;
+  transition: .5s;
   &.message {
     height: 250px;
   }
+  &.invalid {
+    border-color: #b9742a;
+    background: #ff990021;
+  }
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(Button)`
   position: absolute;
   width: 50%;
   left: 25%;
@@ -207,36 +213,68 @@ export const StyledButton = styled.button`
   color: #cef4ff;
   font-size: 19px;
   font-weight: 600;
+
+  &:disabled {
+    &&& {
+      background: #414676;
+      border-color: black;
+    }
+  }
+
+  &:active, &:focus {
+
+  }
+`;
+
+export const StyledInvalidMessage = styled.div`
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+  color: #41467680;
+  background: #ff252530;
+  width: 50%;
+  border-radius: 5px;
+  font-weight: 600;
 `;
 
 export const StyledButtonOverlay = styled.div`
   width: 100%;
-  height: 100%;
+  height: 60px;
   overflow: hidden;
+  cursor: pointer;
 
   .static, .hovered {
     height: 50px;
     width: 50%;
     margin: auto;
-    z-index: 2;
     text-align: center;
+    transition: 1s;
     font-size: 20px;
-  }
-  
-  .hovered {
-    transform: translateY(100%);
-    color: white;
-  }
+    .top {
+      width: 30%;
+      margin: auto;
+      color: white;
+      z-index: 2;
+    }
 
-  &:hover {
+     &:hover {
     .static {
-      .static {
-        transform: translateY(-100%);
+      .top {
+        transform: translateY(-60px);
       }
+      
       .hovered {
-        transform: translateY(-100%);
+        transform: translateY(60px);
       }
     }
   }
+  }
   
+  .static {
+    .top {
+      transform: translateY(60px);
+      transition: 2s;
+    }
+    color: white;
+  }
 `;

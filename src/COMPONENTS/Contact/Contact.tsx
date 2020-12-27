@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Formik, Form, FormikHelpers } from 'formik';
-import { StyledButton, StyledButtonOverlay, StyledField, StyledFormWrapper } from '../styles';
+import { Formik, Form, FormikHelpers, useFormikContext, FieldProps } from 'formik';
+import * as Yup from 'yup'; 
+import { StyledButton, StyledButtonOverlay, StyledField, StyledFormWrapper, StyledInvalidMessage } from '../styles';
 
 interface Values {
   email: string;
@@ -8,23 +9,33 @@ interface Values {
   message: string;
 }
 
+interface IContactFieldProps {
+  name: string;
+  customClass?: string;
+  type?: string;
+}
+
+const ContactSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Must be a valid address.')
+    .required('Required'),
+  name: Yup.string()
+    .min(4, '4 characters minimum.')
+    .max(16, '16 characters maximum.')
+    .required('Required'),
+  message: Yup.string()
+    .min(20, '20 characters minimum.')
+    .max(200, '200 characters maximum.')
+    .required('Required'),
+});
+
 const Contact = (): JSX.Element => {
   const [processing, setProcessing] = useState<boolean>(false);
 
   return (
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
-        // validate={values => {
-        //   const errors = {};
-        //   if (!values.email) {
-        //     errors?.email = 'Required';
-        //   } else if (
-        //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        //   ) {
-        //     errors.email = 'Invalid email address';
-        //   }
-        //   return errors;
-        // }}
+        validationSchema={ContactSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -40,34 +51,31 @@ const Contact = (): JSX.Element => {
           handleBlur,
           handleSubmit,
           isSubmitting,
+          isValid
         }) => (
         <StyledFormWrapper>
           <form onSubmit={handleSubmit} className="d-flex flex-column">
-            <StyledField
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {/* {errors.email && touched.email && errors.email} */}
-            <StyledField
-              type="name"
-              name="name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <StyledField
-              type="message"
-              name="message"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="message"
-            />
-            {/* {errors.message && touched.message && errors.message} */}
+            <ContactField type="email" name="email" />
+            <ContactField type="name" name="name" />
+            <div className="d-flex flex-column w-100">
+              {errors.message && touched.message && <StyledInvalidMessage className="invalid-message">{errors.message}</StyledInvalidMessage>}
+              <StyledField
+                name="message"
+                as="textarea"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={'message' + (errors.message && touched.message ? ' invalid' : '')}
+              />
+            </div>
             <StyledButtonOverlay className="d-flex flex-column position-relative">
-              <StyledButton type="submit" disabled={isSubmitting} />
-              <span className="static">Submit</span>
-              <span className="hovered">Submit</span>
+              <StyledButton disabled={!isValid}>
+                <div className="static">
+                  <div className="top">Submit</div>
+                </div>
+                <div className="hovered">
+                  <div>Submit</div>
+                </div>
+              </StyledButton>
             </StyledButtonOverlay>
           </form>
         </StyledFormWrapper>
@@ -76,4 +84,21 @@ const Contact = (): JSX.Element => {
   );
 };
 
+
+const ContactField = ({name, customClass, type}: IContactFieldProps) => {
+  const {touched, errors, handleChange, handleBlur}: any = useFormikContext();
+
+  return (
+    <div className="d-flex flex-column w-100">
+      <StyledField
+        type={type}
+        name={name}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        className={customClass + (errors[name] && touched[name] ? ' invalid' : '')}
+      />
+      { errors[name] && touched[name] && <StyledInvalidMessage className="invalid-message">{errors[name]}</StyledInvalidMessage> }
+    </div>
+  )
+};
 export default Contact;
