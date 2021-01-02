@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AppRoutesEnum } from '../../ROUTES';
-import { StyledIconLink, StyledIconLinkOverlay, StyledLandingIconsColumn, StyledIconLinkName, StyledLinkInitial } from '../styles';
+import { StyledIconLink, StyledIconLinkOverlay, StyledLandingIconsColumn, StyledIconLinkName } from '../styles';
 import { IIconStates } from '../types';
 import { icons } from './icons';
 
@@ -64,8 +64,8 @@ const Sidebar = ():JSX.Element => {
 
 const IconLinkWrap = ({ iconStates, color, url, name, active }: IIconLinkWrapProps): JSX.Element => {
   const [hovered, setHovered] = useState<boolean>(false);
-  const initial = name.split('').shift();
-  const nameRoot = name.split("").splice(1, name.length).join('');
+  // const initial = name.split('').shift();
+  // const nameRoot = name.split("").splice(1, name.length).join('');
 
   return (
     <StyledIconLink

@@ -17,10 +17,22 @@ const curtain = keyframes`
   }
 `;
 
+const reveal = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: none;
+  }
+`;
+
 export const StyledHeader = styled.div`
-  font-size: 25px;
-  font-weight: 400;
-  color: black;
+  font-size: 30px;
+  font-weight: 500;
+  animation: ${reveal} .5s linear;
 `;
 
 export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
