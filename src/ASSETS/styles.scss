@@ -15,6 +15,7 @@ html {
   ::-webkit-scrollbar-thumb:hover {
     background: #817f9c;
   }
+  
   body {
     margin: 0;
     color: #1b5381;
@@ -22,6 +23,10 @@ html {
       overflow: hidden;
       min-height: 100vh;
       background: #f5f3eb73;
+      &.nightmode {
+        background: #040117f2;
+
+      }
     }
   }
 }

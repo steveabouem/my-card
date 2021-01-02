@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Col, NavLink } from 'react-bootstrap';
 import { Field } from 'formik';
-import { Button } from 'react-bootstrap';
 
 interface IStyledIconLinkProps {
   active: boolean;
@@ -12,16 +11,6 @@ interface ISyledSlidingTextProps {
   duration?: string;
   offset?: string;
 }
-
-const reveal = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
 
 const slideText = keyframes`
   from {
@@ -96,12 +85,18 @@ export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
     svg {
       color: #cef4ff;
     }
+    &.nightmode {
+      background: #553a73e3;
+      svg {
+        color: #ffd400;
+      }
+    }
   }
   &&& {
     svg {
       z-index: 2;
       font-size: 25px;
-      transition: .4s;
+      transition: .3s;
       ${(props) => props.active ? 'color: white' : null};
     }
   }
@@ -185,11 +180,25 @@ export const StyledFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  width: 70%;
+  margin: auto;
+`;
+
+export const StyledLoaderWrap = styled.div`
+  background: #9a9a9a54;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledField = styled(Field)`
-  width: 50%;
-  height: 60px;
+  width: 75%;
+  height: 50px;
   border: .5px solid #4f505d;
   border-radius: 5px;
   padding: 5px;
@@ -199,30 +208,8 @@ export const StyledField = styled(Field)`
     height: 250px;
   }
   &.invalid {
-    border-color: #b9742a;
-    background: #ff990021;
-  }
-`;
-
-export const StyledButton = styled(Button)`
-  position: absolute;
-  width: 50%;
-  left: 25%;
-  height: 50px;
-  background: #404575;
-  color: #cef4ff;
-  font-size: 19px;
-  font-weight: 600;
-
-  &:disabled {
-    &&& {
-      background: #414676;
-      border-color: black;
-    }
-  }
-
-  &:active, &:focus {
-
+    border-color: #04093c;
+    background: #fff70a40;
   }
 `;
 
@@ -230,51 +217,59 @@ export const StyledInvalidMessage = styled.div`
   text-align: center;
   margin: auto;
   padding: 5px;
-  color: #41467680;
-  background: #ff252530;
-  width: 50%;
+  color: #04093c;
+  background: #fff70a;
   border-radius: 5px;
   font-weight: 600;
 `;
 
 export const StyledButtonOverlay = styled.div`
-  width: 100%;
+  width: 75%;
   height: 60px;
   overflow: hidden;
   cursor: pointer;
+  margin: auto;
+  border-radius: 5px;
+  transition: .3s;
+  border: 1px solid;
+  z-index: 2;
+
+  &:hover {
+    .hovered, .static {
+      transform: translateY(-100%);
+    }
+  }
+
+  &.invalid {
+    &&& {
+      cursor: not-allowed;
+    }
+  }
 
   .static, .hovered {
-    height: 50px;
-    width: 50%;
+    min-height: 100%;
+    width: 100%;
     margin: auto;
     text-align: center;
-    transition: 1s;
+    transition: .3s;
     font-size: 20px;
+    z-index: 1;
+    border-radius: 5px;
     .top {
       width: 30%;
-      margin: auto;
-      color: white;
+      margin: 0 auto;
+      padding-top: 15px;
       z-index: 2;
     }
-
-     &:hover {
-    .static {
-      .top {
-        transform: translateY(-60px);
-      }
-      
-      .hovered {
-        transform: translateY(60px);
-      }
-    }
-  }
   }
   
+  .hovered {
+    background: white;
+    color: #414676;
+  }
+
   .static {
-    .top {
-      transform: translateY(60px);
-      transition: 2s;
-    }
     color: white;
+    background: #414676;
   }
 `;
