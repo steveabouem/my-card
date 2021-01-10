@@ -5,11 +5,13 @@ import {
   StyledButtonOverlay, 
   StyledField, StyledFormWrapper,
   StyledInvalidMessage,
+  StyledLabel,
   StyledLoaderWrap
 } from '../styles';
 import { BounceLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icons, StyledHeader } from '../common';
+import { icons } from '../common';
+import SectionTitle from '../common/SectionTitle';
 
 // interface Values {
 //   email: string;
@@ -39,8 +41,8 @@ const ContactSchema = Yup.object().shape({
 const Contact = (): JSX.Element => {
   return (
     <>
-      <StyledHeader>Reach Out!</StyledHeader>
-      <div>I'd be happy to repl to any inquiries you have.</div>
+      <SectionTitle title="Reach Out!" />
+      <div>I'd be happy to reply to any inquiries you have.</div>
       <div> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
@@ -85,6 +87,7 @@ const Contact = (): JSX.Element => {
                   {errors.message}
                 </StyledInvalidMessage>
               )}
+              <StyledLabel>MESSAGE</StyledLabel>
               <StyledField
                 name="message"
                 as="textarea"
@@ -124,6 +127,7 @@ const ContactField = ({name, customClass, type}: IContactFieldProps) => {
           {errors[name]}
         </StyledInvalidMessage>
       )}
+      <StyledLabel>{name.toUpperCase()}</StyledLabel>
       <StyledField
         type={type}
         name={name}

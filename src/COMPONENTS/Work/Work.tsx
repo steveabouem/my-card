@@ -1,71 +1,34 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import dog from '../../ASSETS/dog.jpg';
-
-interface IStyledBgOverlayProps {
-  color?: string;
-}
-
-const StyledDescriptionSection= styled.div`
-  max-height: 200px;
-  height: 200px;
-  background-size: cover;
-`;
-
-const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
-  position: absolute;
-  width: 100%;
-  height: 0;
-  background: ${props => props.color || 'black'};
-  transition: .3s;
-  bottom: 0;
-  text-align: center;
-  font-size: 2rem;
-`;
-
-const StyledNavLink = styled(NavLink)`
-  padding: 0;
-  max-height: 200px;
-  width: 350px;
-  max-width: 350px;
-  color: white;
-  text-decoratioin: none;
-  overflow: hidden;
-
-  &:hover, &:focus, &:active, &:visited {
-    color: white;
-    text-decoration: none;
-    .bg-overlay {
-      height: 45%;
-    }
-  }
-`;
+import rar from '../../ASSETS/rdq.gif';
+import ou_t from '../../ASSETS/ou-t.gif';
+import SectionTitle from '../common/SectionTitle';
+import { StyledBgOverlay, StyledDescriptionSection, StyledNavLink } from '../styles';
 
 const Work = (): JSX.Element => {
+  // TODO: add a filter in the section title that will sort by collab and individual work (these flag must of course come from the backend)
   return (
     <div>
-      <Row className="d-flex justify-content-between">
+      <SectionTitle title="PROJECTS" />
+      <div className="d-flex justify-content-between pt-2">
         <StyledNavLink to="">
-          <Col className="px-0">
-            <StyledBgOverlay  className="bg-overlay" color="#fc6557">RAR</StyledBgOverlay>
-            <StyledDescriptionSection style={{backgroundImage: `url(${dog})`}}>Description</StyledDescriptionSection>
-          </Col>
+          <div className="px-0">
+            <StyledBgOverlay className="bg-overlay" color="#fc6557f5"><span>Regroupement Arts de Rues (QC)</span></StyledBgOverlay>
+            <StyledDescriptionSection style={{backgroundImage: `url(${rar})`}}>Description</StyledDescriptionSection>
+          </div>
         </StyledNavLink>
         <StyledNavLink to="">
-          <Col className="px-0">
-            <StyledBgOverlay  className="bg-overlay" color="#b24876">Ou-T</StyledBgOverlay>
-            <StyledDescriptionSection style={{backgroundImage: `url(${dog})`}}>Description</StyledDescriptionSection>
-          </Col>
+          <div className="px-0">
+            <StyledBgOverlay className="bg-overlay" color="#b24876f0">Ou-T</StyledBgOverlay>
+            <StyledDescriptionSection style={{backgroundImage: `url(${ou_t})`}}>Description</StyledDescriptionSection>
+          </div>
         </StyledNavLink>
         <StyledNavLink to="">
-          <Col className="px-0">
-            <StyledBgOverlay  className="bg-overlay" color="#f6b41e">SENELOUER</StyledBgOverlay>
-            <StyledDescriptionSection style={{backgroundImage: `url(${dog})`}}>Description</StyledDescriptionSection>
-          </Col>
+          <div className="px-0">
+            <StyledBgOverlay className="bg-overlay" color="#f6b41ed1">SENELOUER</StyledBgOverlay>
+            <StyledDescriptionSection style={{backgroundImage: `url(${rar})`}}>Description</StyledDescriptionSection>
+          </div>
         </StyledNavLink>
-      </Row>
+      </div>
     </div>
   );
 };

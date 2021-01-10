@@ -12,6 +12,10 @@ interface ISyledSlidingTextProps {
   offset?: string;
 }
 
+interface IStyledBgOverlayProps {
+  color?: string;
+}
+
 const slideText = keyframes`
   from {
     transform: translateX(0);
@@ -28,6 +32,57 @@ const slideOut = keyframes`
     transform: translateX(100%);
     color: #4a72ad;
   }
+`;
+
+const slideUp = keyframes`
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 100%;
+  }
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  padding: 0;
+  max-height: 200px;
+  position: relative;
+  width: 33%;
+  max-width: 33%;
+  color: white;
+  text-decoratioin: none;
+  overflow: hidden;
+
+  &:hover, &:focus, &:active, &:visited {
+    color: white;
+    text-decoration: none;
+    .bg-overlay {
+      display: flex;
+      height: 100%;
+    }
+  }
+`;
+
+export const StyledDescriptionSection = styled.div`
+  max-height: 200px;
+  height: 200px;
+  background-size: cover;
+`;
+
+export const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
+  position: absolute;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  background: ${props => props.color || 'black'};
+  transition: .3s;
+  bottom: 0;
+  font-size: 2rem;
+  animation: ${slideUp} .7s;
 `;
 
 export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
@@ -81,12 +136,12 @@ export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
     }
   }
   &.dark {
-    background: #2b3067e3;
+    background: #616bce;
     svg {
-      color: #cef4ff;
+      color: #002261;
     }
     &.nightmode {
-      background: #553a73e3;
+      background: #616bce;
       svg {
         color: #ffd400;
       }
@@ -176,6 +231,7 @@ export const StyledSlidingText = styled.div<ISyledSlidingTextProps>`
 `;
 
 export const StyledFormWrapper = styled.div`
+  padding: 15px 0;
   border: .5px solid grey;
   display: flex;
   flex-direction: column;
@@ -194,6 +250,13 @@ export const StyledLoaderWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const StyledLabel = styled.label`
+  width: 75%;
+  margin: auto;
+  font-weight: 500;
+  color: #616bceb5;
 `;
 
 export const StyledField = styled(Field)`
@@ -243,6 +306,11 @@ export const StyledButtonOverlay = styled.div`
   &.invalid {
     &&& {
       cursor: not-allowed;
+      &:hover {
+        .hovered, .static {
+          transform: none;
+        }
+      }
     }
   }
 
@@ -265,11 +333,11 @@ export const StyledButtonOverlay = styled.div`
   
   .hovered {
     background: white;
-    color: #414676;
+    color: #616bce;
   }
 
   .static {
     color: white;
-    background: #414676;
+    background: #616bce;
   }
 `;

@@ -33,6 +33,23 @@ export const StyledHeader = styled.div`
   font-size: 30px;
   font-weight: 500;
   animation: ${reveal} .5s linear;
+  border-bottom: 1px solid #616bce12;
+  overflow: hidden;
+`;
+
+export const StyledHeaderText = styled.div`
+  width: 25%;
+  background: #616bce;
+  color: white;
+  border: 1px solid #1c2477;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+  padding: 10px 0 10px 5px;
+  transform: translateY(100%);
+  transition: .7s;
+  &.loaded {
+    transform: none;
+  }
 `;
 
 export const StyledBaseBG = styled.div<IStyledBaseBgProps>`

@@ -50,7 +50,7 @@ const Sidebar = ():JSX.Element => {
         active={isActive('/testimonials')}
         iconStates={icons.testimonials}
         url={AppRoutesEnum.TESTIMONIALS}
-        name="TESTIMONIALS" color="dark"
+        name="FEEDBACK" color="dark"
       />
       <IconLinkWrap
         active={isActive('/budget')}
@@ -64,8 +64,6 @@ const Sidebar = ():JSX.Element => {
 
 const IconLinkWrap = ({ iconStates, color, url, name, active }: IIconLinkWrapProps): JSX.Element => {
   const [hovered, setHovered] = useState<boolean>(false);
-  // const initial = name.split('').shift();
-  // const nameRoot = name.split("").splice(1, name.length).join('');
 
   return (
     <StyledIconLink
@@ -78,7 +76,6 @@ const IconLinkWrap = ({ iconStates, color, url, name, active }: IIconLinkWrapPro
       <StyledIconLinkOverlay className={color}>
         {hovered && (
           <div className="d-flex">
-            {/* <StyledLinkInitial>{initial}</StyledLinkInitial> */}
             <StyledIconLinkName>{name}</StyledIconLinkName>
           </div>
         )}
