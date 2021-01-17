@@ -2,27 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { StyledBaseBG } from './styles';
 import bg from '../../ASSETS/purple_by_Luke_Chesser.jpg';
-import ScrollMagic from 'scrollmagic';
+// import ScrollMagic from 'scrollmagic';
 
 interface IBgProviderProps {
   bgCoordinates?: string;
 }
 // init controller
-var controller = new ScrollMagic.Controller();
+// var controller = new ScrollMagic.Controller();
 
-const scene1 = new ScrollMagic.Scene({
-  duration: 900, // the scene should last for a scroll distance of ...px
-  offset: 2 // start this scene after scrolling for ...px
-})
-  .setPin('#ladies') // pins the element for the the scene's duration
-  .addTo(controller); // assign the scene to the controller
+// const scene1 = new ScrollMagic.Scene({
+//   duration: 900, // the scene should last for a scroll distance of ...px
+//   offset: 2 // start this scene after scrolling for ...px
+// })
+//   .setPin('#ladies') // pins the element for the the scene's duration
+//   .addTo(controller); // assign the scene to the controller
 
-const scene2 = new ScrollMagic.Scene({
-  duration: 300, // the scene should last for a scroll distance of ...
-  offset: 50 // start this scene after scrolling for ...
-})
-  .setPin('#gentlemen') // pins the element for the the scene's duration
-  .addTo(controller); // assign the scene to the controller
+// const scene2 = new ScrollMagic.Scene({
+//   duration: 300, // the scene should last for a scroll distance of ...
+//   offset: 50 // start this scene after scrolling for ...
+// })
+//   .setPin('#gentlemen') // pins the element for the the scene's duration
+//   .addTo(controller); // assign the scene to the controller
 
 
 const style = {
