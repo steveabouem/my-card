@@ -46,6 +46,7 @@ export const StyledHeaderText = styled.div`
   border-bottom: none;
   padding: 10px 0 10px 5px;
   transform: translateY(100%);
+  text-transform: uppercase;
   transition: .7s;
   &.loaded {
     transform: none;

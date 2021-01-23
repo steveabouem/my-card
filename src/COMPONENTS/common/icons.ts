@@ -15,7 +15,9 @@ import {
   faCommentsDollar,
   faHome,
   faStepBackward,
-  faExclamationCircle
+  faExclamationCircle,
+  faTimes,
+  faTimesCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { IIcons } from '../types';
 
@@ -31,7 +33,9 @@ library.add(faPaperPlane,
   faCommentDollar,
   faHome,
   faStepBackward,
-  faExclamationCircle
+  faExclamationCircle,
+  faTimes,
+  faTimesCircle
 );
 
 export const icons: IIcons = {
@@ -42,5 +46,6 @@ export const icons: IIcons = {
   work: {static: faFolder, hover: faFolderOpen},
   budget: { static: faCommentDollar, hover: faCommentsDollar },
   home: { static: faHome, hover: faStepBackward },
-  danger: { static: faExclamationCircle, hover: faExclamationCircle},
+  danger: { static: faExclamationCircle, hover: faExclamationCircle },
+  close: { static: faTimes, hover: faTimesCircle },
 };

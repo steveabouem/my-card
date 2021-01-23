@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { Col, NavLink } from 'react-bootstrap';
 import { Field } from 'formik';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IStyledIconLinkProps {
   active: boolean;
@@ -44,7 +45,7 @@ const slideUp = keyframes`
   }
 `;
 
-export const StyledNavLink = styled(NavLink)`
+export const StyledNavLink = styled.div`
   padding: 0;
   max-height: 200px;
   position: relative;
@@ -64,13 +65,14 @@ export const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export const StyledDescriptionSection = styled.div`
+export const StyledPreviewImage = styled.div`
   max-height: 200px;
   height: 200px;
   background-size: cover;
 `;
 
 export const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
+  cursor: pointer;
   position: absolute;
   width: 100%;
   display: none;
@@ -340,4 +342,60 @@ export const StyledButtonOverlay = styled.div`
     color: white;
     background: #616bce;
   }
+`;
+
+export const StyledModalWrap = styled.div`
+  position: absolute;
+  height: 230px;
+  width: 40%;
+  background: white;
+  top: 40%;
+  left: 30%;
+  border-top-right-radius: 10px;
+  border: 1px solid #002261;
+  padding: 1em;
+  overflow: hidden;
+`;
+
+export const StyledCloseIcon = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transition: .3s;
+`;
+
+export const StyledLinkBanner = styled.div`
+  font-weight: bold;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  transform: rotate(42deg);
+  position: absolute;
+  padding: 7px 0;
+  right: -67px;
+  top: -14px;
+  width: 180px;
+  background-color: #fc6557f5;
+  background-image: linear-gradient(#fc6557f5,#ffd150f5);
+  color: #ffffff;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  border: 1px solid #474754;
+  cursor: pointer;
+`;
+
+export const StyledBannerSlider = styled.div`
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(360deg, rgba(255,209,80,1) 6%, rgba(255,255,255,1) 69%);
+  width: 100%;
+  top: 0;
+  right: 0;
+  color: #695c6ff5;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: ${slideUp} .3s ease;
 `;

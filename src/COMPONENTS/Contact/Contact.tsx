@@ -39,6 +39,8 @@ const ContactSchema = Yup.object().shape({
 });
 
 const Contact = (): JSX.Element => {
+  // TODO: should I add a way to make the form about either REVIEW or Request? exp: "reason" dropdown field, and a link in page description that sets the dropdown to the value they want
+  // if you add this, then restore the Testimonials page
   return (
     <>
       <SectionTitle title="Reach Out!" />

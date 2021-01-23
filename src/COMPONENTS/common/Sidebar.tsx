@@ -46,12 +46,14 @@ const Sidebar = ():JSX.Element => {
         url={AppRoutesEnum.WORK}
         name="WORK" color="dark"
       />
-      <IconLinkWrap
+      {/* TODO: consider whether testimonials are relevant on their own, under the given 'work' section, or at all */}
+      {/* IF I add the dropdown in Contact, then this is automatically relevant */}
+      {/* <IconLinkWrap
         active={isActive('/testimonials')}
         iconStates={icons.testimonials}
         url={AppRoutesEnum.TESTIMONIALS}
         name="FEEDBACK" color="dark"
-      />
+      /> */}
       <IconLinkWrap
         active={isActive('/budget')}
         iconStates={icons.budget}

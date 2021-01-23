@@ -7,6 +7,7 @@ import Work from './COMPONENTS/Work/Work';
 import Bio from './COMPONENTS/Bio/Bio';
 import { StyledPageContent } from './COMPONENTS/common';
 import Contact from './COMPONENTS/Contact/Contact';
+import Testimonials from './COMPONENTS/Testimonials/Tesimonials';
 
 const AppRoutes = (): JSX.Element => {
   return (
