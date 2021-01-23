@@ -11,15 +11,8 @@ import Lang from 'lang.js';
 import Sidebar from './COMPONENTS/common/Sidebar';
 // import BgProvider from './COMPONENTS/common/BgProvider';
 
-const ReactFullpage = require('@fullpage/react-fullpage').default;
-
 declare global {
   interface Window { lang: any; }
-}
-
-interface apiType {
-  state: any;
-  fullpageApi: any;
 }
 
 enum LocalesEnum {
@@ -37,42 +30,16 @@ lang.setLocale(LocalesEnum.EN);
 
 window.lang = lang;
 
-const Fullpage = ():JSX.Element => (
-  <ReactFullpage
-    //fullpage options
-    licenseKey='YOUR_KEY_HERE'
-    scrollingSpeed={1000} /* Options here */
-
-    render={({ state, fullpageApi }: apiType): any => {
-      return (
-        <ReactFullpage.Wrapper>
-          <div className="section">
-            <p>Section 1 (welcome to fullpage.js)</p>
-            <button onClick={() => fullpageApi.moveSectionDown()}>
-              Click me to move down
-            </button>
-          </div>
-          <div className="section">
-            <p>Section 2</p>
-          </div>
-        </ReactFullpage.Wrapper>
-      );
-    }}
-  />
-);
-
 ReactDOM.render(
   <Router>
     <Sidebar />
-    <Fullpage />
-    {/* <Switch>
+    <Switch>
       <PageContainer>
         <AppRoutes />
       </PageContainer>
-    </Switch> */}
+    </Switch>
   </Router>,
   document.getElementById('root')
 );
-
 
 reportWebVitals();

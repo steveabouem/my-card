@@ -18,13 +18,13 @@ const Work = (): JSX.Element => {
         </StyledNavLink>
         <StyledNavLink to="">
           <div className="px-0">
-            <StyledBgOverlay className="bg-overlay" color="#b24876f0">Ou-T</StyledBgOverlay>
+            <StyledBgOverlay className="bg-overlay" color="#b24876f3">Ou-T</StyledBgOverlay>
             <StyledDescriptionSection style={{backgroundImage: `url(${ou_t})`}}>Description</StyledDescriptionSection>
           </div>
         </StyledNavLink>
         <StyledNavLink to="">
           <div className="px-0">
-            <StyledBgOverlay className="bg-overlay" color="#f6b41ed1">SENELOUER</StyledBgOverlay>
+            <StyledBgOverlay className="bg-overlay" color="#f6b41eed">SENELOUER</StyledBgOverlay>
             <StyledDescriptionSection style={{backgroundImage: `url(${rar})`}}>Description</StyledDescriptionSection>
           </div>
         </StyledNavLink>
