@@ -1,12 +1,11 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import { StyledFooter } from './styles';
 
 const Footer = (): JSX.Element => (
-    <Container fluid>
-        <Row>
-            <Col></Col>
-        </Row>
-    </Container>
+  <StyledFooter>
+    <div>Steve A.</div>
+    <div>©2021</div>
+  </StyledFooter>
 );
 
 export default Footer;

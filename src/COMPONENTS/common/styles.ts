@@ -71,3 +71,15 @@ export const StyledPageContent = styled.div`
   max-width: calc(100vw - 280px);
   padding: 0 100px;
 `;
+
+export const StyledFooter = styled.div`
+  position: fixed;
+  bottom: 0;
+  height: 30px;
+  background: black;
+  display: flex;
+  color: #fc6557f5;
+  left: 0;
+  width: 100%;
+  padding: 0 5px;
+`;

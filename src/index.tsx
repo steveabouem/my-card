@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import PageContainer from './COMPONENTS/common/PageContainer';
 import Lang from 'lang.js';
 import Sidebar from './COMPONENTS/common/Sidebar';
+import Footer from './COMPONENTS/common/Footer';
 // import BgProvider from './COMPONENTS/common/BgProvider';
 
 declare global {
@@ -36,6 +37,7 @@ ReactDOM.render(
     <Switch>
       <PageContainer>
         <AppRoutes />
+        <Footer />
       </PageContainer>
     </Switch>
   </Router>,

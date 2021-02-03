@@ -7,3 +7,12 @@ export interface IIcons {
 export interface IIconStates {
   [key: string]: IconDefinition;
 }
+
+export interface IDevStack  {
+  ts?: boolean;
+  react?: boolean;
+  php?: boolean;
+  laravel?: boolean;
+  mysql?: boolean;
+  firebase?: boolean;
+}

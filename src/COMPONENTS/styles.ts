@@ -344,6 +344,15 @@ export const StyledButtonOverlay = styled.div`
   }
 `;
 
+export const StyledModalCurtain = styled.div`
+  height: 100%;
+  width: 100%;
+  background: #4a482d5c;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
 export const StyledModalWrap = styled.div`
   position: absolute;
   height: 230px;
@@ -358,6 +367,7 @@ export const StyledModalWrap = styled.div`
 `;
 
 export const StyledCloseIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -378,7 +388,6 @@ export const StyledLinkBanner = styled.div`
   top: -14px;
   width: 180px;
   background-color: #fc6557f5;
-  background-image: linear-gradient(#fc6557f5,#ffd150f5);
   color: #ffffff;
   box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   border: 1px solid #474754;
@@ -387,15 +396,47 @@ export const StyledLinkBanner = styled.div`
 
 export const StyledBannerSlider = styled.div`
   position: absolute;
-  height: 100%;
-  background: linear-gradient(360deg, rgba(255,209,80,1) 6%, rgba(255,255,255,1) 69%);
+  background: rgba(255,209,80,1);
   width: 100%;
   top: 0;
   right: 0;
-  color: #695c6ff5;
-  font-size: 20px;
+  padding: 7px 0;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  animation: ${slideUp} .3s ease;
+  transition: .3s;
+  height: 0;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+    height: 100%;
+  }
+`;
+
+export const StyledModalTitle = styled.div`
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: #fc6b5e;
+  text-decoration-thickness: 3px;
+  padding: 5px 0;
+`;
+
+export const StyledModalBody = styled.div`
+  max-height: 65%;
+  min-height: 65%;
+  overflow: auto;
+  padding: 5px;
+  border-bottom: .2px solid #00226136;
+`;
+
+export const StyledModalBottom = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+  
+  img {
+    height: 25px;
+    padding-left: 10px;
+  }
 `;

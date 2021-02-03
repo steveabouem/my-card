@@ -1,61 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import rar from '../../ASSETS/rdq.gif';
 import ou_t from '../../ASSETS/ou-t.gif';
 import SectionTitle from '../common/SectionTitle';
-import { StyledBgOverlay, StyledPreviewImage, StyledNavLink, StyledModalWrap, StyledCloseIcon, StyledLinkBanner, StyledBannerSlider } from '../styles';
+import { 
+  StyledBgOverlay,
+  StyledPreviewImage,
+  StyledNavLink,
+  StyledModalWrap,
+  StyledCloseIcon,
+  StyledLinkBanner,
+  StyledBannerSlider,
+  StyledModalCurtain,
+  StyledModalTitle,
+  StyledModalBody,
+  StyledModalBottom
+ } from '../styles';
 import { icons } from '../common';
+import reactLogo from '../../ASSETS/logo192.png';
+import phpLogo from '../../ASSETS/php-logo.png';
+import tsLogo from '../../ASSETS/ts-logo.png';
+import firebaseLogo from '../../ASSETS/firebase.jpg';
+import laravelLogo from '../../ASSETS/laravel.png';
+import { workiItems } from '../../UTILS/workItems';
+import { IWorkItem } from '../../API/dto/workItems.dto';
 
+interface IWorkItemModalProps {
+  onClose: () => void;
+  item?: IWorkItem,
+}
+
+const isModalOpen = (options: {[key:string]: boolean}) => (Object.values(options).filter((value: boolean) => value || null).length > 0);
+const previewList = [rar, ou_t, ou_t];
 const Work = (): JSX.Element => {
   // TODO: this will of course come from the backend, match the id to use it in the modal  
-  // (so that you only need to pass the workId prop to display all the info)
-  const [activeModals, setActiveModals] = useState<{[key:string]: boolean}>({rar: false, ou_t: false, rar2: false});
+  // (so that you only need to pass the workId prop to display all the info), this will also extend to whether or not the item has a url to visit
+  const [activeModals, setActiveModals] = useState<{[key:string]: boolean}>({1: false, 2: false, 3: false});
   // TODO: add a filter in the section title that will sort by collab and individual work 
+  const [currentItem, setCurrentItem] = useState<IWorkItem | undefined>(undefined);
 
-  useEffect(() => {
-    
-  }, []);
+  const closeModalHandler = () => {
+    let inactiveList = Object.keys(activeModals).reduce((acc, id) => ({ ...acc, [id]: false }), {});
+    setCurrentItem(undefined);
+    setActiveModals(inactiveList);
+  };
 
   return (
     <div>
       <SectionTitle title="projects" />
       <div className="d-flex justify-content-between pt-2">
-        <StyledNavLink>
-          <div className="px-0">
-            <StyledBgOverlay 
-              className="bg-overlay"
-              color="#fc6557f5"
-              onClick={() => setActiveModals({...activeModals, rar: !activeModals.rar})}
-            >Regroupement Arts de Rues (QC)</StyledBgOverlay>
-            <StyledPreviewImage style={{backgroundImage: `url(${rar})`}}/>
-          </div>
-        </StyledNavLink>
-        <StyledNavLink>
-          <div className="px-0">
-            <StyledBgOverlay 
-              className="bg-overlay"
-              color="#b24876f3"
-              onClick={() => setActiveModals({ ...activeModals, ou_t: !activeModals.ou_t })}  
-            >Ou-T</StyledBgOverlay>
-            <StyledPreviewImage style={{backgroundImage: `url(${ou_t})`}} />
-          </div>
-        </StyledNavLink>
-        <StyledNavLink>
-          <div className="px-0">
-            <StyledBgOverlay 
-              className="bg-overlay" 
-              color="#f6b41eed"
-              onClick={() => setActiveModals({ ...activeModals, rar2: !activeModals.rar2 })}
-            >SENELOUER</StyledBgOverlay>
-            <StyledPreviewImage style={{backgroundImage: `url(${rar})`}} />
-          </div>
-        </StyledNavLink>
+        {workiItems.map((item: IWorkItem, index: number) => (
+          <StyledNavLink key={`work-item-${index}`}>
+            <div className="px-0">
+              <StyledBgOverlay 
+                className="bg-overlay"
+                color="#fc6557f5"
+                onClick={() => setCurrentItem(item)}
+              >{item.title}</StyledBgOverlay>
+              <StyledPreviewImage style={{backgroundImage: `url(${previewList[item.id - 1]})`}}/>
+            </div>
+          </StyledNavLink>
+        ))}
       </div>
-      {activeModals?.rar2 && <WorkModal />}
+      {currentItem && <WorkItemModal item={currentItem} onClose={closeModalHandler} />}
     </div>
   );
 };
 
-const CloseIcon = (): JSX.Element => {
+const CloseIcon = ({onClose}: IWorkItemModalProps): JSX.Element => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   return (
@@ -64,24 +75,33 @@ const CloseIcon = (): JSX.Element => {
       icon={hovered ? icons.close.hover : icons.close.static}
       onMouseEnter={() => setHovered(true)} 
       onMouseLeave={() => setHovered(false)}
+      onClick={onClose}
     />
   );
 };
 
-const WorkModal = () => {
+const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
   const [activeBanner, setActiveBanner] = useState<boolean>(false);
 
   return (
-    <StyledModalWrap id="work-item-modal">
-      <CloseIcon />
-      <StyledLinkBanner onMouseEnter={() => setActiveBanner(true)} onMouseLeave={() => setActiveBanner(false)}>
-        VISIT
-        {activeBanner && <StyledBannerSlider>VISIT</StyledBannerSlider>}
-      </StyledLinkBanner>
-      <div>RAR 2</div>
-      <div>Description</div>
-      <div>Learn More</div>
-    </StyledModalWrap>
+    <StyledModalCurtain>
+      <StyledModalWrap id="work-item-modal">
+        <CloseIcon onClose={onClose} />
+        <StyledLinkBanner onMouseEnter={() => setActiveBanner(true)} onMouseLeave={() => setActiveBanner(false)}>
+          VISIT
+          <StyledBannerSlider className={activeBanner ? 'active' : ''}>VISIT</StyledBannerSlider>
+        </StyledLinkBanner>
+        <StyledModalTitle>{item?.title || ''}</StyledModalTitle>
+        <StyledModalBody>{item?.details || ''}</StyledModalBody>
+        <StyledModalBottom>
+          {item?.stack.react && <img src={reactLogo} alt="React" />}
+          {item?.stack.laravel && <img src={laravelLogo} alt="Laravel" />}
+          {item?.stack.firebase && <img src={firebaseLogo} alt="Firebase" />}
+          {item?.stack.php && <img src={phpLogo} alt="PHP" />}
+          {item?.stack.ts && <img src={tsLogo} alt="Typescript" />}
+        </StyledModalBottom>
+      </StyledModalWrap>
+    </StyledModalCurtain>
   );
 };
 

@@ -25,24 +25,25 @@ interface IBgProviderProps {
 //   .addTo(controller); // assign the scene to the controller
 
 
-const style = {
-  height: "200vh",
-  background: "black",
-  color: "red",
-  display: "flex",
-  backgroundImage: "url(https://images.unsplash.com/photo-1490131784822-b4626a8ec96a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)",
-  alignItems: "center"
-};
+// const style = {
+//   height: "200vh",
+//   background: "black",
+//   color: "red",
+//   display: "flex",
+//   backgroundImage: "url(https://images.unsplash.com/photo-1490131784822-b4626a8ec96a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)",
+//   alignItems: "center"
+// };
  
-const style2: any = {
-  position: "absolute",
-  color: "yellow",
-  height: "15%",
-  background: "white",
-  width: "30%",
-  top: "33%",
-  backgroundImage: "url(https://images.unsplash.com/photo-1527176930608-09cb256ab504?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1053&q=80)"
-};
+// const style2: any = {
+//   position: "absolute",
+//   color: "yellow",
+//   height: "15%",
+//   background: "white",
+//   width: "30%",
+//   top: "33%",
+//   backgroundImage: "url(https://images.unsplash.com/photo-1527176930608-09cb256ab504?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1053&q=80)"
+// };
+
 const BgProvider = ({  bgCoordinates}: IBgProviderProps):JSX.Element => {
   const [mobile, setMobile] = useState<boolean>(false);
 
