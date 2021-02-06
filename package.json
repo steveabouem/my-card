@@ -17,6 +17,7 @@
     "@types/styled-components": "^5.1.4",
     "@types/yup": "^0.29.11",
     "bootstrap": "^4.5.3",
+    "firebase": "^8.2.6",
     "formik": "^2.2.5",
     "lang.js": "^1.1.14",
     "moment": "^2.29.1",
