@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ASSETS/styles.scss'
-import AppRoutes from './App';
 import reportWebVitals from './reportWebVitals';
-// import {StyledBaseBG} from './COMPONENTS/common';
 import PageContainer from './COMPONENTS/common/PageContainer';
 import Lang from 'lang.js';
-import Sidebar from './COMPONENTS/common/Sidebar';
+import Sidebar, { SectionsEnum } from './COMPONENTS/common/Sidebar';
 import Footer from './COMPONENTS/common/Footer';
-// import BgProvider from './COMPONENTS/common/BgProvider';
+import { StyledPageContent } from './COMPONENTS/common';
+import LandingPage from './COMPONENTS/Landing/LandingPage';
+import Contact from './COMPONENTS/Contact/Contact';
+import Bio from './COMPONENTS/Bio/Bio';
+import Work from './COMPONENTS/Work/Work';
 
 declare global {
   interface Window { lang: any; }
@@ -32,15 +33,24 @@ lang.setLocale(LocalesEnum.EN);
 window.lang = lang;
 
 ReactDOM.render(
-  <Router>
+  <>
     <Sidebar />
-    <Switch>
       <PageContainer>
-        <AppRoutes />
+        <StyledPageContent id={SectionsEnum.HOME}>
+          <LandingPage />
+        </StyledPageContent>
+        <StyledPageContent id={SectionsEnum.BIO}>
+          <Bio />
+        </StyledPageContent>
+        <StyledPageContent id={SectionsEnum.CONTACT}>
+          <Contact />
+        </StyledPageContent>
+        <StyledPageContent id={SectionsEnum.WORK}>
+          <Work />
+        </StyledPageContent>
         <Footer />
       </PageContainer>
-    </Switch>
-  </Router>,
+  </>,
   document.getElementById('root')
 );
 

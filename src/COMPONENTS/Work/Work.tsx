@@ -29,7 +29,7 @@ interface IWorkItemModalProps {
   item?: IWorkItem,
 }
 
-const isModalOpen = (options: {[key:string]: boolean}) => (Object.values(options).filter((value: boolean) => value || null).length > 0);
+// const isModalOpen = (options: {[key:string]: boolean}) => (Object.values(options).filter((value: boolean) => value || null).length > 0);
 const previewList = [rar, ou_t, ou_t];
 const Work = (): JSX.Element => {
   // TODO: this will of course come from the backend, match the id to use it in the modal  

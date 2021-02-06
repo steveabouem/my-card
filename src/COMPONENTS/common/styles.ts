@@ -70,16 +70,38 @@ export const StyledPageContent = styled.div`
   min-width: calc(100vw - 80px);
   max-width: calc(100vw - 280px);
   padding: 0 100px;
+  max-height: 100vh;
+  min-height: 100vh;
+  margin: 25px 0;
 `;
 
 export const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
   height: 30px;
-  background: black;
+  background: #002261;
   display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fc6557f5;
   left: 0;
   width: 100%;
-  padding: 0 5px;
+  padding: 0 15px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    width: 15%;
+    a {
+      color: #fc6557f5;
+      margin: 0 10px;
+      transition: .3s;
+      &:hover {
+        color: white!important;
+      }
+      i {
+        font-size: 20px;
+      }
+    }
+  }
 `;

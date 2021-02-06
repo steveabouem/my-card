@@ -44,8 +44,8 @@ const Contact = (): JSX.Element => {
   return (
     <>
       <SectionTitle title="Reach Out!" />
-      <div>I'd be happy to reply to any inquiries you have.</div>
-      <div> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+      <div className="pt-2">I'd be happy to reply to any inquiries you have.</div>
+      <div className="pb-2"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
         validationSchema={ContactSchema}

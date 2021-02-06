@@ -1,10 +1,11 @@
 import styled, { keyframes } from 'styled-components';
-import { Col, NavLink } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { Field } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IStyledIconLinkProps {
   active: boolean;
+  isParentActive: boolean;
 }
 
 interface ISyledSlidingTextProps {
@@ -87,10 +88,10 @@ export const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
   animation: ${slideUp} .7s;
 `;
 
-export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
+export const StyledIconLink = styled.div<IStyledIconLinkProps>`
+  cursor: pointer;
   border-radius: 5px;
   height: 30px;
-  width: 40px;
   margin-bottom: 10px;
   border: .5px solid white;
   display: flex;
@@ -99,6 +100,15 @@ export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
   padding: 0;
   position: relative;
   transition: .3s;
+  width: ${(props) => props.isParentActive ? '40px' : '0'};
+  &&& {
+    svg {
+      z-index: 2;
+      font-size: ${(props) => props.isParentActive ? '25px' : '.5px'};
+      transition: .3s;
+      ${(props) => props.active ? 'color: white' : null};
+    }
+  }
 
   &:hover {
     &&& {
@@ -149,14 +159,6 @@ export const StyledIconLink = styled(NavLink)<IStyledIconLinkProps>`
       }
     }
   }
-  &&& {
-    svg {
-      z-index: 2;
-      font-size: 25px;
-      transition: .3s;
-      ${(props) => props.active ? 'color: white' : null};
-    }
-  }
 `;
 
 export const StyledIconLinkOverlay = styled.div`
@@ -181,11 +183,23 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledLandingIconsColumn = styled(Col)`
+export const StyledSidebarSticker = styled.div <{isSidebarExpanded: boolean}>`
+  position: absolute;
+  cursor: pointer;
+  top: 35%;
+  transition: .3s;
+  width: 25px;
+  height: 150px;
+  background: black;
+  color: red;
+`;
+
+export const StyledLandingIconsColumn = styled(Col) <{expanded: boolean}>`
   min-height: calc(100%);
   height: calc(100%);
-  width: 50px;
-  padding: 15px 5px;
+  transition: .3s;
+  padding: ${(expanded) => expanded ? '15px 5px' : '0'};
+  transition: .3s;
   position: absolute;
   background: #00000005;
   left: 0;
@@ -233,14 +247,14 @@ export const StyledSlidingText = styled.div<ISyledSlidingTextProps>`
 `;
 
 export const StyledFormWrapper = styled.div`
-  padding: 15px 0;
+  padding: 10px 0;
   border: .5px solid grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  width: 70%;
-  margin: auto;
+  width: 50%;
+  margin: 10px auto;
 `;
 
 export const StyledLoaderWrap = styled.div`
@@ -255,6 +269,7 @@ export const StyledLoaderWrap = styled.div`
 `;
 
 export const StyledLabel = styled.label`
+  font-size: 14px;
   width: 75%;
   margin: auto;
   font-weight: 500;
@@ -263,14 +278,15 @@ export const StyledLabel = styled.label`
 
 export const StyledField = styled(Field)`
   width: 75%;
-  height: 50px;
+  height: 30px;
+  color: #002261;
   border: .5px solid #4f505d;
   border-radius: 5px;
   padding: 5px;
-  margin: 15px auto;
+  margin: 10px auto;
   transition: .5s;
   &.message {
-    height: 250px;
+    height: 150px;
   }
   &.invalid {
     border-color: #04093c;
@@ -290,7 +306,7 @@ export const StyledInvalidMessage = styled.div`
 
 export const StyledButtonOverlay = styled.div`
   width: 75%;
-  height: 60px;
+  height: 40px;
   overflow: hidden;
   cursor: pointer;
   margin: auto;
@@ -328,7 +344,6 @@ export const StyledButtonOverlay = styled.div`
     .top {
       width: 30%;
       margin: 0 auto;
-      padding-top: 15px;
       z-index: 2;
     }
   }
