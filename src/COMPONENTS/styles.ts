@@ -25,6 +25,15 @@ const slideText = keyframes`
   }
 `;
 
+interface IStyledSidebarStickerProps {
+  isSidebarExpanded: boolean;
+  isSelfExpanded: boolean
+}
+
+interface IStyledLandingsComlumnProps {
+  expanded: boolean;
+}
+
 const slideOut = keyframes`
   from {
     color: white;
@@ -93,7 +102,7 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   border-radius: 5px;
   height: 30px;
   margin-bottom: 10px;
-  border: .5px solid white;
+  border: ${(props) => props.isParentActive ? '.5px solid white' : 'none'};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,27 +192,41 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledSidebarSticker = styled.div <{isSidebarExpanded: boolean}>`
+export const StyledSidebarSticker = styled.div <IStyledSidebarStickerProps>`
   position: absolute;
   cursor: pointer;
-  top: 35%;
-  transition: .3s;
-  width: 25px;
-  height: 150px;
-  background: black;
-  color: red;
+  top: 45%;
+  transition: .4s;
+  overflow: hidden;
+  left: ${(props) => props.isSidebarExpanded ? '50px' : '10px'};
+  background: rgba(255,209,80,1);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  &:hover {
+    padding: 12px;
+  }
+
+  svg {
+    transition: .4s;
+    transform: ${(props) => props.isSidebarExpanded ? 'rotate(180deg)' : 'none'};
+  }
 `;
 
-export const StyledLandingIconsColumn = styled(Col) <{expanded: boolean}>`
-  min-height: calc(100%);
-  height: calc(100%);
+export const StyledLandingIconsColumn = styled(Col) <IStyledLandingsComlumnProps>`
+  min-height: calc(100% - 30px);
+  height: calc(100% - 30px);
+  width: ${(props) => props.expanded ? '50px' : '5px'};
   transition: .3s;
-  padding: ${(expanded) => expanded ? '15px 5px' : '0'};
+  padding: ${(props) => props.expanded ? '15px 5px' : '0'};
+  padding: 15px 5px;
   transition: .3s;
   position: absolute;
-  background: #00000005;
+  background: #00226140;
   left: 0;
-  border-right: .5px solid #8080801c;
+  border-right: 1.5px solid #002261;
   top: 0;
   z-index: 11;
 `;

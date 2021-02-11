@@ -10,7 +10,7 @@ import {
 } from '../styles';
 import { BounceLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icons } from '../common';
+import { icons, StyledDarkSectionBG } from '../common';
 import SectionTitle from '../common/SectionTitle';
 
 // interface Values {
@@ -38,12 +38,17 @@ const ContactSchema = Yup.object().shape({
     .max(200, '200 characters maximum.')
 });
 
+// TODO: use this 
+// const sectionOffset = document.getElementById('CONTACT')?.offsetHeight;
+
 const Contact = (): JSX.Element => {
   // TODO: should I add a way to make the form about either REVIEW or Request? exp: "reason" dropdown field, and a link in page description that sets the dropdown to the value they want
   // if you add this, then restore the Testimonials page
+
   return (
     <>
-      <SectionTitle title="Reach Out!" />
+      {/* <StyledDarkSectionBG /> */}
+      <SectionTitle title="Reach Out!" isInView={true} />
       <div className="pt-2">I'd be happy to reply to any inquiries you have.</div>
       <div className="pb-2"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
       <Formik

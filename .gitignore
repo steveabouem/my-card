@@ -2,3 +2,5 @@
 /node_modules
 .eslintcache
 debug.log
+.env
+.firebase

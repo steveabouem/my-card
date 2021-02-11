@@ -23,6 +23,7 @@ export enum  SectionsEnum {
 const Sidebar = ():JSX.Element => {
   const [activeSections, setActiveSections] = useState<SectionsEnum>(SectionsEnum.HOME);
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [stickerOut, setStickerOut] = useState<boolean>(false);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
   const handleSectionIconClick = (id: SectionsEnum) => {
@@ -36,10 +37,14 @@ const Sidebar = ():JSX.Element => {
     <>
       <StyledSidebarSticker 
         isSidebarExpanded={expanded}
+        isSelfExpanded={stickerOut}
         onClick={() => setExpanded(!expanded)}
-        style={{ left: `${expanded ? '50px' : '0px'}` }}
-      />
-      <StyledLandingIconsColumn className="d-flex flex-column" expanded={expanded} style={{width: `${expanded ? '50px' : '0'}`}}>
+        onMouseEnter={() => setStickerOut(true)}
+        onMouseLeave={() => setStickerOut(false)}
+      >
+        <FontAwesomeIcon icon={icons.expand.static} rotate={stickerOut ? 180 : 0} />
+      </StyledSidebarSticker>
+      <StyledLandingIconsColumn className="d-flex flex-column" expanded={expanded}>
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(SectionsEnum.HOME)}
           active={isActive(SectionsEnum.HOME)}

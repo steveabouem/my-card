@@ -105,3 +105,10 @@ export const StyledFooter = styled.div`
     }
   }
 `;
+
+export const StyledDarkSectionBG = styled.div`
+  background: #1b1d3c;
+  color: #cbd0ff;
+  width: 100vw;
+  height: 100%;
+`;

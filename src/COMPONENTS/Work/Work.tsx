@@ -21,7 +21,7 @@ import phpLogo from '../../ASSETS/php-logo.png';
 import tsLogo from '../../ASSETS/ts-logo.png';
 import firebaseLogo from '../../ASSETS/firebase.jpg';
 import laravelLogo from '../../ASSETS/laravel.png';
-import { workiItems } from '../../UTILS/workItems';
+import { workiItems } from '../../API/repositories/testData/workItems';
 import { IWorkItem } from '../../API/dto/workItems.dto';
 
 interface IWorkItemModalProps {
