@@ -250,6 +250,7 @@ export const StyledIconLinkName = styled.span`
   width: 40px;
   animation: ${slideOut} .5s linear;
   animation-fill-mode: forwards;
+  margin-left: .5em;
 `;
 
 export const StyledLinkInitial = styled.div`

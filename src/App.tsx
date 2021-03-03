@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PageContainer from './COMPONENTS/common/PageContainer';
 import Sidebar, { SectionsEnum } from './COMPONENTS/common/Sidebar';
 import Footer from './COMPONENTS/common/Footer';
@@ -9,12 +9,10 @@ import Bio from './COMPONENTS/Bio/Bio';
 import Work from './COMPONENTS/Work/Work';
 
 const AppLayout = ():JSX.Element => {
-//  TODO: handle sectiontitle animation when into view
-
   return (
     <>
       <Sidebar />
-      <PageContainer>
+      <PageContainer >
         <StyledPageContent id={SectionsEnum.HOME}>
           <LandingPage />
         </StyledPageContent>

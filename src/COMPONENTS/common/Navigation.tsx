@@ -26,12 +26,9 @@ const StyledTopNavbar = styled(Navbar)`
       z-index: 10;
     }
   }
-  // ${(hidden) => hidden && 'display: none;'}
 `;
 
 const Navigation = ({ children }: INavigationProps): JSX.Element => {
-  const params = useParams();
-
   return (
     <StyledTopNavbar fixed="top">
       Welcome

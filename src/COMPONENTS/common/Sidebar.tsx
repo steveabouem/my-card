@@ -114,7 +114,7 @@ const IconLinkWrap = ({ iconStates, color, name, active, handleClick, isParentAc
       onClick={() => handleClick(name)}
     >
       <StyledIconLinkOverlay className={color}>
-        {hovered && (
+        {!hovered && (
           <div className="d-flex">
             <StyledIconLinkName>{name}</StyledIconLinkName>
           </div>

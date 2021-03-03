@@ -1,6 +1,8 @@
 import React from 'react';
 import { Formik, useFormikContext } from 'formik';
 import * as Yup from 'yup'; 
+import { BounceLoader } from 'react-spinners';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   StyledButtonOverlay, 
   StyledField, StyledFormWrapper,
@@ -8,16 +10,9 @@ import {
   StyledLabel,
   StyledLoaderWrap
 } from '../styles';
-import { BounceLoader } from 'react-spinners';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icons, StyledDarkSectionBG } from '../common';
+import { icons } from '../common';
 import SectionTitle from '../common/SectionTitle';
-
-// interface Values {
-//   email: string;
-//   name: string;
-//   message: string;
-// }
+import { useInView } from 'react-intersection-observer';
 
 interface IContactFieldProps {
   name: string;
@@ -38,17 +33,16 @@ const ContactSchema = Yup.object().shape({
     .max(200, '200 characters maximum.')
 });
 
-// TODO: use this 
-// const sectionOffset = document.getElementById('CONTACT')?.offsetHeight;
 
 const Contact = (): JSX.Element => {
   // TODO: should I add a way to make the form about either REVIEW or Request? exp: "reason" dropdown field, and a link in page description that sets the dropdown to the value they want
   // if you add this, then restore the Testimonials page
+  const { ref, inView } = useInView();
 
   return (
-    <>
+    <div ref={ref}>
       {/* <StyledDarkSectionBG /> */}
-      <SectionTitle title="Reach Out!" isInView={true} />
+      {inView && <SectionTitle title="Reach Out!" isInview={inView} />}
       <div className="pt-2">I'd be happy to reply to any inquiries you have.</div>
       <div className="pb-2"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
       <Formik
@@ -118,7 +112,7 @@ const Contact = (): JSX.Element => {
         </StyledFormWrapper>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 

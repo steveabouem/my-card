@@ -17,7 +17,7 @@ const StyledTestimonialWrap = styled.div`
 const Testimonials = (): JSX.Element => {
   return (
     <div>
-      <SectionTitle title="testimonials" />
+      {/* <SectionTitle title="testimonials" /> */}
       <div className="d-flex justify-content-between pt-2 flex-column">
         {[1,2,3,4,5,6,6].map((testimonial: number, i: number) => (
           <StyledTestimonialWrap>{testimonial}</StyledTestimonialWrap>

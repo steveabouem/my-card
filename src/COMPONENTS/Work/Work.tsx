@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import rar from '../../ASSETS/rdq.gif';
 import ou_t from '../../ASSETS/ou-t.gif';
 import SectionTitle from '../common/SectionTitle';
@@ -37,6 +38,7 @@ const Work = (): JSX.Element => {
   const [activeModals, setActiveModals] = useState<{[key:string]: boolean}>({1: false, 2: false, 3: false});
   // TODO: add a filter in the section title that will sort by collab and individual work 
   const [currentItem, setCurrentItem] = useState<IWorkItem | undefined>(undefined);
+  const { ref, inView } = useInView();
 
   const closeModalHandler = () => {
     let inactiveList = Object.keys(activeModals).reduce((acc, id) => ({ ...acc, [id]: false }), {});
@@ -45,8 +47,8 @@ const Work = (): JSX.Element => {
   };
 
   return (
-    <div>
-      <SectionTitle title="projects" />
+    <div ref={ref}>
+      {inView && <SectionTitle title="projects" isInview={inView} />}
       <div className="d-flex justify-content-between pt-2">
         {workiItems.map((item: IWorkItem, index: number) => (
           <StyledNavLink key={`work-item-${index}`}>

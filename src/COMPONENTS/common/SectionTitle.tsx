@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledHeader, StyledHeaderText } from './styles';
 
 interface ISectionTitleProps {
   title: string;
-  isInView?: boolean;
+  isInview: boolean;
 }
 
-const SectionTitle = ({title, isInView}: ISectionTitleProps) => {
-  const [loaded, setLoaded] = useState<boolean>(false);
+const SectionTitle = ({ title, isInview }: ISectionTitleProps) => {
+  const [inView, setInView] = useState<boolean>(false);
 
   setTimeout(() => {
-    setLoaded(true);
-  }, 100);
+    setInView(true);
+  }, 300);
+
+  useEffect(() => {
+    if (!isInview) {
+      return;
+    }
+    
+  });
 
   return (
     <StyledHeader>
-      <StyledHeaderText className={loaded && isInView ? 'loaded' : ''}>{title.toUpperCase()}</StyledHeaderText>
+      <StyledHeaderText className={inView ? 'loaded' : ''}>{title.toUpperCase()}</StyledHeaderText>
     </StyledHeader>
   );
 };
