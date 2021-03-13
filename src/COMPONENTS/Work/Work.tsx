@@ -41,7 +41,7 @@ const Work = (): JSX.Element => {
   const { ref, inView } = useInView();
 
   const closeModalHandler = () => {
-    let inactiveList = Object.keys(activeModals).reduce((acc, id) => ({ ...acc, [id]: false }), {});
+    const inactiveList = Object.keys(activeModals).reduce((acc, id) => ({ ...acc, [id]: false }), {});
     setCurrentItem(undefined);
     setActiveModals(inactiveList);
   };

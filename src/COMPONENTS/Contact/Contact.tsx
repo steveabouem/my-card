@@ -41,10 +41,10 @@ const Contact = (): JSX.Element => {
 
   return (
     <div ref={ref}>
-      {/* <StyledDarkSectionBG /> */}
       {inView && <SectionTitle title="Reach Out!" isInview={inView} />}
-      <div className="pt-2">I'd be happy to reply to any inquiries you have.</div>
-      <div className="pb-2"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+      <div className="pb-2">Looking to work on a project together,need a website for your business, to promote a product or event?</div>
+      <div className="pb-2">Hit me up below and I'd be happy to reply to any inquiries you have.</div>
+      <div className="pb-2">Please note that <b>I DO NOT</b> participate in, or  provide consulting services for product/project development.</div>
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
         validationSchema={ContactSchema}

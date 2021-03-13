@@ -5,7 +5,7 @@ interface IStyledBaseBgProps {
   bgCoordinates?: IBgCoordinates;
 }
 
-let numbers = [];
+const numbers = [];
 
 for (let i = 50; i < 400; i++) {
   numbers.push(i)

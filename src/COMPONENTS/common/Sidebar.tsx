@@ -1,8 +1,10 @@
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
 import { StyledIconLink, StyledIconLinkOverlay, StyledLandingIconsColumn, StyledIconLinkName, StyledSidebarSticker } from '../styles';
 import { IIconStates } from '../types';
 import { icons } from './icons';
+import { LocalesEnum } from '../../App';
+import styled from 'styled-components';
 
 interface IIconLinkWrapProps {
   color: string;
@@ -18,19 +20,36 @@ export enum  SectionsEnum {
   BIO = 'BIO',
   CONTACT = 'CONTACT',
   WORK = 'WORK',
-};
+}
+
+const StyledLocaleButton = styled.div<{visible: boolean}>`
+  opacity: ${({visible}) => visible? 1 : 0};
+  text-alaign: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+`;
 
 const Sidebar = ():JSX.Element => {
   const [activeSections, setActiveSections] = useState<SectionsEnum>(SectionsEnum.HOME);
   const [expanded, setExpanded] = useState<boolean>(false);
   const [stickerOut, setStickerOut] = useState<boolean>(false);
 
+  const lang = window.lang;
+  const currentLang = lang.locale === LocalesEnum.EN ? 'EN' : 'FR';
+
   const isActive = (id: SectionsEnum) => activeSections === id;
+
   const handleSectionIconClick = (id: SectionsEnum) => {
-    
     const target = document.getElementById(id as string);
+
     target?.scrollIntoView({behavior: 'smooth'});
     setActiveSections(id);
+  };
+
+  const handleLanguageChange = () => {
+    window.lang.setLocale(lang.locale === LocalesEnum.EN ? LocalesEnum.FR : LocalesEnum.EN);
   };
 
   return (
@@ -96,6 +115,10 @@ const Sidebar = ():JSX.Element => {
           name={SectionsEnum.BUDGET}
           color="dark"
         /> */}
+          <StyledLocaleButton
+            visible={expanded}
+            onClick={handleLanguageChange}
+          >{lang.get('landing.greetings')}</StyledLocaleButton>
       </StyledLandingIconsColumn>
     </>
   );
@@ -114,7 +137,7 @@ const IconLinkWrap = ({ iconStates, color, name, active, handleClick, isParentAc
       onClick={() => handleClick(name)}
     >
       <StyledIconLinkOverlay className={color}>
-        {!hovered && (
+        {hovered && (
           <div className="d-flex">
             <StyledIconLinkName>{name}</StyledIconLinkName>
           </div>
