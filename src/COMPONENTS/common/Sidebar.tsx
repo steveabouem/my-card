@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StyledIconLink, StyledIconLinkOverlay, StyledLandingIconsColumn, StyledIconLinkName, StyledSidebarSticker } from '../styles';
 import { IIconStates } from '../types';
@@ -37,7 +37,7 @@ const Sidebar = ():JSX.Element => {
   const [stickerOut, setStickerOut] = useState<boolean>(false);
 
   const lang = window.lang;
-  const currentLang = lang.locale === LocalesEnum.EN ? 'EN' : 'FR';
+  // const currentLang = lang.locale === LocalesEnum.EN ? 'EN' : 'FR';
 
   const isActive = (id: SectionsEnum) => activeSections === id;
 

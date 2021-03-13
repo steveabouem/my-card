@@ -6,7 +6,7 @@ interface ISectionTitleProps {
   isInview: boolean;
 }
 
-const SectionTitle = ({ title, isInview }: ISectionTitleProps) => {
+const SectionTitle = ({ title, isInview }: ISectionTitleProps): JSX.Element => {
   const [inView, setInView] = useState<boolean>(false);
 
   setTimeout(() => {
