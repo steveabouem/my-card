@@ -998,7 +998,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.8", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.6", "@babel/runtime@^7.13.8", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   dependencies:
@@ -5537,6 +5537,12 @@ html-minifier-terser@^5.0.1:
     relateurl "^0.2.7"
     terser "^4.6.3"
 
+html-parse-stringify2@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/html-parse-stringify2/-/html-parse-stringify2-2.0.1.tgz#dc5670b7292ca158b7bc916c9a6735ac8872834a"
+  dependencies:
+    void-elements "^2.0.1"
+
 html-webpack-plugin@4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-4.5.0.tgz#625097650886b97ea5dae331c320e3238f6c121c"
@@ -5638,6 +5644,12 @@ https-proxy-agent@^5.0.0:
 human-signals@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
+
+i18next@^19.9.2:
+  version "19.9.2"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.9.2.tgz#ea5a124416e3c5ab85fddca2c8e3c3669a8da397"
+  dependencies:
+    "@babel/runtime" "^7.12.0"
 
 iconv-lite@0.4.24:
   version "0.4.24"
@@ -6720,10 +6732,6 @@ kind-of@^6.0.0, kind-of@^6.0.2:
 kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
-
-lang.js@^1.1.14:
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/lang.js/-/lang.js-1.1.14.tgz#96329c064c18f8d5e1299d79d827a368af08c710"
 
 language-subtag-registry@~0.3.2:
   version "0.3.21"
@@ -8726,6 +8734,13 @@ react-fast-compare@^2.0.1:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
 
+react-i18next@^11.8.10:
+  version "11.8.10"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.10.tgz#aa64bc20410ee8f660a5b918d53f4e41271edf00"
+  dependencies:
+    "@babel/runtime" "^7.13.6"
+    html-parse-stringify2 "^2.0.1"
+
 react-intersection-observer@^8.31.0:
   version "8.31.0"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.31.0.tgz#0ed21aaf93c4c0475b22b0ccaba6169076d01605"
@@ -10519,6 +10534,10 @@ verror@1.10.0:
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
+
+void-elements@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"

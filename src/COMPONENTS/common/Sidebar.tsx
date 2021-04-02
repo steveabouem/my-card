@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { StyledIconLink, StyledIconLinkOverlay, StyledLandingIconsColumn, StyledIconLinkName, StyledSidebarSticker } from '../styles';
-import { IIconStates } from '../types';
-import { icons } from './icons';
-import { LocalesEnum } from '../../App';
+import React, {useState} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import '../../UTILS/i18n/config';
+import {useTranslation} from 'react-i18next';
+import i18next from 'i18next';
+import {
+  StyledIconLink,
+  StyledIconLinkName,
+  StyledIconLinkOverlay,
+  StyledLandingIconsColumn,
+  StyledSidebarSticker
+} from '../styles';
+import {IIconStates} from '../types';
+import {icons} from './icons';
+import {LocaleEnum} from "../../UTILS/i18n/types";
 
 interface IIconLinkWrapProps {
   color: string;
@@ -22,22 +31,28 @@ export enum  SectionsEnum {
   WORK = 'WORK',
 }
 
-const StyledLocaleButton = styled.div<{visible: boolean}>`
+const StyledLocaleButton = styled.div<{visible: boolean, current?: boolean}>`
   opacity: ${({visible}) => visible? 1 : 0};
-  text-alaign: center;
   height: 40px;
   width: 40px;
   border-radius: 20px;
   cursor: pointer;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: .5rem 0;
+  background:  ${({current}) => current ? 'aliceblue' : '#002261'};
+  color: ${({current}) => current ? '#002261' : 'white'};
+  //needs hover
 `;
 
 const Sidebar = ():JSX.Element => {
-  const [activeSections, setActiveSections] = useState<SectionsEnum>(SectionsEnum.HOME);
+  const { t } = useTranslation(['ns3']);
+  const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
   const [expanded, setExpanded] = useState<boolean>(false);
   const [stickerOut, setStickerOut] = useState<boolean>(false);
-
-  const lang = window.lang;
-  // const currentLang = lang.locale === LocalesEnum.EN ? 'EN' : 'FR';
+  const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
 
   const isActive = (id: SectionsEnum) => activeSections === id;
 
@@ -48,13 +63,20 @@ const Sidebar = ():JSX.Element => {
     setActiveSections(id);
   };
 
-  const handleLanguageChange = () => {
-    window.lang.setLocale(lang.locale === LocalesEnum.EN ? LocalesEnum.FR : LocalesEnum.EN);
+  const handleLanguageChange = (lang: LocaleEnum) => {
+    i18next
+        .changeLanguage(lang)
+        .then((t) => {
+          setCurrentLanguage(lang)
+        })
+        .catch((e) => {
+          console.log(e)
+        });
   };
 
   return (
     <>
-      <StyledSidebarSticker 
+      <StyledSidebarSticker
         isSidebarExpanded={expanded}
         isSelfExpanded={stickerOut}
         onClick={() => setExpanded(!expanded)}
@@ -65,7 +87,7 @@ const Sidebar = ():JSX.Element => {
       </StyledSidebarSticker>
       <StyledLandingIconsColumn className="d-flex flex-column" expanded={expanded}>
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(SectionsEnum.HOME)}
+          handleClick={() => handleSectionIconClick(t('ns3:home'))}
           active={isActive(SectionsEnum.HOME)}
           isParentActive={expanded}
           iconStates={icons.home}
@@ -73,7 +95,7 @@ const Sidebar = ():JSX.Element => {
           color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(SectionsEnum.BIO)}
+          handleClick={() => handleSectionIconClick(t('ns3:bio'))}
           active={isActive(SectionsEnum.BIO)}
           isParentActive={expanded}
           iconStates={icons.profile}
@@ -81,7 +103,7 @@ const Sidebar = ():JSX.Element => {
           color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(SectionsEnum.CONTACT)}
+          handleClick={() => handleSectionIconClick(t('ns3:contact'))}
           active={isActive(SectionsEnum.CONTACT)}
           isParentActive={expanded}
           iconStates={icons.mail}
@@ -89,7 +111,7 @@ const Sidebar = ():JSX.Element => {
           color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(SectionsEnum.WORK)}
+          handleClick={() => handleSectionIconClick(t('ns3:work'))}
           active={isActive(SectionsEnum.WORK)}
           isParentActive={expanded}
           iconStates={icons.work}
@@ -117,8 +139,14 @@ const Sidebar = ():JSX.Element => {
         /> */}
           <StyledLocaleButton
             visible={expanded}
-            onClick={handleLanguageChange}
-          >{lang.get('landing.greetings')}</StyledLocaleButton>
+            current={currentLanguage === LocaleEnum.FR}
+            onClick={() => handleLanguageChange(LocaleEnum.FR)}
+          >{t('ns3:fr')}</StyledLocaleButton>
+        <StyledLocaleButton
+            visible={expanded}
+            current={currentLanguage === LocaleEnum.EN}
+            onClick={() => handleLanguageChange(LocaleEnum.EN)}
+        >{t('ns3:en')}</StyledLocaleButton>
       </StyledLandingIconsColumn>
     </>
   );
@@ -126,6 +154,7 @@ const Sidebar = ():JSX.Element => {
 
 const IconLinkWrap = ({ iconStates, color, name, active, handleClick, isParentActive }: IIconLinkWrapProps): JSX.Element => {
   const [hovered, setHovered] = useState<boolean>(false);
+  const { t } = useTranslation(['ns3']);
 
   return (
     <StyledIconLink
@@ -139,7 +168,7 @@ const IconLinkWrap = ({ iconStates, color, name, active, handleClick, isParentAc
       <StyledIconLinkOverlay className={color}>
         {hovered && (
           <div className="d-flex">
-            <StyledIconLinkName>{name}</StyledIconLinkName>
+            <StyledIconLinkName>{t(`ns3:${name.toLowerCase()}`)}</StyledIconLinkName>
           </div>
         )}
       </StyledIconLinkOverlay>
