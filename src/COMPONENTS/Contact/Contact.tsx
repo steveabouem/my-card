@@ -3,12 +3,13 @@ import { Formik, useFormikContext } from 'formik';
 import * as Yup from 'yup'; 
 import { BounceLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  StyledButtonOverlay, 
+import {
+  StyledButtonOverlay,
   StyledField, StyledFormWrapper,
   StyledInvalidMessage,
   StyledLabel,
-  StyledLoaderWrap
+  StyledLoaderWrap,
+  StyledPaddedContentWrap
 } from '../styles';
 import { icons } from '../common';
 import SectionTitle from '../common/SectionTitle';
@@ -33,14 +34,13 @@ const ContactSchema = Yup.object().shape({
     .max(200, '200 characters maximum.')
 });
 
-
 const Contact = (): JSX.Element => {
   // TODO: should I add a way to make the form about either REVIEW or Request? exp: "reason" dropdown field, and a link in page description that sets the dropdown to the value they want
   // if you add this, then restore the Testimonials page
   const { ref, inView } = useInView();
 
   return (
-    <div ref={ref}>
+    <StyledPaddedContentWrap ref={ref}>
       {inView && <SectionTitle title="Reach Out!" isInview={inView} />}
       <div className="pb-2">Looking to work on a project together,need a website for your business, to promote a product or event?</div>
       <div className="pb-2">Hit me up below and I'd be happy to reply to any inquiries you have.</div>
@@ -112,7 +112,7 @@ const Contact = (): JSX.Element => {
         </StyledFormWrapper>
         )}
       </Formik>
-    </div>
+    </StyledPaddedContentWrap>
   );
 };
 

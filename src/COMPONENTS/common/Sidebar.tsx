@@ -31,20 +31,26 @@ export enum  SectionsEnum {
   WORK = 'WORK',
 }
 
-const StyledLocaleButton = styled.div<{visible: boolean, current?: boolean}>`
+const StyledLocaleButton = styled.div<{visible: boolean}>`
   opacity: ${({visible}) => visible? 1 : 0};
   height: 40px;
   width: 40px;
   border-radius: 20px;
   cursor: pointer;
-  border: 1px solid;
+  border: 1px solid #002261;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: .5rem 0;
-  background:  ${({current}) => current ? 'aliceblue' : '#002261'};
-  color: ${({current}) => current ? '#002261' : 'white'};
+  color: white;
   //needs hover
+  @media (max-width: 768px) {
+    &&& {
+      opacity: 1;
+      margin: 0;
+      color: #002261;
+    }
+  }
 `;
 
 const Sidebar = ():JSX.Element => {
@@ -55,6 +61,7 @@ const Sidebar = ():JSX.Element => {
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
 
   const isActive = (id: SectionsEnum) => activeSections === id;
+  const isEnglish = currentLanguage === LocaleEnum.EN;
 
   const handleSectionIconClick = (id: SectionsEnum) => {
     const target = document.getElementById(id as string);
@@ -63,7 +70,8 @@ const Sidebar = ():JSX.Element => {
     setActiveSections(id);
   };
 
-  const handleLanguageChange = (lang: LocaleEnum) => {
+  const handleLanguageChange = () => {
+    const lang = isEnglish ? LocaleEnum.FR : LocaleEnum.EN;
     i18next
         .changeLanguage(lang)
         .then((t) => {
@@ -85,7 +93,7 @@ const Sidebar = ():JSX.Element => {
       >
         <FontAwesomeIcon icon={icons.expand.static} rotate={stickerOut ? 180 : 0} />
       </StyledSidebarSticker>
-      <StyledLandingIconsColumn className="d-flex flex-column" expanded={expanded}>
+      <StyledLandingIconsColumn className="d-flex" expanded={expanded}>
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
           active={isActive(SectionsEnum.HOME)}
@@ -139,14 +147,8 @@ const Sidebar = ():JSX.Element => {
         /> */}
           <StyledLocaleButton
             visible={expanded}
-            current={currentLanguage === LocaleEnum.FR}
-            onClick={() => handleLanguageChange(LocaleEnum.FR)}
-          >{t('ns3:fr')}</StyledLocaleButton>
-        <StyledLocaleButton
-            visible={expanded}
-            current={currentLanguage === LocaleEnum.EN}
-            onClick={() => handleLanguageChange(LocaleEnum.EN)}
-        >{t('ns3:en')}</StyledLocaleButton>
+            onClick={handleLanguageChange}
+          >{isEnglish ? t('ns3:fr') : t('ns3:en')}</StyledLocaleButton>
       </StyledLandingIconsColumn>
     </>
   );
@@ -167,7 +169,7 @@ const IconLinkWrap = ({ iconStates, color, name, active, handleClick, isParentAc
     >
       <StyledIconLinkOverlay className={color}>
         {hovered && (
-          <div className="d-flex">
+          <div className="d-flex icon-link-title">
             <StyledIconLinkName>{t(`ns3:${name.toLowerCase()}`)}</StyledIconLinkName>
           </div>
         )}

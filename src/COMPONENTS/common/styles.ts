@@ -51,6 +51,12 @@ export const StyledHeaderText = styled.div`
   &.loaded {
     transform: none;
   }
+
+  @media (max-width: 768px) {
+    &&& {
+      width: 100%;
+    }
+  }
 `;
 
 export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
@@ -70,9 +76,20 @@ export const StyledPageContent = styled.div`
   min-width: calc(100vw - 80px);
   max-width: calc(100vw - 280px);
   padding: 0 100px;
-  max-height: 100vh;
+  //max-height: 100vh;
   min-height: 100vh;
   margin: 25px 0;
+
+  @media (max-width: 768px) {
+    &&& {
+      margin: 0;
+      min-width: calc(100vw - 10px);
+      max-width: calc(100vw - 10px);
+      padding: 0;
+      //max-height: 100vh;
+      min-height: 100vh;
+    }
+  }
 `;
 
 export const StyledFooter = styled.div`

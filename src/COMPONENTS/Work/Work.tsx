@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import styled from "styled-components";
 import { useInView } from 'react-intersection-observer';
 import rar from '../../ASSETS/rdq.gif';
 import ou_t from '../../ASSETS/ou-t.gif';
 import SectionTitle from '../common/SectionTitle';
-import { 
+import {
   StyledBgOverlay,
   StyledPreviewImage,
-  StyledNavLink,
   StyledModalWrap,
   StyledCloseIcon,
   StyledLinkBanner,
@@ -14,7 +14,8 @@ import {
   StyledModalCurtain,
   StyledModalTitle,
   StyledModalBody,
-  StyledModalBottom
+  StyledModalBottom,
+  StyledPaddedContentWrap
  } from '../styles';
 import { icons } from '../common';
 import reactLogo from '../../ASSETS/logo192.png';
@@ -29,6 +30,44 @@ interface IWorkItemModalProps {
   onClose: () => void;
   item?: IWorkItem,
 }
+
+const StyledProjectsWrap = styled.div`
+  display: flex;
+  padding: .5rem;
+
+  @media (max-width: 768px) {
+    &&& {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+`;
+
+const StyledNavLink = styled.div`
+  padding: 0;
+  max-height: 200px;
+  position: relative;
+  width: 33%;
+  max-width: 33%;
+  color: white;
+  text-decoratioin: none;
+  overflow: hidden;
+
+  &:hover, &:focus, &:active, &:visited {
+    color: white;
+    text-decoration: none;
+    .bg-overlay {
+      display: flex;
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+`;
 
 // const isModalOpen = (options: {[key:string]: boolean}) => (Object.values(options).filter((value: boolean) => value || null).length > 0);
 const previewList = [rar, ou_t, ou_t];
@@ -47,9 +86,9 @@ const Work = (): JSX.Element => {
   };
 
   return (
-    <div ref={ref}>
+    <StyledPaddedContentWrap ref={ref}>
       {inView && <SectionTitle title="projects" isInview={inView} />}
-      <div className="d-flex justify-content-between pt-2">
+      <StyledProjectsWrap>
         {workiItems.map((item: IWorkItem, index: number) => (
           <StyledNavLink key={`work-item-${index}`}>
             <div className="px-0">
@@ -62,9 +101,9 @@ const Work = (): JSX.Element => {
             </div>
           </StyledNavLink>
         ))}
-      </div>
+      </StyledProjectsWrap>
       {currentItem && <WorkItemModal item={currentItem} onClose={closeModalHandler} />}
-    </div>
+    </StyledPaddedContentWrap>
   );
 };
 

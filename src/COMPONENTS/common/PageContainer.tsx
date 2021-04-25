@@ -10,7 +10,7 @@ interface IPageContainerProps {
 
 const StyledContainer = styled(Container)`
   margin-top: 70px;
-  padding: 20px;
+  padding: 0;
 `;
 
 const PageContainer = ({ callback, children }: IPageContainerProps): JSX.Element => {

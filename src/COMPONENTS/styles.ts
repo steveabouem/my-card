@@ -55,23 +55,9 @@ const slideUp = keyframes`
   }
 `;
 
-export const StyledNavLink = styled.div`
-  padding: 0;
-  max-height: 200px;
-  position: relative;
-  width: 33%;
-  max-width: 33%;
-  color: white;
-  text-decoratioin: none;
-  overflow: hidden;
-
-  &:hover, &:focus, &:active, &:visited {
-    color: white;
-    text-decoration: none;
-    .bg-overlay {
-      display: flex;
-      height: 100%;
-    }
+export const StyledPaddedContentWrap = styled.div`
+  @media (max-width: 768px) {
+    padding: 20px;
   }
 `;
 
@@ -122,6 +108,26 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   &:hover {
     &&& {
       svg {
+        color: white;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    &&& {
+      height: 30px;
+      margin: 0 10px;
+      border: .5px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      position: relative;
+      transition: .3s;
+      width: 40px;
+      svg {
+        z-index: 2;
+        font-size: 25px;
+        transition: .3s;
         color: white;
       }
     }
@@ -190,6 +196,14 @@ export const StyledIconLinkOverlay = styled.div`
   &.blue {
     background: linear-gradient(180deg,#0095ff52,#f1ff156e);
   }
+
+  @media (max-width: 768px) {
+    &&&&& {
+      .icon-link-title {
+        opacity: 0;
+      }
+    }
+  }
 `;
 
 export const StyledSidebarSticker = styled.div <IStyledSidebarStickerProps>`
@@ -209,6 +223,11 @@ export const StyledSidebarSticker = styled.div <IStyledSidebarStickerProps>`
     padding: 12px;
   }
 
+  @media (max-width: 768px) {
+    &&& {
+      display: none;
+    }
+  }
   svg {
     transition: .4s;
     transform: ${(props) => props.isSidebarExpanded ? 'rotate(180deg)' : 'none'};
@@ -216,19 +235,37 @@ export const StyledSidebarSticker = styled.div <IStyledSidebarStickerProps>`
 `;
 
 export const StyledLandingIconsColumn = styled(Col) <IStyledLandingsComlumnProps>`
+  flex-direction: column;
   min-height: calc(100% - 30px);
   height: calc(100% - 30px);
   width: ${(props) => props.expanded ? '50px' : '5px'};
   transition: .3s;
   padding: ${(props) => props.expanded ? '15px 5px' : '0'};
   padding: 15px 5px;
-  transition: .3s;
   position: absolute;
   background: #00226140;
   left: 0;
   border-right: 1.5px solid #002261;
   top: 0;
   z-index: 11;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 50px;
+    height: 50px;
+    width: calc(100% - 10px);
+    transition: .3s;
+    padding: 5px;
+    position: absolute;
+    background: #f5f3eb;
+    left: 0;
+    border-right: none;
+    border-bottom: 1.5px solid #002261;
+    top: 0;
+    z-index: 11;
+  }
 `;
 
 export const StyledLandingMenuWrap = styled.div`
@@ -279,6 +316,10 @@ export const StyledFormWrapper = styled.div`
   position: relative;
   width: 50%;
   margin: 10px auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const StyledLoaderWrap = styled.div`

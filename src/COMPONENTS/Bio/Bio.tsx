@@ -1,12 +1,13 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import SectionTitle from '../common/SectionTitle';
+import { StyledPaddedContentWrap } from '../styles';
 
 const Bio = (): JSX.Element => {
   const { ref, inView } = useInView();
   
   return (
-    <div>
+    <StyledPaddedContentWrap>
       <div ref={ref}>
         {inView && <SectionTitle title="Who Am I?" isInview={inView} />}
         <div>
@@ -20,7 +21,7 @@ const Bio = (): JSX.Element => {
             Ut sodales nulla a ipsum vehicula consectetur.
         </div>
       </div>
-    </div>
+    </StyledPaddedContentWrap>
   );
 }
 
