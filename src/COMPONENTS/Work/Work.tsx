@@ -135,11 +135,14 @@ const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
         <StyledModalTitle>{item?.title || ''}</StyledModalTitle>
         <StyledModalBody>{item?.details || ''}</StyledModalBody>
         <StyledModalBottom>
-          {item?.stack.react && <img src={reactLogo} alt="React" />}
-          {item?.stack.laravel && <img src={laravelLogo} alt="Laravel" />}
-          {item?.stack.firebase && <img src={firebaseLogo} alt="Firebase" />}
-          {item?.stack.php && <img src={phpLogo} alt="PHP" />}
-          {item?.stack.ts && <img src={tsLogo} alt="Typescript" />}
+          <div className="font-weight-bold">Tools/Libraries</div>
+          <div>
+            {item?.stack.react && <img src={reactLogo} alt="React" />}
+            {item?.stack.laravel && <img src={laravelLogo} alt="Laravel" />}
+            {item?.stack.firebase && <img src={firebaseLogo} alt="Firebase" />}
+            {item?.stack.php && <img src={phpLogo} alt="PHP" />}
+            {item?.stack.ts && <img src={tsLogo} alt="Typescript" />}
+          </div>
         </StyledModalBottom>
       </StyledModalWrap>
     </StyledModalCurtain>

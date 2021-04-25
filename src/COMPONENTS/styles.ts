@@ -444,6 +444,13 @@ export const StyledModalWrap = styled.div`
   border: 1px solid #002261;
   padding: 1em;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 45%;
+    width: 60%;
+    top: 30%;
+    left: 20%;
+  }
 `;
 
 export const StyledCloseIcon = styled(FontAwesomeIcon)`
@@ -512,9 +519,9 @@ export const StyledModalBody = styled.div`
 
 export const StyledModalBottom = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 10px 0;
-  
+  white-space: nowrap;
   img {
     height: 25px;
     padding-left: 10px;
