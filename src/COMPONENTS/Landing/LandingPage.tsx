@@ -2,7 +2,7 @@ import React from 'react';
 import '../../UTILS/i18n/config';
 import { useTranslation } from 'react-i18next';
 import { StyledSlidingText } from '../styles';
-import svgLogo from '../../ASSETS/serenity_logo.svg';
+// import svgLogo from '../../ASSETS/serenity_logo.svg';
 
 const LandingPage = (): JSX.Element => {
     const { t } = useTranslation(['ns2']);
@@ -16,7 +16,7 @@ const LandingPage = (): JSX.Element => {
           <StyledSlidingText duration="1.5s" offset="11.2vw" opacityDuration="4s">{t('ns2:greetings_3')}</StyledSlidingText><StyledSlidingText duration="1.5s" offset="11.5vw">.</StyledSlidingText>
         </div>
       </div>
-      <div style={{ backgroundImage: `url(${svgLogo})`}} />
+      {/*<div style={{ backgroundImage: `url(${svgLogo})`}} />*/}
     </div>
   );
 };
