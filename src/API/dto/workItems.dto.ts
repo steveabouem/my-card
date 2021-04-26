@@ -4,7 +4,7 @@ export interface IWorkItem {
   id: number,
   title: string,
   url: string | null,
-  details: string,
+  details: any,
   preview: string,
   stack: IDevStack,
 }

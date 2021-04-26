@@ -1,8 +1,10 @@
 import i18n from 'i18next';
+import ns5_en from './en/ns5.json';
 import ns4_en from './en/ns4.json';
 import ns3_en from './en/ns3.json';
 import ns2_en from './en/ns2.json';
 import ns1_en from './en/ns1.json';
+import ns5 from './fr/ns5.json';
 import ns4 from './fr/ns4.json';
 import ns3 from './fr/ns3.json';
 import ns2 from './fr/ns2.json';
@@ -15,18 +17,20 @@ export const resources = {
         ns1,
         ns2,
         ns3,
-        ns4
+        ns4,
+        ns5
     },
     en: {
         ns1: ns1_en,
         ns2: ns2_en,
         ns3: ns3_en,
-        ns4: ns4_en
+        ns4: ns4_en,
+        ns5: ns5_en
     }
 } as const;
 
 i18n.use(initReactI18next).init({
     lng: 'en',
-    ns: ['ns1', 'ns2', 'ns3', 'ns4'],
+    ns: ['ns1', 'ns2', 'ns3', 'ns4', 'ns5'],
     resources,
 });

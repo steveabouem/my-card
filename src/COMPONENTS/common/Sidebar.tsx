@@ -74,8 +74,10 @@ const Sidebar = ():JSX.Element => {
     const lang = isEnglish ? LocaleEnum.FR : LocaleEnum.EN;
     i18next
         .changeLanguage(lang)
-        .then((t) => {
-          setCurrentLanguage(lang)
+        .then(() => {
+          // TODO: need to handle pushing locale to url, and the resulting refresh
+          // window.location.assign('/' + lang)
+          setCurrentLanguage(lang);
         })
         .catch((e) => {
           console.log(e)

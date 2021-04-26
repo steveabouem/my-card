@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import styled from "styled-components";
 import { useInView } from 'react-intersection-observer';
+import {useTranslation} from "react-i18next";
+import i18next from 'i18next';
+import '../../UTILS/i18n/config';
+
 import rar from '../../ASSETS/rdq.gif';
 import ou_t from '../../ASSETS/ou-t.gif';
 import SectionTitle from '../common/SectionTitle';
@@ -28,7 +32,7 @@ import { IWorkItem } from '../../API/dto/workItems.dto';
 
 interface IWorkItemModalProps {
   onClose: () => void;
-  item?: IWorkItem,
+  item: IWorkItem,
 }
 
 const StyledProjectsWrap = styled.div`
@@ -71,7 +75,9 @@ const StyledNavLink = styled.div`
 
 // const isModalOpen = (options: {[key:string]: boolean}) => (Object.values(options).filter((value: boolean) => value || null).length > 0);
 const previewList = [rar, ou_t, ou_t];
+
 const Work = (): JSX.Element => {
+  const { t } = useTranslation(['ns5']);
   // TODO: this will of course come from the backend, match the id to use it in the modal  
   // (so that you only need to pass the workId prop to display all the info), this will also extend to whether or not the item has a url to visit
   const [activeModals, setActiveModals] = useState<{[key:string]: boolean}>({1: false, 2: false, 3: false});
@@ -87,7 +93,7 @@ const Work = (): JSX.Element => {
 
   return (
     <StyledPaddedContentWrap ref={ref}>
-      {inView && <SectionTitle title="projects" isInview={inView} />}
+      {inView && <SectionTitle title={t('ns5:section_title')} isInview={inView} />}
       <StyledProjectsWrap>
         {workiItems.map((item: IWorkItem, index: number) => (
           <StyledNavLink key={`work-item-${index}`}>
@@ -107,7 +113,7 @@ const Work = (): JSX.Element => {
   );
 };
 
-const CloseIcon = ({onClose}: IWorkItemModalProps): JSX.Element => {
+const CloseIcon = ({onClose}: {onClose: () => void}): JSX.Element => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   return (
@@ -122,20 +128,25 @@ const CloseIcon = ({onClose}: IWorkItemModalProps): JSX.Element => {
 };
 
 const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
+  const { t } = useTranslation(['ns5']);
   const [activeBanner, setActiveBanner] = useState<boolean>(false);
+
+  const currentLanguage: string = useMemo(() => {
+    return i18next.language;
+  },[]);
 
   return (
     <StyledModalCurtain>
       <StyledModalWrap id="work-item-modal">
         <CloseIcon onClose={onClose} />
         <StyledLinkBanner onMouseEnter={() => setActiveBanner(true)} onMouseLeave={() => setActiveBanner(false)}>
-          VISIT
-          <StyledBannerSlider className={activeBanner ? 'active' : ''}>VISIT</StyledBannerSlider>
+          {t('ns5:visit')}
+          <StyledBannerSlider className={activeBanner ? 'active' : ''}>{t('ns5:visit')}</StyledBannerSlider>
         </StyledLinkBanner>
-        <StyledModalTitle>{item?.title || ''}</StyledModalTitle>
-        <StyledModalBody>{item?.details || ''}</StyledModalBody>
+        <StyledModalTitle>{item.title}</StyledModalTitle>
+        <StyledModalBody>{item.details[currentLanguage]}</StyledModalBody>
         <StyledModalBottom>
-          <div className="font-weight-bold">Tools/Libraries</div>
+          <div className="font-weight-bold">{t('ns5:tools')}</div>
           <div>
             {item?.stack.react && <img src={reactLogo} alt="React" />}
             {item?.stack.laravel && <img src={laravelLogo} alt="Laravel" />}
