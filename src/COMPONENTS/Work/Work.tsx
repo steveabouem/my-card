@@ -34,7 +34,7 @@ interface IWorkItemModalProps {
 const StyledProjectsWrap = styled.div`
   display: flex;
   padding: .5rem;
-
+  justify-content: space-between;
   @media (max-width: 768px) {
     &&& {
       flex-direction: column;
@@ -50,7 +50,7 @@ const StyledNavLink = styled.div`
   width: 33%;
   max-width: 33%;
   color: white;
-  text-decoratioin: none;
+  text-decoration: none;
   overflow: hidden;
 
   &:hover, &:focus, &:active, &:visited {

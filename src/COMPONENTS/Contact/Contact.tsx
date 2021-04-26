@@ -3,6 +3,8 @@ import { Formik, useFormikContext } from 'formik';
 import * as Yup from 'yup'; 
 import { BounceLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useTranslation} from "react-i18next";
+import '../../UTILS/i18n/config';
 import {
   StyledButtonOverlay,
   StyledField, StyledFormWrapper,
@@ -17,6 +19,7 @@ import { useInView } from 'react-intersection-observer';
 
 interface IContactFieldProps {
   name: string;
+  label: string;
   customClass?: string;
   type?: string;
 }
@@ -35,16 +38,16 @@ const ContactSchema = Yup.object().shape({
 });
 
 const Contact = (): JSX.Element => {
+    const { t } = useTranslation(['ns4']);
   // TODO: should I add a way to make the form about either REVIEW or Request? exp: "reason" dropdown field, and a link in page description that sets the dropdown to the value they want
   // if you add this, then restore the Testimonials page
   const { ref, inView } = useInView();
 
   return (
     <StyledPaddedContentWrap ref={ref}>
-      {inView && <SectionTitle title="Reach Out!" isInview={inView} />}
-      <div className="pb-2">Looking to work on a project together,need a website for your business, to promote a product or event?</div>
-      <div className="pb-2">Hit me up below and I'd be happy to reply to any inquiries you have.</div>
-      <div className="pb-2">Please note that <b>I DO NOT</b> participate in, or  provide consulting services for product/project development.</div>
+        {inView && <SectionTitle title="Reach Out!" isInview={inView} />}
+        <div>{t('ns4:parag_1')}</div>
+        <div className="font-weight-bold py-3">{t('ns4:parag_2')}</div>
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
         validationSchema={ContactSchema}
@@ -79,8 +82,8 @@ const Contact = (): JSX.Element => {
             </StyledLoaderWrap>
           )}
           <form onSubmit={handleSubmit} className="d-flex flex-column">
-            <ContactField type="email" name="email" />
-            <ContactField type="name" name="name" />
+            <ContactField type="email" name="email" label={t('ns4:email')} />
+            <ContactField type="name" name="name" label={t('ns4:name')} />
             <div className="d-flex flex-column w-100">
               {errors.message && touched.message && (
                 <StyledInvalidMessage className="invalid-message">
@@ -102,10 +105,10 @@ const Contact = (): JSX.Element => {
               onClick={submitForm}
             >
               <div className="static">
-                <div className="top">Submit</div>
+                <div className="top">{t('ns4:submit')}</div>
               </div>
               <div className="hovered">
-                <div className="top">Submit</div>
+                <div className="top">{t('ns4:submit')}</div>
               </div>
             </StyledButtonOverlay>
           </form>
@@ -117,7 +120,7 @@ const Contact = (): JSX.Element => {
 };
 
 
-const ContactField = ({name, customClass, type}: IContactFieldProps) => {
+const ContactField = ({name, label, customClass, type}: IContactFieldProps) => {
   const {touched, errors, handleChange, handleBlur}: any = useFormikContext();
 
   return (
@@ -128,7 +131,7 @@ const ContactField = ({name, customClass, type}: IContactFieldProps) => {
           {errors[name]}
         </StyledInvalidMessage>
       )}
-      <StyledLabel>{name.toUpperCase()}</StyledLabel>
+      <StyledLabel>{label.toUpperCase()}</StyledLabel>
       <StyledField
         type={type}
         name={name}
