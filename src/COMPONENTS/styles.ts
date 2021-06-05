@@ -1,11 +1,10 @@
 import styled, { keyframes } from 'styled-components';
-import { Col } from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import { Field } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IStyledIconLinkProps {
   active: boolean;
-  isParentActive: boolean;
 }
 
 interface IStyledSlidingTextProps {
@@ -24,15 +23,6 @@ const slideText = keyframes`
     opacity: 0;
   }
 `;
-
-interface IStyledSidebarStickerProps {
-  isSidebarExpanded: boolean;
-  isSelfExpanded: boolean
-}
-
-interface IStyledLandingsColumnProps {
-  expanded: boolean;
-}
 
 const slideOut = keyframes`
   from {
@@ -89,18 +79,17 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   border-radius: 5px;
   height: 30px;
   margin-right: 15px;
-  border: ${(props) => props.isParentActive ? '.5px solid white' : 'none'};
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
   position: relative;
   transition: .3s;
-  width: ${(props) => props.isParentActive ? '40px' : '0'};
+  width: 40px;
   &&& {
     svg {
       z-index: 2;
-      font-size: ${(props) => props.isParentActive ? '25px' : '.5px'};
+      font-size: 25px;
       transition: .3s;
       ${(props) => props.active ? 'color: white' : null};
     }
@@ -207,61 +196,20 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledSidebarSticker = styled.div <IStyledSidebarStickerProps>`
-  position: absolute;
-  cursor: pointer;
-  top: 45%;
-  transition: .4s;
-  overflow: hidden;
-  left: ${(props) => props.isSidebarExpanded ? '50px' : '10px'};
-  background: rgba(255,209,80,1);
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  &:hover {
-    padding: 12px;
-  }
-
-  @media (max-width: 768px) {
-    &&& {
-      display: none;
-    }
-  }
-  svg {
-    transition: .4s;
-    transform: ${(props) => props.isSidebarExpanded ? 'rotate(180deg)' : 'none'};
-  }
-`;
-
-export const StyledLandingIconsColumn = styled(Col) <IStyledLandingsColumnProps>`
-  // flex-direction: column;
-  // min-height: calc(100% - 30px);
-  // height: calc(100% - 30px);
-  // width: ${(props) => props.expanded ? '50px' : '5px'};
-  // transition: .3s;
-  // padding: ${(props) => props.expanded ? '15px 5px' : '0'};
-  // padding: 15px 5px;
-  // position: absolute;
-  // background: #00226140;
-  // left: 0;
-  // border-right: 1.5px solid #002261;
-  // top: 0;
-  // z-index: 11;
-
-    justify-content: flex-end;
-    align-items: center;
-    height: 50px;
-    width: 100%;
-    transition: .3s;
-    padding: 5px;
-    position: absolute;
-    background: #f5f3eb;
-    left: 0;
-    top: 0;
-    z-index: 11;
-  }
+export const StyledNavbarWrapper = styled(Row) <{opaque: boolean}>`
+  opacity: ${({opaque}) => opaque ? '.1' : '1'};
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  transition: .3s;
+  padding: 5px;
+  position: fixed;
+  background: white;
+  left: 0;
+  top: 0;
+  z-index: 11;
 `;
 
 export const StyledLandingMenuWrap = styled.div`
@@ -373,7 +321,6 @@ export const StyledButtonOverlay = styled.div`
   border-radius: 5px;
   transition: .3s;
   border: 1px solid;
-  z-index: 2;
 
   &:hover {
     .hovered, .static {
@@ -399,7 +346,6 @@ export const StyledButtonOverlay = styled.div`
     text-align: center;
     transition: .3s;
     font-size: 20px;
-    z-index: 1;
     border-radius: 5px;
     .top {
       width: 30%;
@@ -420,10 +366,10 @@ export const StyledButtonOverlay = styled.div`
 `;
 
 export const StyledModalCurtain = styled.div`
-  height: 100%;
-  width: 100%;
-  background: #4a482d5c;
-  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(74, 72, 45, 0.36);
+  position: fixed;
   top: 0;
   left: 0;
 `;
@@ -439,7 +385,7 @@ export const StyledModalWrap = styled.div`
   border: 1px solid #002261;
   padding: 1em;
   overflow: hidden;
-
+  z-index: 2;
   @media (max-width: 768px) {
     height: 45%;
     width: 60%;

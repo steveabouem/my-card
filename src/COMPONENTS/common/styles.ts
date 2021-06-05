@@ -39,9 +39,8 @@ export const StyledHeader = styled.div`
 
 export const StyledHeaderText = styled.div`
   width: 25%;
-  background: #616bce;
-  color: white;
-  border: 1px solid #1c2477;
+  background: #007161;
+  color: #7fefdc;
   border-top-right-radius: 5px;
   border-bottom: none;
   padding: 10px 0 10px 5px;
@@ -73,12 +72,27 @@ export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
 `;
 
 export const StyledPageContent = styled.div`
-  padding: 0 100px;
+  color: #0f631f;
+  padding: 300px 300px 0 300px;
   max-height: 100vh;
   min-height: 100vh;
-
-  
+ 
+  &#HOME {
+    background: rgb(239,255,152);
+    background: linear-gradient(0deg, rgba(239,255,152,0.8939950980392157) 0%, rgba(42,203,47,1) 100%);
   }
+  &#BIO {
+    background: rgb(239,255,152);
+  }
+  
+  &#CONTACT {
+    background: #2acb2f;
+  }
+  &#WORK {
+    background: rgb(42,203,47);
+    background: linear-gradient(0deg, rgba(42,203,47,1) 0%, rgba(239,255,152,0.8939950980392157) 100%);
+  }
+  
 `;
 
 export const StyledFooter = styled.div`

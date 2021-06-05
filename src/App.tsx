@@ -19,11 +19,11 @@ const AppLayout = ():JSX.Element => {
         <StyledPageContent id={SectionsEnum.BIO}>
           <Bio />
         </StyledPageContent>
-        <StyledPageContent id={SectionsEnum.CONTACT}>
-          <Contact />
-        </StyledPageContent>
         <StyledPageContent id={SectionsEnum.WORK}>
           <Work />
+        </StyledPageContent>
+        <StyledPageContent id={SectionsEnum.CONTACT}>
+          <Contact />
         </StyledPageContent>
         <Footer />
       </PageContainer>

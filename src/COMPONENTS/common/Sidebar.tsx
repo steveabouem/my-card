@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import '../../UTILS/i18n/config';
@@ -8,19 +8,17 @@ import {
   StyledIconLink,
   StyledIconLinkName,
   StyledIconLinkOverlay,
-  StyledLandingIconsColumn,
-  StyledSidebarSticker
+  StyledNavbarWrapper,
 } from '../styles';
 import {IIconStates} from '../types';
 import {icons} from './icons';
-import {LocaleEnum} from "../../UTILS/i18n/types";
+import {LocaleEnum} from "../../UTILS/i18n/";
 
 interface IIconLinkWrapProps {
   color: string;
   iconStates: IIconStates;
   name: string;
   active: boolean;
-  isParentActive: boolean;
   handleClick: (id: string) => void;
 }
 
@@ -52,8 +50,9 @@ const StyledLocaleButton = styled.div`
 const Sidebar = ():JSX.Element => {
   const { t } = useTranslation(['ns3']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
-  const [expanded, setExpanded] = useState<boolean>(true);
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
+  const [isTransparent, setIsTransparent] = useState<boolean>(false);
+  const [offset, setOffset] = useState<number>(window.scrollY);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
   const isEnglish = currentLanguage === LocaleEnum.EN;
@@ -79,22 +78,32 @@ const Sidebar = ():JSX.Element => {
         });
   };
 
+  const handleContainerScroll = useCallback(() => {
+    setIsTransparent(offset < window.scrollY);
+  }, [offset]);
+
+
+  useEffect(() => {
+    setOffset(window.scrollY);
+    window.addEventListener("scroll", handleContainerScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleContainerScroll);
+    };
+  }, [handleContainerScroll]);
+
   return (
     <>
-      {/*<StyledSidebarSticker*/}
-      {/*  isSidebarExpanded={expanded}*/}
-      {/*  isSelfExpanded={stickerOut}*/}
-      {/*  onClick={() => setExpanded(!expanded)}*/}
-      {/*  onMouseEnter={() => setStickerOut(true)}*/}
-      {/*  onMouseLeave={() => setStickerOut(false)}*/}
-      {/*>*/}
-      {/*  <FontAwesomeIcon icon={icons.expand.static} rotate={stickerOut ? 180 : 0} />*/}
-      {/*</StyledSidebarSticker>*/}
-      <StyledLandingIconsColumn className="d-flex" expanded={expanded}>
+      <StyledNavbarWrapper
+        className="d-flex"
+        opaque={isTransparent}
+        onMouseEnter={() => setIsTransparent(false)}
+        onMouseLeave={() => setIsTransparent(true)}
+      >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
           active={isActive(SectionsEnum.HOME)}
-          isParentActive={expanded}
+
           iconStates={icons.home}
           name={SectionsEnum.HOME}
           color="dark"
@@ -102,25 +111,25 @@ const Sidebar = ():JSX.Element => {
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:bio'))}
           active={isActive(SectionsEnum.BIO)}
-          isParentActive={expanded}
+
           iconStates={icons.profile}
           name={SectionsEnum.BIO}
           color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(t('ns3:contact'))}
-          active={isActive(SectionsEnum.CONTACT)}
-          isParentActive={expanded}
-          iconStates={icons.mail}
-          name={SectionsEnum.CONTACT}
-          color="dark"
+            handleClick={() => handleSectionIconClick(t('ns3:work'))}
+            active={isActive(SectionsEnum.WORK)}
+
+            iconStates={icons.work}
+            name={SectionsEnum.WORK}
+            color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(t('ns3:work'))}
-          active={isActive(SectionsEnum.WORK)}
-          isParentActive={expanded}
-          iconStates={icons.work}
-          name={SectionsEnum.WORK}
+          handleClick={() => handleSectionIconClick(t('ns3:contact'))}
+          active={isActive(SectionsEnum.CONTACT)}
+
+          iconStates={icons.mail}
+          name={SectionsEnum.CONTACT}
           color="dark"
         />
         {/* TODO: consider whether testimonials are relevant on their own, under the given 'work' section, or at all */}
@@ -128,7 +137,7 @@ const Sidebar = ():JSX.Element => {
         {/* <IconLinkWrap
           handleClick={()=> handleSectionIconClick()}
           active={isActive('/testimonials')}
-          isParentActive={expanded}
+
           iconStates={icons.testimonials}
           name={SectionsEnum.FEEDBACK}
           color="dark"
@@ -137,7 +146,7 @@ const Sidebar = ():JSX.Element => {
         {/* <IconLinkWrap
           handleClick={()=> handleSectionIconClick()}
           active={isActive('/budget')}
-          isParentActive={expanded}
+
           iconStates={icons.budget}
           name={SectionsEnum.BUDGET}
           color="dark"
@@ -145,19 +154,18 @@ const Sidebar = ():JSX.Element => {
           <StyledLocaleButton
             onClick={handleLanguageChange}
           >{isEnglish ? t('ns3:fr') : t('ns3:en')}</StyledLocaleButton>
-      </StyledLandingIconsColumn>
+      </StyledNavbarWrapper>
     </>
   );
 };
 
-const IconLinkWrap = ({ iconStates, color, name, active, handleClick, isParentActive }: IIconLinkWrapProps): JSX.Element => {
+const IconLinkWrap = ({ iconStates, color, name, active, handleClick }: IIconLinkWrapProps): JSX.Element => {
   const [hovered, setHovered] = useState<boolean>(false);
   const { t } = useTranslation(['ns3']);
 
   return (
     <StyledIconLink
       active={active}
-      isParentActive={isParentActive}
       className={color}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import styled from "styled-components";
 import { useInView } from 'react-intersection-observer';
 import {useTranslation} from "react-i18next";
@@ -108,7 +108,7 @@ const Work = (): JSX.Element => {
           </StyledNavLink>
         ))}
       </StyledProjectsWrap>
-      {currentItem && <WorkItemModal item={currentItem} onClose={closeModalHandler} />}
+      {currentItem ? <WorkItemModal item={currentItem} onClose={closeModalHandler} /> : null}
     </StyledPaddedContentWrap>
   );
 };
