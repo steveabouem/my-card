@@ -25,9 +25,9 @@ html {
     margin: 0;
     color: #1b5381;
     #root {
-      overflow: hidden scroll;
-      min-height: calc(100vh - 30px);
-      max-height: calc(100vh - 30px);
+      overflow: hidden;
+      height: 100vh;
+      max-height: 100vh;
       background: #f5f3eb73;
       &.nightmode {
         background: #040117f2;

@@ -8,7 +8,7 @@ interface IStyledIconLinkProps {
   isParentActive: boolean;
 }
 
-interface ISyledSlidingTextProps {
+interface IStyledSlidingTextProps {
   opacityDuration?: string;
   duration?: string;
   offset?: string;
@@ -30,7 +30,7 @@ interface IStyledSidebarStickerProps {
   isSelfExpanded: boolean
 }
 
-interface IStyledLandingsComlumnProps {
+interface IStyledLandingsColumnProps {
   expanded: boolean;
 }
 
@@ -40,7 +40,7 @@ const slideOut = keyframes`
   }
   
   to {
-    transform: translateX(100%);
+    transform: translateY(125%);
     color: #4a72ad;
   }
 `;
@@ -88,7 +88,7 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   cursor: pointer;
   border-radius: 5px;
   height: 30px;
-  margin-bottom: 10px;
+  margin-right: 15px;
   border: ${(props) => props.isParentActive ? '.5px solid white' : 'none'};
   display: flex;
   justify-content: center;
@@ -235,35 +235,30 @@ export const StyledSidebarSticker = styled.div <IStyledSidebarStickerProps>`
   }
 `;
 
-export const StyledLandingIconsColumn = styled(Col) <IStyledLandingsComlumnProps>`
-  flex-direction: column;
-  min-height: calc(100% - 30px);
-  height: calc(100% - 30px);
-  width: ${(props) => props.expanded ? '50px' : '5px'};
-  transition: .3s;
-  padding: ${(props) => props.expanded ? '15px 5px' : '0'};
-  padding: 15px 5px;
-  position: absolute;
-  background: #00226140;
-  left: 0;
-  border-right: 1.5px solid #002261;
-  top: 0;
-  z-index: 11;
+export const StyledLandingIconsColumn = styled(Col) <IStyledLandingsColumnProps>`
+  // flex-direction: column;
+  // min-height: calc(100% - 30px);
+  // height: calc(100% - 30px);
+  // width: ${(props) => props.expanded ? '50px' : '5px'};
+  // transition: .3s;
+  // padding: ${(props) => props.expanded ? '15px 5px' : '0'};
+  // padding: 15px 5px;
+  // position: absolute;
+  // background: #00226140;
+  // left: 0;
+  // border-right: 1.5px solid #002261;
+  // top: 0;
+  // z-index: 11;
 
-  @media (max-width: 768px) {
-    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    min-height: 50px;
     height: 50px;
-    width: calc(100% - 10px);
+    width: 100%;
     transition: .3s;
     padding: 5px;
     position: absolute;
     background: #f5f3eb;
     left: 0;
-    border-right: none;
-    border-bottom: 1.5px solid #002261;
     top: 0;
     z-index: 11;
   }
@@ -278,7 +273,6 @@ export const StyledLandingMenuWrap = styled.div`
 export const StyledIconLinkName = styled.span`
   z-index: 1;
   font-size: 15px;
-  vertical-align: ;
   align-items: center;
   color: white;
   font-weight: bolder;
@@ -301,7 +295,7 @@ export const StyledLinkInitial = styled.div`
   align-items: center;
 `;
 
-export const StyledSlidingText = styled.div<ISyledSlidingTextProps>`
+export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
   font-size: 30px;
   font-weight: 300;
   transform: translateX(${(props) => props.offset ? props.offset : '0'});
@@ -468,7 +462,7 @@ export const StyledLinkBanner = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  text-shadow: rgba(255,255,255,0.5) 0 1px 0;
   transform: rotate(42deg);
   position: absolute;
   padding: 7px 0;
@@ -477,7 +471,7 @@ export const StyledLinkBanner = styled.div`
   width: 180px;
   background-color: #fc6557f5;
   color: #ffffff;
-  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
   border: 1px solid #474754;
   cursor: pointer;
 `;

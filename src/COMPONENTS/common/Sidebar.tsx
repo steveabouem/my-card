@@ -31,33 +31,28 @@ export enum  SectionsEnum {
   WORK = 'WORK',
 }
 
-const StyledLocaleButton = styled.div<{visible: boolean}>`
-  opacity: ${({visible}) => visible? 1 : 0};
-  height: 40px;
-  width: 40px;
+const StyledLocaleButton = styled.div`
+  height: 30px;
+  width: 30px;
   border-radius: 20px;
   cursor: pointer;
   border: 1px solid #002261;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: .5rem 0;
-  color: white;
-  //needs hover
-  @media (max-width: 768px) {
-    &&& {
-      opacity: 1;
-      margin: 0;
-      color: #002261;
-    }
+  color: #002261;
+  transition: .3s;
+  
+  &:hover {
+    background: white;
+    color: black;
   }
 `;
 
 const Sidebar = ():JSX.Element => {
   const { t } = useTranslation(['ns3']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
-  const [expanded, setExpanded] = useState<boolean>(false);
-  const [stickerOut, setStickerOut] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(true);
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
 
   const isActive = (id: SectionsEnum) => activeSections === id;
@@ -86,15 +81,15 @@ const Sidebar = ():JSX.Element => {
 
   return (
     <>
-      <StyledSidebarSticker
-        isSidebarExpanded={expanded}
-        isSelfExpanded={stickerOut}
-        onClick={() => setExpanded(!expanded)}
-        onMouseEnter={() => setStickerOut(true)}
-        onMouseLeave={() => setStickerOut(false)}
-      >
-        <FontAwesomeIcon icon={icons.expand.static} rotate={stickerOut ? 180 : 0} />
-      </StyledSidebarSticker>
+      {/*<StyledSidebarSticker*/}
+      {/*  isSidebarExpanded={expanded}*/}
+      {/*  isSelfExpanded={stickerOut}*/}
+      {/*  onClick={() => setExpanded(!expanded)}*/}
+      {/*  onMouseEnter={() => setStickerOut(true)}*/}
+      {/*  onMouseLeave={() => setStickerOut(false)}*/}
+      {/*>*/}
+      {/*  <FontAwesomeIcon icon={icons.expand.static} rotate={stickerOut ? 180 : 0} />*/}
+      {/*</StyledSidebarSticker>*/}
       <StyledLandingIconsColumn className="d-flex" expanded={expanded}>
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
@@ -148,7 +143,6 @@ const Sidebar = ():JSX.Element => {
           color="dark"
         /> */}
           <StyledLocaleButton
-            visible={expanded}
             onClick={handleLanguageChange}
           >{isEnglish ? t('ns3:fr') : t('ns3:en')}</StyledLocaleButton>
       </StyledLandingIconsColumn>
