@@ -30,7 +30,7 @@ const slideOut = keyframes`
   }
   
   to {
-    transform: translateY(125%);
+    transform: translateY(130%);
     color: #4a72ad;
   }
 `;
@@ -77,7 +77,7 @@ export const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
 export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   cursor: pointer;
   border-radius: 5px;
-  height: 30px;
+  height: 20px;
   margin-right: 15px;
   display: flex;
   justify-content: center;
@@ -85,11 +85,11 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   padding: 0;
   position: relative;
   transition: .3s;
-  width: 40px;
+  width: 30px;
   &&& {
     svg {
       z-index: 2;
-      font-size: 25px;
+      font-size: 20px;
       transition: .3s;
       ${(props) => props.active ? 'color: white' : null};
     }
@@ -252,6 +252,7 @@ export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
 
 export const StyledFormWrapper = styled.div`
   padding: 10px 0;
+  background: #ecf9fb;
   border: .5px solid grey;
   display: flex;
   flex-direction: column;
@@ -281,7 +282,7 @@ export const StyledLabel = styled.label`
   width: 75%;
   margin: auto;
   font-weight: 500;
-  color: #616bceb5;
+  color: #545454b5;
 `;
 
 export const StyledField = styled(Field)`
