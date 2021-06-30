@@ -29,6 +29,13 @@ const reveal = keyframes`
   }
 `;
 
+export const StyledCenteredSection = styled.div`
+  width: 70%;
+  margin: auto;
+  border: 1px solid #616bce24;
+  padding: 1em;
+`;
+
 export const StyledHeader = styled.div`
   font-size: 30px;
   font-weight: 500;
@@ -39,7 +46,7 @@ export const StyledHeader = styled.div`
 
 export const StyledHeaderText = styled.div`
   width: 25%;
-  background: #ecf9fb;
+  background: #eeeff9;
   color: #556779;
   border-top-right-radius: 5px;
   border-bottom: none;
@@ -78,18 +85,19 @@ export const StyledPageContent = styled.div`
   min-height: 100vh;
  
   &#HOME {
-    background: rgb(42,61,203);
-    background: linear-gradient(0deg, rgb(112 115 138) 0%, rgba(152,202,255,0.8799894957983193) 100%);
+    color: #1b5381;
+    background: rgb(97,107,206);
+    background: linear-gradient(0deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
   }
   &#BIO {
-    background: rgb(112 115 138);
+    background: rgb(97,107,206);
   }
   &#WORK {
-    background: rgb(42,61,203);
-    background: linear-gradient(180deg,rgb(112 115 138) 0%,rgba(152,202,255,0.8799894957983193) 100%);
+    background: rgb(97,107,206);
+    background: linear-gradient(180deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
   }
   &#CONTACT {
-    background: rgba(152,202,255,0.8799894957983193);
+    background: white;
   }
   
 `;
@@ -98,11 +106,11 @@ export const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
   height: 30px;
-  background: #455673;
+  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fc6557f5;
+  color: #002261;
   left: 0;
   width: 100%;
   padding: 0 15px;

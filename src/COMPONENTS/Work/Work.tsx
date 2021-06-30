@@ -100,7 +100,7 @@ const Work = (): JSX.Element => {
             <div className="px-0">
               <StyledBgOverlay 
                 className="bg-overlay"
-                color="#fc6557f5"
+                color="#455673"
                 onClick={() => setCurrentItem(item)}
               >{item.title}</StyledBgOverlay>
               <StyledPreviewImage style={{backgroundImage: `url(${previewList[item.id - 1]})`}}/>
@@ -144,7 +144,7 @@ const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
           <StyledBannerSlider className={activeBanner ? 'active' : ''}>{t('ns5:visit')}</StyledBannerSlider>
         </StyledLinkBanner>
         <StyledModalTitle>{item.title}</StyledModalTitle>
-        <StyledModalBody>{item.details[currentLanguage]}</StyledModalBody>
+        <StyledModalBody>{item.details[i18next.language]}</StyledModalBody>
         <StyledModalBottom>
           <div className="font-weight-bold">{t('ns5:tools')}</div>
           <div>

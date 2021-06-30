@@ -47,6 +47,8 @@ const slideUp = keyframes`
 
 export const StyledPaddedContentWrap = styled.div`
   z-index: 1;
+  width: 70%;
+  margin: auto;
   @media (max-width: 768px) {
     padding: 20px;
   }
@@ -68,6 +70,7 @@ export const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
   text-align: center;
   font-weight: 600;
   background: ${props => props.color || 'black'};
+  color: #ecf9fb;
   transition: .3s;
   bottom: 0;
   font-size: 2rem;
@@ -244,7 +247,7 @@ export const StyledLinkInitial = styled.div`
 `;
 
 export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 300;
   transform: translateX(${(props) => props.offset ? props.offset : '0'});
   animation: ${slideText} ${(props) => props.duration ? props.duration : '.7s'} linear;
@@ -252,7 +255,7 @@ export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
 
 export const StyledFormWrapper = styled.div`
   padding: 10px 0;
-  background: #ecf9fb;
+  background: #eeeff9;
   border: .5px solid grey;
   display: flex;
   flex-direction: column;
@@ -416,8 +419,8 @@ export const StyledLinkBanner = styled.div`
   right: -67px;
   top: -14px;
   width: 180px;
-  background-color: #fc6557f5;
-  color: #ffffff;
+  background-color: white;
+  color: #616bce;
   box-shadow: 0 0 3px rgba(0,0,0,0.3);
   border: 1px solid #474754;
   cursor: pointer;
@@ -425,7 +428,8 @@ export const StyledLinkBanner = styled.div`
 
 export const StyledBannerSlider = styled.div`
   position: absolute;
-  background: rgba(255,209,80,1);
+  background: #616bce;
+  color: #002261;
   width: 100%;
   top: 0;
   right: 0;

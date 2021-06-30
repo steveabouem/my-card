@@ -45,7 +45,7 @@ const Contact = (): JSX.Element => {
 
   return (
     <StyledPaddedContentWrap ref={ref}>
-        {inView && <SectionTitle title="Reach Out!" isInview={inView} />}
+        {inView && <SectionTitle title={t('ns4:section_title')} isInview={inView} />}
         <div>{t('ns4:parag_1')}</div>
         <div className="font-weight-bold py-3">{t('ns4:parag_2')}</div>
       <Formik
