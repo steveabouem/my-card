@@ -144,7 +144,7 @@ const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
           <StyledBannerSlider className={activeBanner ? 'active' : ''}>{t('ns5:visit')}</StyledBannerSlider>
         </StyledLinkBanner>
         <StyledModalTitle>{item.title}</StyledModalTitle>
-        <StyledModalBody>{item.details[currentLanguage]}</StyledModalBody>
+        <StyledModalBody>{currentLanguage?.includes('en') ? item.details.en : item.details.fr}</StyledModalBody>
         <StyledModalBottom>
           <div className="font-weight-bold">{t('ns5:tools')}</div>
           <div>
