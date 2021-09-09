@@ -17,7 +17,6 @@ const LandingPage = (): JSX.Element => {
           <StyledSlidingText duration="1.5s" offset="11.2vw" opacityDuration="4s">{t('ns2:greetings_3')}</StyledSlidingText><StyledSlidingText duration="1.5s" offset="11.5vw">.</StyledSlidingText>
         </div>
       </div>
-      {/*<div style={{ backgroundImage: `url(${svgLogo})`}} />*/}
     </StyledCenteredSection>
   );
 };

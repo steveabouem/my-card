@@ -32,7 +32,6 @@ const reveal = keyframes`
 export const StyledCenteredSection = styled.div`
   width: 70%;
   margin: auto;
-  border: 1px solid #616bce24;
   padding: 1em;
 `;
 
@@ -107,6 +106,7 @@ export const StyledFooter = styled.div`
   bottom: 0;
   height: 30px;
   background: white;
+  border-top: 1px solid #eeeff9;
   display: flex;
   justify-content: center;
   align-items: center;
