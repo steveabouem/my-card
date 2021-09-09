@@ -47,11 +47,14 @@ const slideUp = keyframes`
 
 export const StyledPaddedContentWrap = styled.div`
   z-index: 1;
-  width: 90%;
   margin: auto;
   @media (max-width: 768px) {
     padding: 20px;
   }
+`;
+
+export const StyledContactDesc = styled.div`
+  color: #1b5381;
 `;
 
 export const StyledPreviewImage = styled.div`
@@ -247,7 +250,7 @@ export const StyledLinkInitial = styled.div`
 `;
 
 export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
-  font-size: 50px;
+  font-size: 2.5em;
   font-weight: 300;
   transform: translateX(${(props) => props.offset ? props.offset : '0'});
   animation: ${slideText} ${(props) => props.duration ? props.duration : '.7s'} linear;
@@ -261,9 +264,13 @@ export const StyledFormWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  width: 50%;
+  width: 70%;
   margin: 10px auto;
-
+  
+  
+  ::-webkit-scrollbar {
+    display: none;
+  } 
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -453,6 +460,7 @@ export const StyledModalTitle = styled.div`
   text-decoration-color: #fc6b5e;
   text-decoration-thickness: 3px;
   padding: 5px 0;
+  color: #1b5381;
 `;
 
 export const StyledModalBody = styled.div`
@@ -461,6 +469,7 @@ export const StyledModalBody = styled.div`
   overflow: auto;
   padding: 5px;
   border-bottom: .2px solid #00226136;
+  color: #1b5381;
 `;
 
 export const StyledModalBottom = styled.div`
@@ -468,6 +477,7 @@ export const StyledModalBottom = styled.div`
   justify-content: space-between;
   padding: 10px 0;
   white-space: nowrap;
+  color: #1b5381;
   img {
     height: 25px;
     padding-left: 10px;

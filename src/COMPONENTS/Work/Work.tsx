@@ -133,7 +133,7 @@ const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
 
   const currentLanguage: string = useMemo(() => {
     return i18next.language;
-  },[]);
+  },[t]);
 
   return (
     <StyledModalCurtain>
@@ -144,7 +144,7 @@ const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
           <StyledBannerSlider className={activeBanner ? 'active' : ''}>{t('ns5:visit')}</StyledBannerSlider>
         </StyledLinkBanner>
         <StyledModalTitle>{item.title}</StyledModalTitle>
-        <StyledModalBody>{item.details[i18next.language]}</StyledModalBody>
+        <StyledModalBody>{item.details[currentLanguage]}</StyledModalBody>
         <StyledModalBottom>
           <div className="font-weight-bold">{t('ns5:tools')}</div>
           <div>
