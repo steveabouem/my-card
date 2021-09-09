@@ -40,12 +40,12 @@ export const StyledHeader = styled.div`
   font-size: 30px;
   font-weight: 500;
   animation: ${reveal} .5s linear;
-  border-bottom: 1px solid #616bce12;
+  border-bottom: 1px solid #eeeff9;
   overflow: hidden;
 `;
 
 export const StyledHeaderText = styled.div`
-  width: 25%;
+  width: 30%;
   background: #eeeff9;
   color: #556779;
   border-top-right-radius: 5px;
@@ -80,7 +80,7 @@ export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
 
 export const StyledPageContent = styled.div`
   color: white;
-  padding: 70px 300px 0 300px;
+  padding: 70px 275px 0 275px;
   max-height: 100vh;
   min-height: 100vh;
  

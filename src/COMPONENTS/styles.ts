@@ -47,7 +47,7 @@ const slideUp = keyframes`
 
 export const StyledPaddedContentWrap = styled.div`
   z-index: 1;
-  width: 70%;
+  width: 90%;
   margin: auto;
   @media (max-width: 768px) {
     padding: 20px;
