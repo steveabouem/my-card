@@ -12,7 +12,6 @@ import {
   StyledBgOverlay,
   StyledPreviewImage,
   StyledModalWrap,
-  StyledCloseIcon,
   StyledLinkBanner,
   StyledBannerSlider,
   StyledModalCurtain,
@@ -21,7 +20,6 @@ import {
   StyledModalBottom,
   StyledPaddedContentWrap
  } from '../styles';
-import { icons } from '../common';
 import reactLogo from '../../ASSETS/logo192.png';
 import phpLogo from '../../ASSETS/php-logo.png';
 import tsLogo from '../../ASSETS/ts-logo.png';
@@ -29,6 +27,7 @@ import firebaseLogo from '../../ASSETS/firebase.jpg';
 import laravelLogo from '../../ASSETS/laravel.png';
 import { workiItems } from '../../API/repositories/testData/workItems';
 import { IWorkItem } from '../../API/dto/workItems.dto';
+import {CloseIcon} from "../common/ModalCloseButton";
 
 interface IWorkItemModalProps {
   onClose: () => void;
@@ -113,19 +112,6 @@ const Work = (): JSX.Element => {
   );
 };
 
-const CloseIcon = ({onClose}: {onClose: () => void}): JSX.Element => {
-  const [hovered, setHovered] = useState<boolean>(false);
-
-  return (
-    <StyledCloseIcon
-      color="#1b5381" 
-      icon={hovered ? icons.close.hover : icons.close.static}
-      onMouseEnter={() => setHovered(true)} 
-      onMouseLeave={() => setHovered(false)}
-      onClick={onClose}
-    />
-  );
-};
 
 const WorkItemModal = ({onClose, item}: IWorkItemModalProps): JSX.Element => {
   const { t } = useTranslation(['ns5']);

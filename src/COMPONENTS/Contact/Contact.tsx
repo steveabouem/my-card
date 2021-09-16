@@ -1,22 +1,27 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
 import { Formik, useFormikContext } from 'formik';
 import * as Yup from 'yup'; 
 import { BounceLoader } from 'react-spinners';
+import moment from "moment";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useTranslation} from "react-i18next";
 import '../../UTILS/i18n/config';
 import {
   StyledButtonOverlay,
-    StyledContactDesc,
-    StyledField, StyledFormWrapper,
+  StyledContactDesc,
+  StyledField, StyledFormWrapper,
   StyledInvalidMessage,
   StyledLabel,
   StyledLoaderWrap,
-  StyledPaddedContentWrap
+  StyledPaddedContentWrap,
+  StyledContactLayover
 } from '../styles';
 import { icons } from '../common';
 import SectionTitle from '../common/SectionTitle';
 import { useInView } from 'react-intersection-observer';
+import { sendMessage } from '../../API';
+import {IMessageDTO } from '../../API/dto/message.dto';
+import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 
 interface IContactFieldProps {
   name: string;
@@ -26,10 +31,10 @@ interface IContactFieldProps {
 }
 
 const ContactSchema = Yup.object().shape({
-  email: Yup.string()
+    senderEmail: Yup.string()
     .email('Must be a valid address.')
     .required('Required'),
-  name: Yup.string()
+  sender: Yup.string()
     .min(4, '4 characters minimum.')
     .max(16, '16 characters maximum.')
     .required('Required'),
@@ -39,22 +44,39 @@ const ContactSchema = Yup.object().shape({
 });
 
 const Contact = (): JSX.Element => {
-    const { t } = useTranslation(['ns4']);
+  const [messageStatus, setMessageStatus] = useState<200 | 500 | undefined>(undefined);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const hasError = useMemo(() => messageStatus === 500, [messageStatus]);
+
+  const { t } = useTranslation(['ns4', 'ns6']);
   // TODO: should I add a way to make the form about either REVIEW or Request? exp: "reason" dropdown field, and a link in page description that sets the dropdown to the value they want
   // if you add this, then restore the Testimonials page
   const { ref, inView } = useInView();
+  const handleSubmit = async (mData: IMessageDTO) => {
+      setIsSubmitting(true);
+    mData.sentOn = moment().format('YYYY-MM-DD, HH:mm:s');
+    const { data } = await sendMessage(mData);
+
+    setIsSubmitting(false);
+    setMessageStatus(data.status);
+    // they don't need to be able to send another one right away
+    // setTimeout(() => {
+    //   setMessageStatus(undefined);
+    // }, 8000);
+  };
 
   return (
     <StyledPaddedContentWrap ref={ref} className="pb-4">
-        {inView && <SectionTitle title={t('ns4:section_title')} isInview={inView} />}
-        <StyledContactDesc>{t('ns4:parag_1')}</StyledContactDesc>
-        <StyledContactDesc className="font-weight-bold py-3">{t('ns4:parag_2')}</StyledContactDesc>
+      {inView && <SectionTitle title={t('ns4:section_title')} isInview={inView} />}
+      <StyledContactDesc>{t('ns4:parag_1')}</StyledContactDesc>
+      <StyledContactDesc className="font-weight-bold py-3">{t('ns4:parag_2')}</StyledContactDesc>
       <Formik
         initialValues={{ email: '', name: '', message: '' }}
         validationSchema={ContactSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values: any, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+          handleSubmit(values)
             setSubmitting(false);
           }, 400);
         }}
@@ -65,8 +87,6 @@ const Contact = (): JSX.Element => {
           handleChange,
           submitForm,
           handleBlur,
-          handleSubmit,
-          isSubmitting,
           isValid
         }) => (
         <StyledFormWrapper>
@@ -82,9 +102,22 @@ const Contact = (): JSX.Element => {
               />
             </StyledLoaderWrap>
           )}
-          <form onSubmit={handleSubmit} className="d-flex flex-column">
-            <ContactField type="email" name="email" label={t('ns4:email')} />
-            <ContactField type="name" name="name" label={t('ns4:name')} />
+          {messageStatus ? <StyledContactLayover error={hasError}>
+            <FontAwesomeIcon icon={hasError ? icons.danger.static : faCheckCircle} size="3x" />
+            {hasError ? (
+              <div>{t('ns6:error')}</div>
+            ) : (
+              <>
+                <div>{t('ns6:success')}</div>
+                <div>{t('ns6:message_1')}</div>
+                <div>{t('ns6:message_2')}</div>
+              </>
+            )}
+          </StyledContactLayover> : null}
+
+          <form onSubmit={submitForm} className="d-flex flex-column">
+            <ContactField type="email" name="senderEmail" label={t('ns4:email')} />
+            <ContactField type="name" name="sender" label={t('ns4:name')} />
             <div className="d-flex flex-column w-100">
               {errors.message && touched.message && (
                 <StyledInvalidMessage className="invalid-message">

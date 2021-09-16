@@ -1,3 +1,6 @@
-export interface IMessageDto {
-  test: string;
+export interface IMessageDTO {
+  message: string;
+  sender: string;
+  senderEmail: string;
+  sentOn: string;
 }

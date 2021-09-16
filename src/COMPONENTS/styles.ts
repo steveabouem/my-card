@@ -483,3 +483,24 @@ export const StyledModalBottom = styled.div`
     padding-left: 10px;
   }
 `;
+
+export const StyledContactLayover = styled.div<{ error?: boolean}>`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${({error}) => error ? '#967676' : '#7e9676'};
+  background: ${({error}) => error ? '#ffbd8ef2' : '#d5ffd6f2'};
+  font-size: 1.3em;
+  transition: .3s;
+  animation: ${slideUp} .5s;
+  svg {
+    animation: ${slideText} 1s;
+  }
+`;

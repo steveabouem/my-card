@@ -1,15 +1,14 @@
+import axios from 'axios';
+import { IMessageDTO } from '../dto/message.dto';
+
 export default class MessageRepository {
   baseURL?: string;
 
   constructor() {
-    this.baseURL = process.env.FIREBASE_FUNCTIONS_BASE_URL;
+    this.baseURL = "https://us-central1-steve-a.cloudfunctions.net";
   }
 
-  // public sendMessageToDev = ({ mData:IMessageDto}): Promise<any> => {
-  //   try {
-  //     // const{ data } = await firebasecall, build it in /utils
-
-  //   }
-  // }
-
+  sendMessageToDev =  (mData:IMessageDTO) => {
+    return axios.post(`${this.baseURL}/saveLead`, {...mData});
+  }
 }
