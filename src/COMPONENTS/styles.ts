@@ -259,7 +259,7 @@ export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
 export const StyledFormWrapper = styled.div`
   padding: 10px 0;
   background: #eeeff9;
-  border: .5px solid grey;
+  box-shadow: 0px 0px 2px 3px #80808040;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
