@@ -13,7 +13,6 @@ import {
 import {IIconStates} from '../types';
 import {icons} from './icons';
 import {LocaleEnum} from "../../UTILS/i18n/";
-import {useLocation} from "react-router-dom";
 
 interface IIconLinkWrapProps {
   color: string;
@@ -48,17 +47,19 @@ const StyledLocaleButton = styled.div`
   }
 `;
 
-const Sidebar = ():JSX.Element => {
+const Navbar = ():JSX.Element => {
   const { t } = useTranslation(['ns3']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
-  const [isTransparent, setIsTransparent] = useState<boolean>(false);
+  // not using a boolean to prevent dom error
+  const [isTransparent, setIsTransparent] = useState<string | undefined>(undefined);
   const [offset, setOffset] = useState<number>(window.scrollY);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
   const isEnglish = currentLanguage === LocaleEnum.EN;
 
   const handleSectionIconClick = (id: SectionsEnum) => {
+    console.log(id)
     const target = document.getElementById(id as string);
 
     target?.scrollIntoView({behavior: 'smooth'});
@@ -80,7 +81,7 @@ const Sidebar = ():JSX.Element => {
   };
 
   const handleContainerScroll = useCallback(() => {
-    setIsTransparent(offset < window.scrollY);
+    setIsTransparent(offset < window.scrollY ? 'true' : undefined);
   }, [offset]);
 
 
@@ -98,8 +99,8 @@ const Sidebar = ():JSX.Element => {
       <StyledNavbarWrapper
         className="d-flex"
         opaque={isTransparent}
-        onMouseEnter={() => setIsTransparent(false)}
-        onMouseLeave={() => setIsTransparent(true)}
+        onMouseEnter={() => setIsTransparent(undefined)}
+        onMouseLeave={() => setIsTransparent('true')}
       >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
@@ -184,4 +185,4 @@ const IconLinkWrap = ({ iconStates, color, name, active, handleClick }: IIconLin
   );
 };
 
-export default Sidebar;
+export default Navbar;

@@ -202,7 +202,7 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledNavbarWrapper = styled(Row) <{opaque: boolean}>`
+export const StyledNavbarWrapper = styled(Row) <{opaque?: string}>`
   opacity: ${({opaque}) => opaque ? '.1' : '1'};
   justify-content: flex-end;
   align-items: center;

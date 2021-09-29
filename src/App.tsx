@@ -1,6 +1,6 @@
 import React from 'react';
 import PageContainer from './COMPONENTS/common/PageContainer';
-import Sidebar, { SectionsEnum } from './COMPONENTS/common/Sidebar';
+import Navbar, { SectionsEnum } from './COMPONENTS/common/Navbar';
 import Footer from './COMPONENTS/common/Footer';
 import { StyledPageContent } from './COMPONENTS/common';
 import LandingPage from './COMPONENTS/Landing/LandingPage';
@@ -11,7 +11,7 @@ import Work from './COMPONENTS/Work/Work';
 const AppLayout = ():JSX.Element => {
   return (
     <>
-      <Sidebar />
+      <Navbar />
       <PageContainer >
         <StyledPageContent id={SectionsEnum.HOME}>
           <LandingPage />
