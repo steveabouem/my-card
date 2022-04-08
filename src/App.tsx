@@ -7,8 +7,11 @@ import LandingPage from './COMPONENTS/Landing/LandingPage';
 import Contact from './COMPONENTS/Contact/Contact';
 import Bio from './COMPONENTS/Bio/Bio';
 import Work from './COMPONENTS/Work/Work';
+import Services from "./COMPONENTS/Services/Services";
 
 const AppLayout = ():JSX.Element => {
+  // /**LOGIC**/
+  // StyledPageContent ids below are targetted by Navbar to scroll to the relevant section
   return (
     <>
       <Navbar />
@@ -16,11 +19,14 @@ const AppLayout = ():JSX.Element => {
         <StyledPageContent id={SectionsEnum.HOME}>
           <LandingPage />
         </StyledPageContent>
-        <StyledPageContent id={SectionsEnum.BIO}>
-          <Bio />
+        <StyledPageContent id={SectionsEnum.SERVICES}>
+          <Services />
         </StyledPageContent>
         <StyledPageContent id={SectionsEnum.WORK}>
           <Work />
+        </StyledPageContent>
+        <StyledPageContent id={SectionsEnum.BIO}>
+          <Bio />
         </StyledPageContent>
         <StyledPageContent id={SectionsEnum.CONTACT}>
           <Contact />

@@ -15,7 +15,7 @@
   "pitch_review": {
     "header": "Promotion",
     "content": {
-      "reg": "NOus vous sommes reconnaissants d'avance de nous permettre d'utiliser le fruit de notre collaboration pour promouvoir notre entreprise.",
+      "reg": "Nous vous sommes reconnaissants d'avance de nous permettre d'utiliser le fruit de notre collaboration pour promouvoir notre entreprise.",
       "strong": "Nous n'utiliserons jamais les données réelles que vous gérerez avec votre site, uniquement son design."
     }
   },
@@ -40,7 +40,7 @@
       "header": "Hosting costs",
       "content": ""
     },
-    "ressources": {
+    "resources": {
       "header":  "Ressources externes",
       "content":  "If you have existing media, design, or even in some cases code base that you want us to start with, it can all be arranged. Any impact on the total cost will be disclosed before any implementation is started."
     }

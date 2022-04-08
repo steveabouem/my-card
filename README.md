@@ -1,3 +1,25 @@
+#TODO: 
+
+###THREE THEMES: 
+
+- *current*
+
+- *black&blue* (bg: linear-gradient(0deg,rgb(22 143 209) 29%,rgb(0 0 0) 100%), color: #e9f5ff, navbar: black)
+
+- *black&white*:
+
+### DESIGN SYSTEM
+- Common classes to future projects (standardization)
+- Repo for my most used componentsÉ (color swatch, user dropdown, etc...)
+- Same for styled components if I go with those
+
+### DOCUMENT YOUR CODE
+- `TODO` for every update or improvement required
+- `/**LOGIC**/` for code explanation
+
+### UPDATE README BEFORE DEPLOY
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

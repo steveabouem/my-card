@@ -29,24 +29,35 @@ const reveal = keyframes`
   }
 `;
 
+export const StyledLargeText = styled.div<{height?: string}>`
+  font-size: 1.5em;
+  height: ${({height}) => height ? height : 'initial'};
+`;
+
 export const StyledCenteredSection = styled.div`
+  position: absolute;
+  height: 100%;
   width: 70%;
   margin: auto;
-  padding: 1em;
+  padding: 5%;
 `;
 
 export const StyledHeader = styled.div`
   font-size: 30px;
   font-weight: 500;
+  width: 100%;
+  height: 11.9%;
+  max-height: 75px;
   animation: ${reveal} .5s linear;
-  border-bottom: 1px solid #eeeff9;
+  border-bottom: 2px solid #8cb1dc;
   overflow: hidden;
 `;
 
 export const StyledHeaderText = styled.div`
   width: 30%;
-  background: #eeeff9;
-  color: #556779;
+  height: calc(100% - 1px);
+  background: #14172d;
+  color: #eeeff9;
   border-top-right-radius: 5px;
   border-bottom: none;
   padding: 10px 0 10px 5px;
@@ -79,24 +90,26 @@ export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
 
 export const StyledPageContent = styled.div`
   color: white;
-  padding: 70px 275px 0 275px;
+  padding: 2% 20% 0 20%;
   max-height: 100vh;
   min-height: 100vh;
- 
+  color: #eeeff9;
+
   &#HOME {
     color: #1b5381;
-    background: rgb(97,107,206);
     background: linear-gradient(0deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
   }
-  &#BIO {
+  &#SERVICES {
     background: rgb(97,107,206);
   }
   &#WORK {
     background: rgb(97,107,206);
-    background: linear-gradient(180deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
+  }
+  &#BIO {
+    background: rgb(97,107,206);
   }
   &#CONTACT {
-    background: white;
+    background: linear-gradient(180deg,rgba(97,107,206,1) 88%,rgba(255,255,255,1) 100%);
   }
   
 `;
@@ -114,6 +127,7 @@ export const StyledFooter = styled.div`
   left: 0;
   width: 100%;
   padding: 0 15px;
+  z-index: 3;
 
   div {
     display: flex;

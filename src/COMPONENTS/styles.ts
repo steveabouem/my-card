@@ -48,13 +48,21 @@ const slideUp = keyframes`
 export const StyledPaddedContentWrap = styled.div`
   z-index: 1;
   margin: auto;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 2%
   }
 `;
 
 export const StyledContactDesc = styled.div`
   color: #1b5381;
+  font-size: 1.2em;
 `;
 
 export const StyledPreviewImage = styled.div`
@@ -161,7 +169,7 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   &.dark {
     background: #616bce;
     svg {
-      color: #002261;
+      color: #14172d;
     }
     &.nightmode {
       background: #616bce;
@@ -202,7 +210,7 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledNavbarWrapper = styled(Row) <{opaque?: string}>`
+export const StyledNavbarWrapper = styled(Row) <{opaque?: 0 | 1}>`
   opacity: ${({opaque}) => opaque ? '.1' : '1'};
   justify-content: flex-end;
   align-items: center;
@@ -212,7 +220,7 @@ export const StyledNavbarWrapper = styled(Row) <{opaque?: string}>`
   transition: .3s;
   padding: 5px;
   position: fixed;
-  background: white;
+  background: transparent;
   left: 0;
   top: 0;
   z-index: 11;
@@ -254,6 +262,15 @@ export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
   font-weight: 300;
   transform: translateX(${(props) => props.offset ? props.offset : '0'});
   animation: ${slideText} ${(props) => props.duration ? props.duration : '.7s'} linear;
+  display: inline-flex;
+  align-items: center;
+  
+  svg {
+    color: white;
+    animation: ${slideText} ${(props) => props.duration ? props.duration : '.7s'} linear;
+    font-size: .8em;
+    margin-right: .5em;
+  }
 `;
 
 export const StyledFormWrapper = styled.div`
@@ -387,7 +404,7 @@ export const StyledModalCurtain = styled.div`
 
 export const StyledModalWrap = styled.div`
   position: absolute;
-  height: 230px;
+  height: 40%;
   width: 40%;
   background: white;
   top: 40%;
@@ -397,19 +414,26 @@ export const StyledModalWrap = styled.div`
   padding: 1em;
   overflow: hidden;
   z-index: 2;
+  
   @media (max-width: 768px) {
     height: 45%;
     width: 60%;
     top: 30%;
     left: 20%;
   }
+  @media (min-width: 1500px), (min-height: 1600px) {
+    height: 15%;
+    width: 40%;
+    top: 40%;
+    left: 30%;
+  }
 `;
 
 export const StyledCloseIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 1%;
+  left: 1%;
   transition: .3s;
 `;
 
@@ -502,5 +526,38 @@ export const StyledContactLayover = styled.div<{ error?: boolean}>`
   animation: ${slideUp} .5s;
   svg {
     animation: ${slideText} 1s;
+  }
+`;
+
+export const StyledServiceCard = styled.div`
+  width: 30%;
+  background: rgb(30,33,64);
+  background: radial-gradient(circle, rgba(30,33,64,1) 0%, rgba(0,0,0,1) 100%);
+  padding: 0.5em;
+  text-align: center;
+  position: relative;
+  color: #1fabcc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  .header {
+    color: #eeeff9;
+    background: linear-gradient(360deg, rgb(58 196 225 / 21%) 0%, rgba(20,23,45,1) 24%);
+    height: 50px;
+    border-bottom: 0.5px solid #3ac4e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      margin-left: 1em;
+      transform: rotate(8deg);
+    }
+  }
+  
+  p {
+    margin: 0;
+    padding-top: 2em;
   }
 `;

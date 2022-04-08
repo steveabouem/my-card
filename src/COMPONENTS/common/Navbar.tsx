@@ -27,6 +27,8 @@ export enum  SectionsEnum {
   BIO = 'BIO',
   CONTACT = 'CONTACT',
   WORK = 'WORK',
+  SERVICES = 'SERVICES',
+  BILLING = 'BILLING'
 }
 
 const StyledLocaleButton = styled.div`
@@ -48,18 +50,16 @@ const StyledLocaleButton = styled.div`
 `;
 
 const Navbar = ():JSX.Element => {
-  const { t } = useTranslation(['ns3']);
+  const { t } = useTranslation(['ns3', 'ns7']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
-  // not using a boolean to prevent dom error
-  const [isTransparent, setIsTransparent] = useState<string | undefined>(undefined);
+  const [isTransparent, setIsTransparent] = useState<0 | 1>(0);
   const [offset, setOffset] = useState<number>(window.scrollY);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
   const isEnglish = currentLanguage === LocaleEnum.EN;
 
   const handleSectionIconClick = (id: SectionsEnum) => {
-    console.log(id)
     const target = document.getElementById(id as string);
 
     target?.scrollIntoView({behavior: 'smooth'});
@@ -81,7 +81,7 @@ const Navbar = ():JSX.Element => {
   };
 
   const handleContainerScroll = useCallback(() => {
-    setIsTransparent(offset < window.scrollY ? 'true' : undefined);
+    setIsTransparent(offset < window.scrollY ? 1 : 0);
   }, [offset]);
 
 
@@ -99,8 +99,8 @@ const Navbar = ():JSX.Element => {
       <StyledNavbarWrapper
         className="d-flex"
         opaque={isTransparent}
-        onMouseEnter={() => setIsTransparent(undefined)}
-        onMouseLeave={() => setIsTransparent('true')}
+        onMouseEnter={() => setIsTransparent(0)}
+        onMouseLeave={() => setIsTransparent(1)}
       >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
@@ -111,12 +111,20 @@ const Navbar = ():JSX.Element => {
           color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(t('ns3:bio'))}
-          active={isActive(SectionsEnum.BIO)}
+            handleClick={() => handleSectionIconClick(t('ns3:services'))}
+            active={isActive(SectionsEnum.SERVICES)}
 
-          iconStates={icons.profile}
-          name={SectionsEnum.BIO}
-          color="dark"
+            iconStates={icons.bell}
+            name={SectionsEnum.SERVICES}
+            color="dark"
+        />
+        <IconLinkWrap
+            handleClick={()=> handleSectionIconClick(t('ns3:billing'))}
+            active={isActive(SectionsEnum.BILLING)}
+
+            iconStates={icons.budget}
+            name={SectionsEnum.BILLING}
+            color="dark"
         />
         <IconLinkWrap
             handleClick={() => handleSectionIconClick(t('ns3:work'))}
@@ -144,15 +152,14 @@ const Navbar = ():JSX.Element => {
           name={SectionsEnum.FEEDBACK}
           color="dark"
         /> */}
-        {/* TODO: ditto */}
-        {/* <IconLinkWrap
-          handleClick={()=> handleSectionIconClick()}
-          active={isActive('/budget')}
+        <IconLinkWrap
+            handleClick={() => handleSectionIconClick(t('ns3:bio'))}
+            active={isActive(SectionsEnum.BIO)}
 
-          iconStates={icons.budget}
-          name={SectionsEnum.BUDGET}
-          color="dark"
-        /> */}
+            iconStates={icons.profile}
+            name={SectionsEnum.BIO}
+            color="dark"
+        />
           <StyledLocaleButton
             onClick={handleLanguageChange}
           >{isEnglish ? t('ns3:fr') : t('ns3:en')}</StyledLocaleButton>
