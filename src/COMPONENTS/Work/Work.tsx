@@ -35,8 +35,10 @@ interface IWorkItemModalProps {
 }
 
 const StyledProjectsWrap = styled.div`
+  height: 100%;
+  width: 100%;
   display: flex;
-  padding: .5rem 0;
+  padding: .5% 0;
   justify-content: space-between;
   @media (max-width: 768px) {
     &&& {
@@ -51,7 +53,6 @@ const StyledNavLink = styled.div`
   max-height: 200px;
   position: relative;
   width: 33%;
-  max-width: 33%;
   color: white;
   text-decoration: none;
   overflow: hidden;
@@ -68,7 +69,6 @@ const StyledNavLink = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     margin: 1rem 0;
-    max-width: 100%;
   }
 `;
 

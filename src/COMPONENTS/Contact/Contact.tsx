@@ -8,7 +8,6 @@ import {useTranslation} from "react-i18next";
 import '../../UTILS/i18n/config';
 import {
   StyledButtonOverlay,
-  StyledContactDesc,
   StyledField, StyledFormWrapper,
   StyledInvalidMessage,
   StyledLabel,
@@ -70,8 +69,8 @@ const Contact = (): JSX.Element => {
     <StyledPaddedContentWrap ref={ref} className="pb-4">
         <div className="h-100">
           {inView && <SectionTitle title={t('ns4:section_title')} isInview={inView} />}
-          <StyledContactDesc>{t('ns4:parag_1')}</StyledContactDesc>
-          <StyledContactDesc className="font-weight-bold py-3">{t('ns4:parag_2')}</StyledContactDesc>
+          <p>{t('ns4:parag_1')}</p>
+          <p className="font-weight-bold py-3">{t('ns4:parag_2')}</p>
           <Formik
             initialValues={{ email: '', name: '', message: '' }}
             validationSchema={ContactSchema}

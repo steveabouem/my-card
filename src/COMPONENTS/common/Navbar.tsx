@@ -41,7 +41,6 @@ const StyledLocaleButton = styled.div`
   align-items: center;
   justify-content: center;
   color: #002261;
-  transition: .3s;
   
   &:hover {
     background: white;
@@ -53,7 +52,7 @@ const Navbar = ():JSX.Element => {
   const { t } = useTranslation(['ns3', 'ns7']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
-  const [isTransparent, setIsTransparent] = useState<0 | 1>(0);
+  const [isTransparent, setIsTransparent] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(window.scrollY);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
@@ -81,7 +80,7 @@ const Navbar = ():JSX.Element => {
   };
 
   const handleContainerScroll = useCallback(() => {
-    setIsTransparent(offset < window.scrollY ? 1 : 0);
+    setIsTransparent(offset < window.scrollY);
   }, [offset]);
 
 
@@ -99,8 +98,8 @@ const Navbar = ():JSX.Element => {
       <StyledNavbarWrapper
         className="d-flex"
         opaque={isTransparent}
-        onMouseEnter={() => setIsTransparent(0)}
-        onMouseLeave={() => setIsTransparent(1)}
+        onMouseEnter={() => setIsTransparent(false)}
+        onMouseLeave={() => setIsTransparent(true)}
       >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
@@ -135,6 +134,14 @@ const Navbar = ():JSX.Element => {
             color="dark"
         />
         <IconLinkWrap
+            handleClick={() => handleSectionIconClick(t('ns3:bio'))}
+            active={isActive(SectionsEnum.BIO)}
+
+            iconStates={icons.profile}
+            name={SectionsEnum.BIO}
+            color="dark"
+        />
+        <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:contact'))}
           active={isActive(SectionsEnum.CONTACT)}
 
@@ -152,14 +159,6 @@ const Navbar = ():JSX.Element => {
           name={SectionsEnum.FEEDBACK}
           color="dark"
         /> */}
-        <IconLinkWrap
-            handleClick={() => handleSectionIconClick(t('ns3:bio'))}
-            active={isActive(SectionsEnum.BIO)}
-
-            iconStates={icons.profile}
-            name={SectionsEnum.BIO}
-            color="dark"
-        />
           <StyledLocaleButton
             onClick={handleLanguageChange}
           >{isEnglish ? t('ns3:fr') : t('ns3:en')}</StyledLocaleButton>

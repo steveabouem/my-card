@@ -89,28 +89,28 @@ export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
 `;
 
 export const StyledPageContent = styled.div`
-  color: white;
   padding: 2% 20% 0 20%;
   max-height: 100vh;
   min-height: 100vh;
   color: #eeeff9;
-
-  &#HOME {
-    color: #1b5381;
-    background: linear-gradient(0deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
-  }
-  &#SERVICES {
-    background: rgb(97,107,206);
-  }
-  &#WORK {
-    background: rgb(97,107,206);
-  }
-  &#BIO {
-    background: rgb(97,107,206);
-  }
-  &#CONTACT {
-    background: linear-gradient(180deg,rgba(97,107,206,1) 88%,rgba(255,255,255,1) 100%);
-  }
+  background: #1e2140;
+  
+  //&#HOME {
+  //  color: #eeeff9;
+  //  background: #1e2140;
+  //}
+  //&#SERVICES {
+  //  background: rgb(97,107,206);
+  //}
+  //&#WORK {
+  //  background: rgb(97,107,206);
+  //}
+  //&#BIO {
+  //  background: rgb(97,107,206);
+  //}
+  //&#CONTACT {
+  //  background: linear-gradient(180deg,rgba(97,107,206,1) 88%,rgba(255,255,255,1) 100%);
+  //}
   
 `;
 
@@ -118,7 +118,7 @@ export const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
   height: 30px;
-  background: white;
+  background: #ecf9fb;
   border-top: 1px solid #eeeff9;
   display: flex;
   justify-content: center;
@@ -136,9 +136,8 @@ export const StyledFooter = styled.div`
     a {
       color: #fc6557f5;
       margin: 0 10px;
-      transition: .3s;
       &:hover {
-        color: white!important;
+        color: #ecf9fb!important;
       }
       i {
         font-size: 20px;
