@@ -92,7 +92,7 @@ const Work = (): JSX.Element => {
 
   return (
     <StyledPaddedContentWrap ref={ref}>
-      {inView && <SectionTitle title={t('ns5:section_title')} isInview={inView} />}
+      {inView && <SectionTitle title={t('ns5:section_title')} isInView={inView} section="work" />}
       <StyledProjectsWrap>
         {workiItems.map((item: IWorkItem, index: number) => (
           <StyledNavLink key={`work-item-${index}`}>

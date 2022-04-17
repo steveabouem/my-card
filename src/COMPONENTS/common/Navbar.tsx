@@ -40,7 +40,8 @@ const StyledLocaleButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #002261;
+  background: radial-gradient(circle,rgba(30,33,64,1) 0%,rgba(0,0,0,1) 100%);
+  color: white;
   
   &:hover {
     background: white;
@@ -98,8 +99,8 @@ const Navbar = ():JSX.Element => {
       <StyledNavbarWrapper
         className="d-flex"
         opaque={isTransparent}
-        onMouseEnter={() => setIsTransparent(false)}
-        onMouseLeave={() => setIsTransparent(true)}
+        // onMouseEnter={() => setIsTransparent(false)}
+        // onMouseLeave={() => setIsTransparent(true)} unstable
       >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}

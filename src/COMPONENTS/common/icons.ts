@@ -21,7 +21,7 @@ import {
   faSignInAlt,
   faConciergeBell,
   faPiggyBank,
-  faMoneyBillAlt, faHardHat
+  faMoneyBillAlt, faHardHat, faWallet
 } from '@fortawesome/free-solid-svg-icons';
 import { IIcons } from '../types';
 
@@ -45,7 +45,8 @@ library.add(faPaperPlane,
   faConciergeBell,
   faPiggyBank,
   faMoneyBillAlt,
-  faHardHat
+  faHardHat,
+    faWallet
 );
 
 export const icons: IIcons = {
@@ -54,7 +55,7 @@ export const icons: IIcons = {
   testimonials: { static: faLaughBeam, hover: faGrinHearts },
   gallery: {static: faImage, hover: faImages},
   work: {static: faFolder, hover: faFolderOpen},
-  budget: { static: faPiggyBank, hover: faMoneyBillAlt },
+  budget: { static: faWallet, hover: faMoneyBillAlt },
   home: { static: faHome, hover: faHome },
   danger: { static: faExclamationCircle, hover: faExclamationCircle },
   close: { static: faTimes, hover: faTimesCircle },

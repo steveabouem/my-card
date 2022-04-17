@@ -11,13 +11,13 @@ for (let i = 50; i < 400; i++) {
   numbers.push(i)
 }
 
-const curtain = keyframes`
+export const curtain = keyframes`
   to {
     transform: translateY(${Math.round(Math.random() * numbers.length * -1)}vh) translateX(${Math.round(Math.random() * numbers.length * -1)}px);
   }
 `;
 
-const reveal = keyframes`
+export const reveal = keyframes`
   from {
     opacity: 0;
     transform: translateY(-5px);
@@ -26,6 +26,16 @@ const reveal = keyframes`
   to {
     opacity: 1;
     transform: none;
+  }
+`;
+
+export const explode = keyframes`
+  from {
+    transform: scale(0);
+  }
+  
+  to {
+    transform: scale(1);
   }
 `;
 
@@ -49,14 +59,27 @@ export const StyledHeader = styled.div`
   height: 11.9%;
   max-height: 75px;
   animation: ${reveal} .5s linear;
-  border-bottom: 2px solid #8cb1dc;
   overflow: hidden;
+  margin-bottom: .5em;
+  
+  &.billing, &.services, &.work {
+    //border-bottom: 1px solid #39c2df;
+    .loaded {
+      background: black;
+      color: #39c2df;
+      border: 1px solid #39c2df;
+    }
+  }
+  
+  &.contact, &.bio {
+    //border-bottom: 1px solid black;
+  }
 `;
 
 export const StyledHeaderText = styled.div`
   width: 30%;
   height: calc(100% - 1px);
-  background: #14172d;
+  background: black;
   color: #eeeff9;
   border-top-right-radius: 5px;
   border-bottom: none;
@@ -64,6 +87,7 @@ export const StyledHeaderText = styled.div`
   transform: translateY(100%);
   text-transform: uppercase;
   transition: .7s;
+  
   &.loaded {
     transform: none;
   }
@@ -93,31 +117,31 @@ export const StyledPageContent = styled.div`
   max-height: 100vh;
   min-height: 100vh;
   color: #eeeff9;
-  background: #1e2140;
   
-  //&#HOME {
-  //  color: #eeeff9;
-  //  background: #1e2140;
-  //}
-  //&#SERVICES {
-  //  background: rgb(97,107,206);
-  //}
-  //&#WORK {
-  //  background: rgb(97,107,206);
-  //}
-  //&#BIO {
-  //  background: rgb(97,107,206);
-  //}
-  //&#CONTACT {
-  //  background: linear-gradient(180deg,rgba(97,107,206,1) 88%,rgba(255,255,255,1) 100%);
-  //}
+  &#HOME {
+    background: rgb(58,196,225);
+    background: linear-gradient(159deg, rgba(58,196,225,1) 48%, rgba(0,0,0,1) 48%);
+  }
+  &#SERVICES, &#BILLING {
+    background: black;
+  }
+  &#WORK {
+    background: rgb(58,196,225);
+    background: linear-gradient(-159deg, rgba(0,0,0,1) 48%, rgba(58,196,225,1) 48%);
+  }
+  &#BIO {
+    background: rgba(58,196,225,1);
+  }
+  &#CONTACT {
+    background: rgb(58,196,225);
+    background: linear-gradient(159deg, rgba(58,196,225,1) 48%, rgba(0,0,0,1) 48%);  }
   
 `;
 
 export const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
-  height: 30px;
+  height: 5%;
   background: #ecf9fb;
   border-top: 1px solid #eeeff9;
   display: flex;

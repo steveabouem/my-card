@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import {Row} from 'react-bootstrap';
 import { Field } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {explode} from "./common";
 
 interface IStyledIconLinkProps {
   active: boolean;
@@ -98,14 +99,14 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
     svg {
       z-index: 2;
       font-size: 20px;
-      ${(props) => props.active ? 'color: #3ac4e1' : null};
+      ${(props) => props.active ? 'color: #ffc107' : null};
     }
   }
 
   &:hover {
     &&& {
       svg {
-        color: #3ac4e1;
+        color: #ffc107;
       }
     }
   }
@@ -203,15 +204,13 @@ export const StyledIconLinkOverlay = styled.div`
 `;
 
 export const StyledNavbarWrapper = styled(Row) <{opaque?: boolean}>`
-  opacity: ${({opaque}) => opaque ? '.1' : '1'};
   justify-content: flex-end;
   align-items: center;
-  height: 50px;
+  height: 5%;
   width: 100%;
   margin: 0;
   padding: 5px;
   position: fixed;
-  background: ${({opaque}) => opaque ? '#eeeff93d' : 'transparent'};
   left: 0;
   top: 0;
   z-index: 11;
@@ -266,19 +265,20 @@ export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
 
 export const StyledFormWrapper = styled.div`
   padding: 10px 0;
-  background: #14172d;
-  box-shadow: 0 0 2px 3px #39c2df36;
+  background: #000000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   width: 70%;
   margin: 10px auto;
-  
+  border-top: 1px solid #3ac4e1;
+  border-left: 1px solid #3ac4e1;
   
   ::-webkit-scrollbar {
     display: none;
   } 
+  
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -313,7 +313,7 @@ export const StyledField = styled(Field)`
   padding: 5px;
   margin: 10px auto;
   transition: .5s;
-  background: #4e579aab;
+  background: #1e2223bd;
 
   &.message {
     height: 150px;
@@ -321,8 +321,7 @@ export const StyledField = styled(Field)`
   }
 
   &.invalid {
-    border-color: #04093c;
-    background: #52456b;
+    background: #12262a;
   }
 `;
 
@@ -379,8 +378,8 @@ export const StyledButtonOverlay = styled.div`
   }
   
   .hovered {
-    background: #32a6c1;
-    color: #d2e3f9;
+    background: #ffc107;
+    color: black;
   }
 
   .static {
@@ -522,7 +521,7 @@ export const StyledContactLayover = styled.div<{ error?: boolean}>`
   }
 `;
 
-export const StyledServiceCard = styled.div`
+export const StyledDetailsCard = styled.div`
   width: 30%;
   background: rgb(30,33,64);
   background: radial-gradient(circle, rgba(30,33,64,1) 0%, rgba(0,0,0,1) 100%);
@@ -530,10 +529,12 @@ export const StyledServiceCard = styled.div`
   text-align: center;
   position: relative;
   color: #1fabcc;
+  border: 1px solid #1fabcc;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  
+  animation: ${explode} .6s ease;
+
   .header {
     color: #eeeff9;
     background: linear-gradient(360deg, rgb(58 196 225 / 21%) 0%, rgba(20,23,45,1) 24%);
@@ -546,11 +547,53 @@ export const StyledServiceCard = styled.div`
     svg {
       margin-left: 1em;
       transform: rotate(8deg);
+      color: #ffc107;
     }
   }
   
   p {
     margin: 0;
     padding-top: 2em;
+  }
+`;
+
+export const StyledPricingBlockContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 60%;
+  margin: auto;
+  padding: 1em 0;
+`;
+
+export const StyledBillingBlock = styled.div`
+  background: black;
+  text-align: center;
+  padding: .5em;
+  border: 0.5px solid #2d8ea7;
+  box-shadow: 0.5px 1px #168fc0;
+  animation: ${explode} .6s ease;
+  
+  .header {
+    color: #eeeff9;
+    background: linear-gradient(360deg, rgb(58 196 225 / 21%) 0%, rgba(20,23,45,1) 24%);
+    height: 50px;
+    border-bottom: 0.5px solid #3ac4e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-left: 1em;
+      transform: rotate(-8deg);
+      color: #ffc107;
+    }
+  }
+  &:nth-of-type(1), &:nth-of-type(3) {
+    width: 40%;
+    transform: translateY(16px);
+  }
+  
+  &:nth-of-type(2) {
+    z-index: 1;
   }
 `;

@@ -13,7 +13,7 @@ const Bio = (): JSX.Element => {
   return (
     <StyledPaddedContentWrap>
       <div ref={ref} className="h-100">
-        {inView && <SectionTitle title={t('ns1:section_title')} isInview={inView} />}
+        {inView && <SectionTitle title={t('ns1:section_title')} isInView={inView} section="bio" />}
         <StyledLargeText height="15%">{t('ns1:parag_1')}</StyledLargeText>
         <StyledLargeText height="15%">{t('ns1:parag_2')}</StyledLargeText>
         <StyledLargeText height="15%">{t('ns1:parag_3')}</StyledLargeText>

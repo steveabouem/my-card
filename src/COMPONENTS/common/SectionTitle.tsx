@@ -3,10 +3,11 @@ import { StyledHeader, StyledHeaderText } from './styles';
 
 interface ISectionTitleProps {
   title: string;
-  isInview: boolean;
+  isInView: boolean;
+  section?: string;
 }
 
-const SectionTitle = ({ title, isInview }: ISectionTitleProps): JSX.Element => {
+const SectionTitle = ({ title, isInView, section }: ISectionTitleProps): JSX.Element => {
   const [inView, setInView] = useState<boolean>(false);
 
   setTimeout(() => {
@@ -14,14 +15,14 @@ const SectionTitle = ({ title, isInview }: ISectionTitleProps): JSX.Element => {
   }, 300);
 
   useEffect(() => {
-    if (!isInview) {
+    if (!isInView) {
       return;
     }
     
   });
 
   return (
-    <StyledHeader>
+    <StyledHeader className={section}>
       <StyledHeaderText className={inView ? 'loaded' : ''}>{title.toUpperCase()}</StyledHeaderText>
     </StyledHeader>
   );

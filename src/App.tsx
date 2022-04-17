@@ -8,32 +8,36 @@ import Contact from './COMPONENTS/Contact/Contact';
 import Bio from './COMPONENTS/Bio/Bio';
 import Work from './COMPONENTS/Work/Work';
 import Services from "./COMPONENTS/Services/Services";
+import Billing from "./COMPONENTS/Billing/Billing";
 
 const AppLayout = ():JSX.Element => {
   // /**LOGIC**/
   // StyledPageContent ids below are targetted by Navbar to scroll to the relevant section
   return (
-    <>
-      <Navbar />
-      <PageContainer >
-        <StyledPageContent id={SectionsEnum.HOME}>
-          <LandingPage />
-        </StyledPageContent>
-        <StyledPageContent id={SectionsEnum.SERVICES}>
-          <Services />
-        </StyledPageContent>
-        <StyledPageContent id={SectionsEnum.WORK}>
-          <Work />
-        </StyledPageContent>
-        <StyledPageContent id={SectionsEnum.BIO}>
-          <Bio />
-        </StyledPageContent>
-        <StyledPageContent id={SectionsEnum.CONTACT}>
-          <Contact />
-        </StyledPageContent>
+      <>
+        <Navbar />
+          <PageContainer >
+            <StyledPageContent id={SectionsEnum.HOME}>
+              <LandingPage />
+            </StyledPageContent>
+            <StyledPageContent id={SectionsEnum.SERVICES}>
+              <Services />
+            </StyledPageContent>
+            <StyledPageContent id={SectionsEnum.BILLING}>
+              <Billing />
+            </StyledPageContent>
+            <StyledPageContent id={SectionsEnum.WORK}>
+              <Work />
+            </StyledPageContent>
+            <StyledPageContent id={SectionsEnum.BIO}>
+              <Bio />
+            </StyledPageContent>
+            <StyledPageContent id={SectionsEnum.CONTACT}>
+              <Contact />
+            </StyledPageContent>
+          </PageContainer>
         <Footer />
-      </PageContainer>
-    </>
+      </>
   );
 };
 
