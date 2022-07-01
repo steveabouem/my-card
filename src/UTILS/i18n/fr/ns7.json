@@ -1,0 +1,48 @@
+{
+  "section_title": "Nos services",
+  "parag_1": "Nous offrons des solutions webs personalisées aux clients individuels et petites entreprises. Portfolio, mariage, boutique en ligne ou gestion d'inventaires, tout est fait sur mesure selon vos spécifications.",
+  "parag_2": "Le site ou la platteforme seront construits de toutes pièces. Vous avez également le choix d'opter pour l'usage d'un modèle existant.",
+  "parag_3": "Nous n'utilisont pas Wordpress, ni d'autre systeme de gestion de contenu.",
+  "parag_4": "Nous sommes basés au Canada, mais pouvons vous servir où que vous soyez, à condition que vous aillez un compte Paypal.",
+  "pitch_respve": {
+    "header": "Designs adaptés",
+    "content": "Nos sites sont conçus pour fonctionner parfaitement sur toutes tailles d'écran et sur tous les principaux navigateurs."
+  },
+  "pitch_edit": {
+    "header": "Service clientèle",
+    "content": "Nous sommes joignables 7/7 pour résoudre tout problème éventuel de fonctionnement. Ce processus est souvent gratuit, mais pourrait occasionner des frais ponctuels. Vous ne serez, par contre jamais surpris. NOus offrons également les changements illimités (texte, couleur, images etc...)."
+  },
+  "pitch_review": {
+    "header": "Promotion",
+    "content": {
+      "reg": "Nous vous sommes reconnaissants d'avance de nous permettre d'utiliser le fruit de notre collaboration pour promouvoir notre entreprise.",
+      "strong": "Nous n'utiliserons jamais les données réelles que vous gérerez avec votre site, uniquement son design."
+    }
+  },
+  "pricing": {
+    "header": "Où va votre argent",
+    "intro": "Nos tarifs couvrent non seulement les heures de travail, mais aussi l'hébergement et autres services optionnels. En termes de paiement, vos options sont les suivantes: ",
+    "frequency": {
+      "weekly": {
+        "header": "Paiement hebdo",
+        "content": "La fréquence la plus courte, mais aussi le plus petit montant à débourser à la fois."
+      },
+      "monthly": {
+        "header":  "Paiement mensuel",
+        "content":  "Plus couramment utilisé, car il vous permet de l'inclure aisément dans votre budget existant, la plupart de vos autres factures étant également sur une base mensuelle."
+      },
+      "once": {
+        "header":  "Paiement unique",
+        "content":  "Tout à fait aborable vu nos prix. Vous vous libérez d'une dépense courante, tout en bénéficiant toujours du service client pour les bugs."
+      }
+    },
+    "hosting": {
+      "header": "Hosting costs",
+      "content": ""
+    },
+    "resources": {
+      "header":  "Ressources externes",
+      "content":  "If you have existing media, design, or even in some cases code base that you want us to start with, it can all be arranged. Any impact on the total cost will be disclosed before any implementation is started."
+    }
+  }
+}

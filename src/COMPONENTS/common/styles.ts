@@ -11,13 +11,13 @@ for (let i = 50; i < 400; i++) {
   numbers.push(i)
 }
 
-const curtain = keyframes`
+export const curtain = keyframes`
   to {
     transform: translateY(${Math.round(Math.random() * numbers.length * -1)}vh) translateX(${Math.round(Math.random() * numbers.length * -1)}px);
   }
 `;
 
-const reveal = keyframes`
+export const reveal = keyframes`
   from {
     opacity: 0;
     transform: translateY(-5px);
@@ -29,30 +29,65 @@ const reveal = keyframes`
   }
 `;
 
+export const explode = keyframes`
+  from {
+    transform: scale(0);
+  }
+  
+  to {
+    transform: scale(1);
+  }
+`;
+
+export const StyledLargeText = styled.div<{height?: string}>`
+  font-size: 1.5em;
+  height: ${({height}) => height ? height : 'initial'};
+`;
+
 export const StyledCenteredSection = styled.div`
+  position: absolute;
+  height: 100%;
   width: 70%;
   margin: auto;
-  padding: 1em;
+  padding: 5%;
 `;
 
 export const StyledHeader = styled.div`
   font-size: 30px;
   font-weight: 500;
+  width: 100%;
+  height: 11.9%;
+  max-height: 75px;
   animation: ${reveal} .5s linear;
-  border-bottom: 1px solid #eeeff9;
   overflow: hidden;
+  margin-bottom: .5em;
+  
+  &.pricing, &.services, &.work {
+    //border-bottom: 1px solid #39c2df;
+    .loaded {
+      background: black;
+      color: #39c2df;
+      border: 1px solid #39c2df;
+    }
+  }
+  
+  &.contact, &.bio {
+    //border-bottom: 1px solid black;
+  }
 `;
 
 export const StyledHeaderText = styled.div`
   width: 30%;
-  background: #eeeff9;
-  color: #556779;
+  height: calc(100% - 1px);
+  background: black;
+  color: #eeeff9;
   border-top-right-radius: 5px;
   border-bottom: none;
   padding: 10px 0 10px 5px;
   transform: translateY(100%);
   text-transform: uppercase;
   transition: .7s;
+  
   &.loaded {
     transform: none;
   }
@@ -78,34 +113,36 @@ export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
 `;
 
 export const StyledPageContent = styled.div`
-  color: white;
-  padding: 70px 275px 0 275px;
+  padding: 2% 15% 0 15%;
   max-height: 100vh;
   min-height: 100vh;
- 
+  color: #eeeff9;
+  
   &#HOME {
-    color: #1b5381;
-    background: rgb(97,107,206);
-    background: linear-gradient(0deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
+    background: rgb(58,196,225);
+    background: linear-gradient(159deg, rgba(58,196,225,1) 48%, rgba(0,0,0,1) 48%);
   }
-  &#BIO {
-    background: rgb(97,107,206);
+  &#SERVICES, &#PRICING {
+    background: black;
   }
   &#WORK {
-    background: rgb(97,107,206);
-    background: linear-gradient(180deg, rgba(97,107,206,1) 29%, rgba(255,255,255,1) 100%);
+    background: rgb(58,196,225);
+    background: linear-gradient(-159deg, rgba(0,0,0,1) 48%, rgba(58,196,225,1) 48%);
+  }
+  &#BIO {
+    background: rgba(58,196,225,1);
   }
   &#CONTACT {
-    background: white;
-  }
+    background: rgb(58,196,225);
+    background: linear-gradient(159deg, rgba(58,196,225,1) 48%, rgba(0,0,0,1) 48%);  }
   
 `;
 
 export const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
-  height: 30px;
-  background: white;
+  height: 5%;
+  background: #ecf9fb;
   border-top: 1px solid #eeeff9;
   display: flex;
   justify-content: center;
@@ -114,6 +151,7 @@ export const StyledFooter = styled.div`
   left: 0;
   width: 100%;
   padding: 0 15px;
+  z-index: 3;
 
   div {
     display: flex;
@@ -122,9 +160,8 @@ export const StyledFooter = styled.div`
     a {
       color: #fc6557f5;
       margin: 0 10px;
-      transition: .3s;
       &:hover {
-        color: white!important;
+        color: #ecf9fb!important;
       }
       i {
         font-size: 20px;

@@ -1,20 +1,6 @@
 html {
   font-family: "Poppins", sans-serif;
-  ::-webkit-scrollbar {
-    width: 10px;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: white;
-    border-radius: 10px;
-    border: .5px solid rgba(128, 128, 128, 0.192);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #455673;
-    border-radius: 10px;
-  }
+  overflow: hidden;
 
   // ::-webkit-scrollbar-thumb:hover {
   //   background:  rgb(55, 128, 211); 
@@ -24,15 +10,13 @@ html {
   body {
     margin: 0;
     color: #1b5381;
+    * {
+      transition: .2s;
+    }
     #root {
       overflow: hidden;
       height: 100vh;
       max-height: 100vh;
-      background: #f5f3eb73;
-      &.nightmode {
-        background: #040117f2;
-
-      }
     }
   }
 }

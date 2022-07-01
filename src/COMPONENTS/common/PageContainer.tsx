@@ -11,8 +11,25 @@ interface IPageContainerProps {
 const StyledContainer = styled(Container)`
   margin-top: 0;
   padding: 0;
-  height: 100%;
+  bottom: 5%;
+  height: 95%;
   position: absolute;
+
+  overflow: hidden scroll;
+  ::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: black;
+    border: .5px solid rgba(128, 128, 128, 0.192);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffc107;
+    border-radius: 10px;
+  }
 `;
 
 const PageContainer = ({ callback, children }: IPageContainerProps): JSX.Element => {
@@ -25,7 +42,7 @@ const PageContainer = ({ callback, children }: IPageContainerProps): JSX.Element
 
     callback();
   };
-  
+
   return (
     <StyledContainer fluid>
       {loading

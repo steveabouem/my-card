@@ -1,0 +1,30 @@
+{
+  "section_title": "Pricing",
+  "option_1": {
+    "header": "Lightweight",
+    "content": {
+      "parag_1": "Ideal for small scale applications (blogs, wedding websites, etc...).",
+      "parag_2": "Any external template will be charged directly to the customer.",
+      "parag_3": "Hosting not included.",
+      "c2a": "Bug fixes and updates charged by the task."
+    }
+  },
+  "option_2": {
+    "header": "Standard",
+    "content": {
+      "parag_1": "The right choice for websites with a bit more traffic.",
+      "parag_2": "Online stores are a prime candidate for this package.",
+      "parag_3": "1 year free hosting included in price.",
+      "c2a": "Updates and bug fixes free for the first 3 months."
+    }
+  },
+  "option_3": {
+    "header": "Premium",
+    "content": {
+      "parag_1": "Ideal for fully customized solutions.",
+      "parag_2": "If you have use cases that no CMS/website has provided you with what you need, this is the package to go for.",
+      "parag_3": "Hosting, .",
+      "c2a": "1 year hosting and bug fixes for free. 24/7 support."
+    }
+  }
+}

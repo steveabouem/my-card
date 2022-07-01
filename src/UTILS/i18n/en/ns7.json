@@ -1,0 +1,48 @@
+{
+  "section_title": "Our services",
+  "parag_1": "We offer custom made web solutions for small businesses and individual clients. Design portfolio, online store, wedding website or inventory management platform, we will build what you need and swag it up.",
+  "parag_2": "The website or platform is built from scratch. alternatively, you can choose an existing template to be integrated.",
+  "parag_3": "We do not use CMS frameworks like WordPress or Magnolia. Every component is coded to do exactly what you want it to do.",
+  "parag_4": "We are based in Canada but, you can contact us from anywhere in the world: as long as you have a Paypal account, payment is not an issue.",
+  "pitch_respve": {
+    "header": "All devices/Cross browsers",
+    "content": "Our products are always responsive, and as such are fully functional on all devices and browsers."
+  },
+  "pitch_edit": {
+    "header": "Product maintenance",
+    "content": "We are reachable 7 days a week to fix any issues you may encounter. Bug fixing will more often than not be free of charge to you. We also provide site edits (text, colors, buttons and more)."
+  },
+  "pitch_review": {
+    "header": "Share the love",
+    "content": {
+      "reg": "We greatly appreciate being able to showcase our work with you in our upcoming gallery.",
+      "strong": "The showcase is of course strictly presentational: none of your actual data is used, just the layout we build for you and dummy data of our own making."
+    }
+  },
+  "pricing": {
+    "header": "What you pay for",
+    "intro": "Our pricing accounts not only for the hours of coding, but also the hosting and the optional analytics features. You can chose between the following",
+    "frequency": {
+      "weekly": {
+        "header": "Weekly payment",
+        "content": "The shortest frequency, but also the smallest amount that leaves your wallet at the time."
+      },
+      "monthly": {
+        "header":  "Monthly payment",
+        "content":  "More commonly used, as it allows you to seamlessly include it in your existing budget. Most of your other bills are monthly as well."
+      },
+      "once": {
+        "header":  "Single payment",
+        "content":  "One and done. You still get customer service for bugs"
+      }
+    },
+    "hosting": {
+      "header": "Hosting costs",
+      "content": ""
+    },
+    "resources": {
+      "header":  "External resources",
+      "content":  "If you have existing media, design, or even in some cases code base that you want us to start with, it can all be arranged. Any impact on the total cost will be disclosed before any implementation is started."
+    }
+  }
+}

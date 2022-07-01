@@ -1,7 +1,9 @@
 
 {
   "home": "HOME",
+  "services": "SERVICES",
   "bio": "BIO",
+  "pricing": "PRICING",
   "contact": "CONTACT",
   "work": "WORK",
   "fr": "FR",

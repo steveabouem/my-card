@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import {Row} from 'react-bootstrap';
 import { Field } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {explode} from "./common";
 
 interface IStyledIconLinkProps {
   active: boolean;
@@ -26,12 +27,11 @@ const slideText = keyframes`
 
 const slideOut = keyframes`
   from {
-    color: white;
+    color: #3ac4e1;
   }
   
   to {
-    transform: translateY(130%);
-    color: #4a72ad;
+    transform: translateY(60%);
   }
 `;
 
@@ -48,13 +48,16 @@ const slideUp = keyframes`
 export const StyledPaddedContentWrap = styled.div`
   z-index: 1;
   margin: auto;
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 2%
   }
-`;
-
-export const StyledContactDesc = styled.div`
-  color: #1b5381;
 `;
 
 export const StyledPreviewImage = styled.div`
@@ -74,7 +77,6 @@ export const StyledBgOverlay = styled.div<IStyledBgOverlayProps>`
   font-weight: 600;
   background: ${props => props.color || 'black'};
   color: #ecf9fb;
-  transition: .3s;
   bottom: 0;
   font-size: 2rem;
   animation: ${slideUp} .7s;
@@ -88,23 +90,23 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
+  padding: 15px;
   position: relative;
-  transition: .3s;
   width: 30px;
+  ${(props) => props.active ? 'border-bottom: 2px solid #c9e5f9' : null};
+  
   &&& {
     svg {
       z-index: 2;
       font-size: 20px;
-      transition: .3s;
-      ${(props) => props.active ? 'color: white' : null};
+      ${(props) => props.active ? 'color: #ffc107' : null};
     }
   }
 
   &:hover {
     &&& {
       svg {
-        color: white;
+        color: #ffc107;
       }
     }
   }
@@ -112,19 +114,17 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
     &&& {
       height: 30px;
       margin: 0 10px;
-      border: .5px solid white;
+      border: .5px solid #ecf9fb;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 0;
       position: relative;
-      transition: .3s;
       width: 40px;
       svg {
         z-index: 2;
         font-size: 25px;
-        transition: .3s;
-        color: white;
+        color: #ecf9fb;
       }
     }
   }
@@ -159,9 +159,9 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
     }
   }
   &.dark {
-    background: #616bce;
+    background: radial-gradient(circle,rgba(30,33,64,1) 0%,rgba(0,0,0,1) 100%); 
     svg {
-      color: #002261;
+      color: #eeeff9;
     }
     &.nightmode {
       background: #616bce;
@@ -173,7 +173,8 @@ export const StyledIconLink = styled.div<IStyledIconLinkProps>`
 `;
 
 export const StyledIconLinkOverlay = styled.div`
-  height: 100%;
+  height: 50%;
+  top: 50%;
   width: 100%;
   position: absolute;
   border-radius: 5px;
@@ -202,17 +203,14 @@ export const StyledIconLinkOverlay = styled.div`
   }
 `;
 
-export const StyledNavbarWrapper = styled(Row) <{opaque: boolean}>`
-  opacity: ${({opaque}) => opaque ? '.1' : '1'};
+export const StyledNavbarWrapper = styled(Row) <{opaque?: boolean}>`
   justify-content: flex-end;
   align-items: center;
-  height: 50px;
+  height: 5%;
   width: 100%;
   margin: 0;
-  transition: .3s;
-  padding: 5px;
+  padding: 5px 30px 5px;
   position: fixed;
-  background: white;
   left: 0;
   top: 0;
   z-index: 11;
@@ -228,13 +226,13 @@ export const StyledIconLinkName = styled.span`
   z-index: 1;
   font-size: 15px;
   align-items: center;
-  color: white;
+  color: #ecf9fb;
   font-weight: bolder;
   text-align: center;
   display: flex;
   justify-content: flex-start;
   width: 40px;
-  animation: ${slideOut} .5s linear;
+  animation: ${slideOut} .2s linear;
   animation-fill-mode: forwards;
   margin-left: .5em;
 `;
@@ -250,27 +248,37 @@ export const StyledLinkInitial = styled.div`
 `;
 
 export const StyledSlidingText = styled.div<IStyledSlidingTextProps>`
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-weight: 300;
   transform: translateX(${(props) => props.offset ? props.offset : '0'});
   animation: ${slideText} ${(props) => props.duration ? props.duration : '.7s'} linear;
+  display: inline-flex;
+  align-items: center;
+  
+  svg {
+    color: #ecf9fb;
+    animation: ${slideText} ${(props) => props.duration ? props.duration : '.7s'} linear;
+    font-size: .8em;
+    margin-right: .5em;
+  }
 `;
 
 export const StyledFormWrapper = styled.div`
   padding: 10px 0;
-  background: #eeeff9;
-  border: .5px solid grey;
+  background: #000000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   width: 70%;
   margin: 10px auto;
-  
+  border-top: 1px solid #3ac4e1;
+  border-left: 1px solid #3ac4e1;
   
   ::-webkit-scrollbar {
     display: none;
   } 
+  
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -292,35 +300,41 @@ export const StyledLabel = styled.label`
   width: 75%;
   margin: auto;
   font-weight: 500;
-  color: #545454b5;
+  //color: #545454b5;
 `;
 
 export const StyledField = styled(Field)`
   width: 75%;
+  resize: none;
   height: 30px;
-  color: #002261;
+  color: #b0b4dc;
   border: .5px solid #4f505d;
   border-radius: 5px;
   padding: 5px;
   margin: 10px auto;
   transition: .5s;
+  background: #1e2223bd;
+
   &.message {
     height: 150px;
+    max-height: 150px;
   }
+
   &.invalid {
-    border-color: #04093c;
-    background: #fff70a40;
+    background: #12262a;
   }
 `;
 
 export const StyledInvalidMessage = styled.div`
   text-align: center;
-  margin: auto;
   padding: 5px;
   color: #04093c;
   background: #fff70a;
   border-radius: 5px;
   font-weight: 600;
+  position: absolute;
+  right: 13%;
+  font-size: .8em;
 `;
 
 export const StyledButtonOverlay = styled.div`
@@ -330,7 +344,6 @@ export const StyledButtonOverlay = styled.div`
   cursor: pointer;
   margin: auto;
   border-radius: 5px;
-  transition: .3s;
   border: 1px solid;
 
   &:hover {
@@ -355,7 +368,6 @@ export const StyledButtonOverlay = styled.div`
     width: 100%;
     margin: auto;
     text-align: center;
-    transition: .3s;
     font-size: 20px;
     border-radius: 5px;
     .top {
@@ -366,13 +378,13 @@ export const StyledButtonOverlay = styled.div`
   }
   
   .hovered {
-    background: white;
-    color: #616bce;
+    background: #ffc107;
+    color: white;
   }
 
   .static {
-    color: white;
-    background: #616bce;
+    color: #d2e3f9;
+    background: black;
   }
 `;
 
@@ -387,9 +399,9 @@ export const StyledModalCurtain = styled.div`
 
 export const StyledModalWrap = styled.div`
   position: absolute;
-  height: 230px;
+  height: 40%;
   width: 40%;
-  background: white;
+  background: #ecf9fb;
   top: 40%;
   left: 30%;
   border-top-right-radius: 10px;
@@ -397,20 +409,26 @@ export const StyledModalWrap = styled.div`
   padding: 1em;
   overflow: hidden;
   z-index: 2;
+  
   @media (max-width: 768px) {
     height: 45%;
     width: 60%;
     top: 30%;
     left: 20%;
   }
+  @media (min-width: 1500px), (min-height: 1600px) {
+    height: 15%;
+    width: 40%;
+    top: 40%;
+    left: 30%;
+  }
 `;
 
 export const StyledCloseIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
   position: absolute;
-  top: 5px;
-  left: 5px;
-  transition: .3s;
+  top: 1%;
+  left: 1%;
 `;
 
 export const StyledLinkBanner = styled.div`
@@ -426,7 +444,7 @@ export const StyledLinkBanner = styled.div`
   right: -67px;
   top: -14px;
   width: 180px;
-  background-color: white;
+  background-color: #ecf9fb;
   color: #616bce;
   box-shadow: 0 0 3px rgba(0,0,0,0.3);
   border: 1px solid #474754;
@@ -444,7 +462,6 @@ export const StyledBannerSlider = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  transition: .3s;
   height: 0;
   opacity: 0;
   &.active {
@@ -498,9 +515,85 @@ export const StyledContactLayover = styled.div<{ error?: boolean}>`
   color: ${({error}) => error ? '#967676' : '#7e9676'};
   background: ${({error}) => error ? '#ffbd8ef2' : '#d5ffd6f2'};
   font-size: 1.3em;
-  transition: .3s;
   animation: ${slideUp} .5s;
   svg {
     animation: ${slideText} 1s;
+  }
+`;
+
+export const StyledDetailsCard = styled.div`
+  width: 30%;
+  background: rgb(30,33,64);
+  background: radial-gradient(circle, rgba(30,33,64,1) 0%, rgba(0,0,0,1) 100%);
+  padding: 0.5em;
+  text-align: center;
+  position: relative;
+  color: #1fabcc;
+  border: 1px solid #1fabcc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: ${explode} .6s ease;
+
+  .header {
+    color: #eeeff9;
+    background: linear-gradient(360deg, rgb(58 196 225 / 21%) 0%, rgba(20,23,45,1) 24%);
+    height: 50px;
+    border-bottom: 0.5px solid #3ac4e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      margin-left: 1em;
+      transform: rotate(8deg);
+      color: #ffc107;
+    }
+  }
+  
+  p {
+    margin: 0;
+    padding-top: 2em;
+  }
+`;
+
+export const StyledPricingBlockContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 60%;
+  margin: auto;
+  padding: 1em 0;
+`;
+
+export const StyledPricingBlock = styled.div`
+  background: black;
+  text-align: center;
+  padding: .5em;
+  border: 0.5px solid #2d8ea7;
+  box-shadow: 0.5px 1px #168fc0;
+  animation: ${explode} .6s ease;
+  
+  .header {
+    color: #eeeff9;
+    background: linear-gradient(360deg, rgb(58 196 225 / 21%) 0%, rgba(20,23,45,1) 24%);
+    height: 50px;
+    border-bottom: 0.5px solid #3ac4e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-left: 1em;
+      transform: rotate(-8deg);
+      color: #ffc107;
+    }
+  }
+  &:nth-of-type(1), &:nth-of-type(3) {
+    width: 40%;
+    transform: translateY(16px);
+  }
+  
+  &:nth-of-type(2) {
+    z-index: 1;
   }
 `;

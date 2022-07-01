@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import '../../UTILS/i18n/config';
@@ -13,7 +13,6 @@ import {
 import {IIconStates} from '../types';
 import {icons} from './icons';
 import {LocaleEnum} from "../../UTILS/i18n/";
-import {useLocation} from "react-router-dom";
 
 interface IIconLinkWrapProps {
   color: string;
@@ -28,6 +27,8 @@ export enum  SectionsEnum {
   BIO = 'BIO',
   CONTACT = 'CONTACT',
   WORK = 'WORK',
+  SERVICES = 'SERVICES',
+  PRICING = 'PRICING'
 }
 
 const StyledLocaleButton = styled.div`
@@ -39,8 +40,8 @@ const StyledLocaleButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #002261;
-  transition: .3s;
+  background: radial-gradient(circle,rgba(30,33,64,1) 0%,rgba(0,0,0,1) 100%);
+  color: white;
   
   &:hover {
     background: white;
@@ -48,17 +49,18 @@ const StyledLocaleButton = styled.div`
   }
 `;
 
-const Sidebar = ():JSX.Element => {
-  const { t } = useTranslation(['ns3']);
+const Navbar = ():JSX.Element => {
+  const { t } = useTranslation(['ns3', 'ns7']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
-  const [isTransparent, setIsTransparent] = useState<boolean>(false);
-  const [offset, setOffset] = useState<number>(window.scrollY);
+  // const [isTransparent, setIsTransparent] = useState<boolean>(false);
+  // const [offset, setOffset] = useState<number>(window.scrollY);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
   const isEnglish = currentLanguage === LocaleEnum.EN;
 
   const handleSectionIconClick = (id: SectionsEnum) => {
+    console.log(id)
     const target = document.getElementById(id as string);
 
     target?.scrollIntoView({behavior: 'smooth'});
@@ -74,32 +76,30 @@ const Sidebar = ():JSX.Element => {
           // window.location.assign('/' + lang)
           setCurrentLanguage(lang);
         })
-        .catch((e) => {
-          console.log(e)
-        });
+        // .catch((e) => {
+        //
+        // });
   };
 
-  const handleContainerScroll = useCallback(() => {
-    setIsTransparent(offset < window.scrollY);
-  }, [offset]);
+  // const handleContainerScroll = useCallback(() => {
+  //   setIsTransparent(offset < window.scrollY);
+  // }, [offset]);
 
 
-  useEffect(() => {
-    setOffset(window.scrollY);
-    window.addEventListener("scroll", handleContainerScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleContainerScroll);
-    };
-  }, [handleContainerScroll]);
+  // useEffect(() => {
+  //   setOffset(window.scrollY);
+  //   window.addEventListener("scroll", handleContainerScroll);
+  //
+  //   return () => {
+  //     window.removeEventListener("scroll", handleContainerScroll);
+  //   };
+  // }, [handleContainerScroll]);
 
   return (
     <>
       <StyledNavbarWrapper
         className="d-flex"
-        opaque={isTransparent}
-        onMouseEnter={() => setIsTransparent(false)}
-        onMouseLeave={() => setIsTransparent(true)}
+        // opaque={isTransparent}
       >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
@@ -110,12 +110,20 @@ const Sidebar = ():JSX.Element => {
           color="dark"
         />
         <IconLinkWrap
-          handleClick={() => handleSectionIconClick(t('ns3:bio'))}
-          active={isActive(SectionsEnum.BIO)}
+            handleClick={() => handleSectionIconClick(t('ns3:services'))}
+            active={isActive(SectionsEnum.SERVICES)}
 
-          iconStates={icons.profile}
-          name={SectionsEnum.BIO}
-          color="dark"
+            iconStates={icons.bell}
+            name={SectionsEnum.SERVICES}
+            color="dark"
+        />
+        <IconLinkWrap
+            handleClick={()=> handleSectionIconClick(t('ns3:pricing'))}
+            active={isActive(SectionsEnum.PRICING)}
+
+            iconStates={icons.budget}
+            name={SectionsEnum.PRICING}
+            color="dark"
         />
         <IconLinkWrap
             handleClick={() => handleSectionIconClick(t('ns3:work'))}
@@ -123,6 +131,14 @@ const Sidebar = ():JSX.Element => {
 
             iconStates={icons.work}
             name={SectionsEnum.WORK}
+            color="dark"
+        />
+        <IconLinkWrap
+            handleClick={() => handleSectionIconClick(t('ns3:bio'))}
+            active={isActive(SectionsEnum.BIO)}
+
+            iconStates={icons.profile}
+            name={SectionsEnum.BIO}
             color="dark"
         />
         <IconLinkWrap
@@ -141,15 +157,6 @@ const Sidebar = ():JSX.Element => {
 
           iconStates={icons.testimonials}
           name={SectionsEnum.FEEDBACK}
-          color="dark"
-        /> */}
-        {/* TODO: ditto */}
-        {/* <IconLinkWrap
-          handleClick={()=> handleSectionIconClick()}
-          active={isActive('/budget')}
-
-          iconStates={icons.budget}
-          name={SectionsEnum.BUDGET}
           color="dark"
         /> */}
           <StyledLocaleButton
@@ -184,4 +191,4 @@ const IconLinkWrap = ({ iconStates, color, name, active, handleClick }: IIconLin
   );
 };
 
-export default Sidebar;
+export default Navbar;

@@ -1,8 +1,10 @@
 {
-  "home": "Acceuil",
-  "bio": "Bio",
-  "contact": "Contact",
-  "work": "Projets",
+  "home": "ACCUEIL",
+  "services": "SERVICES",
+  "bio": "BIO",
+  "pricing": "FORFAITS",
+  "contact": "CONTACT",
+  "work": "PROJETS",
   "fr": "FR",
   "en": "EN"
 }
