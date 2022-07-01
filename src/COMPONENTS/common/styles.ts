@@ -62,7 +62,7 @@ export const StyledHeader = styled.div`
   overflow: hidden;
   margin-bottom: .5em;
   
-  &.billing, &.services, &.work {
+  &.pricing, &.services, &.work {
     //border-bottom: 1px solid #39c2df;
     .loaded {
       background: black;
@@ -113,7 +113,7 @@ export const StyledBaseBG = styled.div<IStyledBaseBgProps>`
 `;
 
 export const StyledPageContent = styled.div`
-  padding: 2% 20% 0 20%;
+  padding: 2% 15% 0 15%;
   max-height: 100vh;
   min-height: 100vh;
   color: #eeeff9;
@@ -122,7 +122,7 @@ export const StyledPageContent = styled.div`
     background: rgb(58,196,225);
     background: linear-gradient(159deg, rgba(58,196,225,1) 48%, rgba(0,0,0,1) 48%);
   }
-  &#SERVICES, &#BILLING {
+  &#SERVICES, &#PRICING {
     background: black;
   }
   &#WORK {

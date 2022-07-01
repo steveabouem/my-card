@@ -48,7 +48,7 @@ const slideUp = keyframes`
 export const StyledPaddedContentWrap = styled.div`
   z-index: 1;
   margin: auto;
-  width: 60%;
+  width: 70%;
   height: 100%;
   position: absolute;
   display: flex;
@@ -209,7 +209,7 @@ export const StyledNavbarWrapper = styled(Row) <{opaque?: boolean}>`
   height: 5%;
   width: 100%;
   margin: 0;
-  padding: 5px;
+  padding: 5px 30px 5px;
   position: fixed;
   left: 0;
   top: 0;
@@ -379,12 +379,12 @@ export const StyledButtonOverlay = styled.div`
   
   .hovered {
     background: #ffc107;
-    color: black;
+    color: white;
   }
 
   .static {
     color: #d2e3f9;
-    background: #14172d;
+    background: black;
   }
 `;
 
@@ -565,7 +565,7 @@ export const StyledPricingBlockContainer = styled.div`
   padding: 1em 0;
 `;
 
-export const StyledBillingBlock = styled.div`
+export const StyledPricingBlock = styled.div`
   background: black;
   text-align: center;
   padding: .5em;

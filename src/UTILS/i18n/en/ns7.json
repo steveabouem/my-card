@@ -19,7 +19,7 @@
       "strong": "The showcase is of course strictly presentational: none of your actual data is used, just the layout we build for you and dummy data of our own making."
     }
   },
-  "billing": {
+  "pricing": {
     "header": "What you pay for",
     "intro": "Our pricing accounts not only for the hours of coding, but also the hosting and the optional analytics features. You can chose between the following",
     "frequency": {

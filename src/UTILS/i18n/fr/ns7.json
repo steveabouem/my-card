@@ -19,7 +19,7 @@
       "strong": "Nous n'utiliserons jamais les données réelles que vous gérerez avec votre site, uniquement son design."
     }
   },
-  "billing": {
+  "pricing": {
     "header": "Où va votre argent",
     "intro": "Nos tarifs couvrent non seulement les heures de travail, mais aussi l'hébergement et autres services optionnels. En termes de paiement, vos options sont les suivantes: ",
     "frequency": {

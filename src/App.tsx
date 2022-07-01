@@ -8,11 +8,11 @@ import Contact from './COMPONENTS/Contact/Contact';
 import Bio from './COMPONENTS/Bio/Bio';
 import Work from './COMPONENTS/Work/Work';
 import Services from "./COMPONENTS/Services/Services";
-import Billing from "./COMPONENTS/Billing/Billing";
+import Pricing from "./COMPONENTS/Pricing/Pricing";
 
 const AppLayout = ():JSX.Element => {
   // /**LOGIC**/
-  // StyledPageContent ids below are targetted by Navbar to scroll to the relevant section
+  // StyledPageContent ids below are targeted by Navbar to scroll to the relevant section
   return (
       <>
         <Navbar />
@@ -23,8 +23,8 @@ const AppLayout = ():JSX.Element => {
             <StyledPageContent id={SectionsEnum.SERVICES}>
               <Services />
             </StyledPageContent>
-            <StyledPageContent id={SectionsEnum.BILLING}>
-              <Billing />
+            <StyledPageContent id={SectionsEnum.PRICING}>
+              <Pricing />
             </StyledPageContent>
             <StyledPageContent id={SectionsEnum.WORK}>
               <Work />

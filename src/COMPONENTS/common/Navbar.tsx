@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import '../../UTILS/i18n/config';
@@ -28,7 +28,7 @@ export enum  SectionsEnum {
   CONTACT = 'CONTACT',
   WORK = 'WORK',
   SERVICES = 'SERVICES',
-  BILLING = 'BILLING'
+  PRICING = 'PRICING'
 }
 
 const StyledLocaleButton = styled.div`
@@ -53,13 +53,14 @@ const Navbar = ():JSX.Element => {
   const { t } = useTranslation(['ns3', 'ns7']);
   const [activeSections, setActiveSections] = useState<string>(t('ns3:home'));
   const [currentLanguage, setCurrentLanguage] = useState<LocaleEnum>(LocaleEnum.EN)
-  const [isTransparent, setIsTransparent] = useState<boolean>(false);
-  const [offset, setOffset] = useState<number>(window.scrollY);
+  // const [isTransparent, setIsTransparent] = useState<boolean>(false);
+  // const [offset, setOffset] = useState<number>(window.scrollY);
 
   const isActive = (id: SectionsEnum) => activeSections === id;
   const isEnglish = currentLanguage === LocaleEnum.EN;
 
   const handleSectionIconClick = (id: SectionsEnum) => {
+    console.log(id)
     const target = document.getElementById(id as string);
 
     target?.scrollIntoView({behavior: 'smooth'});
@@ -75,32 +76,30 @@ const Navbar = ():JSX.Element => {
           // window.location.assign('/' + lang)
           setCurrentLanguage(lang);
         })
-        .catch((e) => {
-          console.log(e)
-        });
+        // .catch((e) => {
+        //
+        // });
   };
 
-  const handleContainerScroll = useCallback(() => {
-    setIsTransparent(offset < window.scrollY);
-  }, [offset]);
+  // const handleContainerScroll = useCallback(() => {
+  //   setIsTransparent(offset < window.scrollY);
+  // }, [offset]);
 
 
-  useEffect(() => {
-    setOffset(window.scrollY);
-    window.addEventListener("scroll", handleContainerScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleContainerScroll);
-    };
-  }, [handleContainerScroll]);
+  // useEffect(() => {
+  //   setOffset(window.scrollY);
+  //   window.addEventListener("scroll", handleContainerScroll);
+  //
+  //   return () => {
+  //     window.removeEventListener("scroll", handleContainerScroll);
+  //   };
+  // }, [handleContainerScroll]);
 
   return (
     <>
       <StyledNavbarWrapper
         className="d-flex"
-        opaque={isTransparent}
-        // onMouseEnter={() => setIsTransparent(false)}
-        // onMouseLeave={() => setIsTransparent(true)} unstable
+        // opaque={isTransparent}
       >
         <IconLinkWrap
           handleClick={() => handleSectionIconClick(t('ns3:home'))}
@@ -119,11 +118,11 @@ const Navbar = ():JSX.Element => {
             color="dark"
         />
         <IconLinkWrap
-            handleClick={()=> handleSectionIconClick(t('ns3:billing'))}
-            active={isActive(SectionsEnum.BILLING)}
+            handleClick={()=> handleSectionIconClick(t('ns3:pricing'))}
+            active={isActive(SectionsEnum.PRICING)}
 
             iconStates={icons.budget}
-            name={SectionsEnum.BILLING}
+            name={SectionsEnum.PRICING}
             color="dark"
         />
         <IconLinkWrap

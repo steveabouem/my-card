@@ -42,7 +42,7 @@ const PageContainer = ({ callback, children }: IPageContainerProps): JSX.Element
 
     callback();
   };
-  
+
   return (
     <StyledContainer fluid>
       {loading
